@@ -5,6 +5,7 @@ description = "Experimental framework for measuring AI agent architectures"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "google-genai>=2.24.0",
     "pydantic>=2.13.5",
     "python-dotenv>=1.2.3",
 ]
