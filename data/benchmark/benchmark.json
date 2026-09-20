@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "cases": [
+    {
+      "case_id": "rag-benefits-001",
+      "category": "RAG",
+      "difficulty": "easy",
+      "question": "What are the main advantages of retrieval augmented generation?",
+      "reference_answer": "Retrieval-augmented generation improves access to current and domain-specific information, can improve factual grounding, and can reduce the need for model retraining when knowledge changes."
+    },
+    {
+      "case_id": "rag-reliability-002",
+      "category": "RAG",
+      "difficulty": "medium",
+      "question": "Does retrieval-augmented generation actually make LLM answers more reliable? Explain both the benefits and limitations, and describe the conditions under which RAG is likely to improve reliability.",
+      "reference_answer": "Retrieval-augmented generation can improve the reliability of LLM answers by grounding responses in external evidence, including current, domain-specific, or private information. It can reduce reliance on information stored in the model's parameters and can make it easier to update knowledge without retraining the model. However, RAG does not guarantee reliable answers. The retrieval system may return irrelevant, incomplete, outdated, or incorrect information, and the model may still misinterpret or misuse the retrieved evidence. Therefore, RAG is most likely to improve reliability when the retrieval system returns relevant and trustworthy sources, the retrieved evidence adequately covers the question, and the model uses that evidence accurately."
+    },
+    {
+      "case_id": "multi-source-synthesis-003",
+      "category": "AI System Design",
+      "difficulty": "medium",
+      "question": "What factors should a company consider when deciding whether to build an AI system in-house or use an external AI platform? Discuss the trade-offs involving cost, control, data privacy, customization, maintenance, and scalability.",
+      "reference_answer": "A company deciding between building an AI system in-house and using an external AI platform should consider cost, control, data privacy, customization, maintenance, and scalability. Building in-house can provide greater control over the system, data, architecture, and customization. It may be more suitable when the company has specialized requirements or strict data constraints. However, it generally requires greater engineering effort, ongoing maintenance, infrastructure, and specialized expertise. An external AI platform can reduce the initial engineering burden and provide access to managed infrastructure and scalable services. However, it may reduce control over the underlying system, introduce dependence on the provider, and create data privacy or customization considerations. The appropriate choice therefore depends on the company's technical capabilities, requirements, data constraints, expected scale, long-term maintenance capacity, and the total cost of ownership rather than simply the initial development cost."
+    }
+  ]
+}

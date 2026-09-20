@@ -5,18 +5,22 @@ from agent_lab.llm.tracker import LLMRunMetrics
 
 class ArchitectureResult(BaseModel):
     question: str
-
     architecture_name: str
     agent_count: int
 
     answer: str
+
     model: str
 
     call_count: int
+
     input_tokens: int
     output_tokens: int
     total_tokens: int
+
     latency_ms: float
+
+    estimated_cost_usd: float | None = None
 
     @classmethod
     def from_run(
@@ -39,4 +43,5 @@ class ArchitectureResult(BaseModel):
             output_tokens=metrics.total_output_tokens,
             total_tokens=metrics.total_tokens,
             latency_ms=metrics.total_latency_ms,
+            estimated_cost_usd=metrics.estimated_cost_usd,
         )
