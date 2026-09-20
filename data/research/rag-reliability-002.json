@@ -1,0 +1,35 @@
+{
+  "query": "Does retrieval-augmented generation actually make LLM answers more reliable?",
+  "results": [
+    {
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "url": "https://example.com/source-1",
+      "content": "Retrieval-augmented generation can improve the factual grounding of language model responses by providing relevant external information at generation time. This allows a model to use information that may not be contained in its original parameters.",
+      "score": 0.95
+    },
+    {
+      "title": "Evaluating Retrieval-Augmented Generation Systems",
+      "url": "https://example.com/source-2",
+      "content": "Retrieval augmentation does not guarantee factual accuracy. If the retrieval system returns irrelevant or incorrect documents, the language model may use those documents when generating its answer. Retrieval quality is therefore an important factor in the reliability of a RAG system.",
+      "score": 0.92
+    },
+    {
+      "title": "Dynamic Knowledge Access with Retrieval",
+      "url": "https://example.com/source-3",
+      "content": "One advantage of retrieval-based systems is that external knowledge can be updated without retraining the underlying language model. This can make systems more suitable for information that changes over time.",
+      "score": 0.89
+    },
+    {
+      "title": "Limitations of Retrieval-Augmented Generation",
+      "url": "https://example.com/source-4",
+      "content": "Retrieved information can be incomplete, outdated, or misleading. A system may therefore produce an incorrect answer even when retrieval is enabled. Retrieval augmentation should not be interpreted as a guarantee that generated answers are correct.",
+      "score": 0.87
+    },
+    {
+      "title": "RAG Reliability in Domain-Specific Applications",
+      "url": "https://example.com/source-5",
+      "content": "RAG can be particularly useful when answers depend on private, domain-specific, or frequently changing information. Its effectiveness depends on the quality and coverage of the retrieved evidence and on whether the model correctly interprets that evidence.",
+      "score": 0.85
+    }
+  ]
+}

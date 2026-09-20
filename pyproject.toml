@@ -8,6 +8,7 @@ dependencies = [
     "google-genai>=2.24.0",
     "pydantic>=2.13.5",
     "python-dotenv>=1.2.3",
+    "requests>=2.34.2",
 ]
 
 [build-system]
