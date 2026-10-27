@@ -1,3 +1,4 @@
+import hashlib
 import json
 from pathlib import Path
 
@@ -18,10 +19,17 @@ class ResearchDataset(BaseModel):
 
 
 class BenchmarkLoader:
+    """
+    Loads the fixed benchmark and attaches its frozen research.
+
+    Questions and evidence live in separate files so the evidence can
+    be inspected (and audited) independently of the questions.
+    """
+
     def __init__(
         self,
-        benchmark_file: str = "data/benchmark/benchmark.json",
-        research_file: str = "data/benchmark/research.json",
+        benchmark_file: Path,
+        research_file: Path,
     ):
         self.benchmark_file = Path(benchmark_file)
         self.research_file = Path(research_file)
@@ -50,6 +58,19 @@ class BenchmarkLoader:
 
         return ResearchDataset.model_validate(data)
 
+    def version(self) -> str:
+        return self.load_benchmark().version
+
+    def fingerprint(self) -> str:
+        """sha256 over both files, stored in every run manifest."""
+
+        digest = hashlib.sha256()
+
+        for path in (self.benchmark_file, self.research_file):
+            digest.update(path.read_bytes())
+
+        return digest.hexdigest()[:16]
+
     def load_all(self) -> list[ExperimentCase]:
         benchmark = self.load_benchmark()
         research = self.load_research()
@@ -59,7 +80,7 @@ class BenchmarkLoader:
         for case in benchmark.cases:
             research_bundle = research.cases.get(case.case_id)
 
-            if research_bundle is None:
+            if research_bundle is None or not research_bundle.results:
                 raise ValueError(
                     f"No research found for benchmark case: "
                     f"{case.case_id}"
@@ -67,18 +88,14 @@ class BenchmarkLoader:
 
             cases.append(
                 case.model_copy(
-                    update={
-                        "research": research_bundle
-                    }
+                    update={"research": research_bundle}
                 )
             )
 
         return cases
 
     def load_case(self, case_id: str) -> ExperimentCase:
-        cases = self.load_all()
-
-        for case in cases:
+        for case in self.load_all():
             if case.case_id == case_id:
                 return case
 

@@ -1,0 +1,399 @@
+{
+  "run_id": "c6f6d5e938",
+  "status": "completed",
+  "config": {
+    "generator_model": "gemini-3.1-flash-lite",
+    "judge_model": "gemini-3.5-flash-lite",
+    "trials": 3,
+    "architectures": [
+      "1-agent",
+      "2-agent",
+      "3-agent",
+      "4-agent"
+    ],
+    "cases_planned": 12,
+    "units_planned": 36,
+    "units_completed": 36,
+    "benchmark_version": "2.0",
+    "benchmark_fingerprint": "3352f17db8b4c6de",
+    "prompt_fingerprint": "8b075615a0f0fe7b",
+    "git_commit": "7deff28-dirty"
+  },
+  "winner": {
+    "winner": "1-agent",
+    "best_quality": "4-agent",
+    "candidates": [
+      "1-agent",
+      "2-agent",
+      "3-agent",
+      "4-agent"
+    ],
+    "comparisons": [
+      {
+        "n_cases": 12,
+        "diff_mean": 0.0023,
+        "ci_low": -0.0161,
+        "ci_high": 0.019,
+        "architecture": "1-agent",
+        "versus": "4-agent",
+        "as_good_as_best": true
+      },
+      {
+        "n_cases": 12,
+        "diff_mean": 0.0069,
+        "ci_low": -0.0015,
+        "ci_high": 0.0142,
+        "architecture": "2-agent",
+        "versus": "4-agent",
+        "as_good_as_best": true
+      },
+      {
+        "n_cases": 12,
+        "diff_mean": 0.0012,
+        "ci_low": -0.0068,
+        "ci_high": 0.0077,
+        "architecture": "3-agent",
+        "versus": "4-agent",
+        "as_good_as_best": true
+      }
+    ],
+    "rule": "Winner = the cheapest architecture (fewest tokens per answer) whose Quality Index is not significantly lower than the best architecture's (paired bootstrap 95% CI of the difference includes 0, or the gap is below 0.02).",
+    "explanation": "4-agent scored highest, but 1-agent is not significantly worse and uses fewer tokens, so the extra agents are not worth their cost."
+  },
+  "architectures": [
+    {
+      "architecture": "1-agent",
+      "agent_count": 1,
+      "units_completed": 36,
+      "units_failed": 0,
+      "cases_scored": 12,
+      "quality_index": 0.9808,
+      "quality_ci_low": 0.9659,
+      "quality_ci_high": 0.9928,
+      "dimensions": {
+        "answer_relevancy": 0.9986,
+        "completeness": 0.941,
+        "faithfulness": 1.0,
+        "citation_quality": 0.9944,
+        "uncertainty_handling": 0.9847,
+        "overall_quality": 0.9658
+      },
+      "trap_violation_rate": 0.0,
+      "unsupported_claims_per_answer": 0.0,
+      "citation_validity": 1.0,
+      "sentence_citation_coverage": 0.9121,
+      "word_count": 139.5833,
+      "win_rate": 0.3056,
+      "mean_rank": 2.4722,
+      "calls_per_answer": 1.0,
+      "input_tokens": 882.25,
+      "output_tokens": 206.7778,
+      "thinking_tokens": 0.0,
+      "total_tokens": 1089.0278,
+      "latency_s": 5.2429,
+      "estimated_cost_usd": 0.000531,
+      "retries": 3,
+      "quality_per_1k_tokens": 0.9006
+    },
+    {
+      "architecture": "2-agent",
+      "agent_count": 2,
+      "units_completed": 36,
+      "units_failed": 0,
+      "cases_scored": 12,
+      "quality_index": 0.9762,
+      "quality_ci_low": 0.95,
+      "quality_ci_high": 0.9925,
+      "dimensions": {
+        "answer_relevancy": 0.9822,
+        "completeness": 0.9319,
+        "faithfulness": 1.0,
+        "citation_quality": 0.9981,
+        "uncertainty_handling": 0.9847,
+        "overall_quality": 0.9603
+      },
+      "trap_violation_rate": 0.0,
+      "unsupported_claims_per_answer": 0.0,
+      "citation_validity": 1.0,
+      "sentence_citation_coverage": 0.6869,
+      "word_count": 196.3889,
+      "win_rate": 0.1389,
+      "mean_rank": 3.0556,
+      "calls_per_answer": 2.0,
+      "input_tokens": 1853.6389,
+      "output_tokens": 895.1111,
+      "thinking_tokens": 0.0,
+      "total_tokens": 2748.75,
+      "latency_s": 15.3946,
+      "estimated_cost_usd": 0.001806,
+      "retries": 5,
+      "quality_per_1k_tokens": 0.3551
+    },
+    {
+      "architecture": "3-agent",
+      "agent_count": 3,
+      "units_completed": 36,
+      "units_failed": 0,
+      "cases_scored": 12,
+      "quality_index": 0.9819,
+      "quality_ci_low": 0.957,
+      "quality_ci_high": 0.9957,
+      "dimensions": {
+        "answer_relevancy": 0.9994,
+        "completeness": 0.9444,
+        "faithfulness": 1.0,
+        "citation_quality": 0.9958,
+        "uncertainty_handling": 0.9847,
+        "overall_quality": 0.9669
+      },
+      "trap_violation_rate": 0.0,
+      "unsupported_claims_per_answer": 0.0,
+      "citation_validity": 1.0,
+      "sentence_citation_coverage": 0.906,
+      "word_count": 155.9167,
+      "win_rate": 0.1111,
+      "mean_rank": 2.4167,
+      "calls_per_answer": 3.0,
+      "input_tokens": 3408.3056,
+      "output_tokens": 1330.3611,
+      "thinking_tokens": 0.0,
+      "total_tokens": 4738.6667,
+      "latency_s": 22.6636,
+      "estimated_cost_usd": 0.002848,
+      "retries": 6,
+      "quality_per_1k_tokens": 0.2072
+    },
+    {
+      "architecture": "4-agent",
+      "agent_count": 4,
+      "units_completed": 36,
+      "units_failed": 0,
+      "cases_scored": 12,
+      "quality_index": 0.9831,
+      "quality_ci_low": 0.9601,
+      "quality_ci_high": 0.9983,
+      "dimensions": {
+        "answer_relevancy": 0.9972,
+        "completeness": 0.941,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 0.9903,
+        "overall_quality": 0.97
+      },
+      "trap_violation_rate": 0.0,
+      "unsupported_claims_per_answer": 0.0,
+      "citation_validity": 1.0,
+      "sentence_citation_coverage": 0.8926,
+      "word_count": 171.8611,
+      "win_rate": 0.4444,
+      "mean_rank": 2.0556,
+      "calls_per_answer": 4.0,
+      "input_tokens": 4806.75,
+      "output_tokens": 1603.8056,
+      "thinking_tokens": 0.0,
+      "total_tokens": 6410.5556,
+      "latency_s": 25.8552,
+      "estimated_cost_usd": 0.003607,
+      "retries": 23,
+      "quality_per_1k_tokens": 0.1534
+    }
+  ],
+  "by_difficulty": {
+    "easy": {
+      "cases": 3,
+      "quality_index": {
+        "1-agent": 0.987,
+        "2-agent": 0.9889,
+        "3-agent": 0.9976,
+        "4-agent": 0.9972
+      },
+      "best_quality": "3-agent",
+      "winner": "1-agent"
+    },
+    "medium": {
+      "cases": 3,
+      "quality_index": {
+        "1-agent": 0.9948,
+        "2-agent": 0.9961,
+        "3-agent": 0.9961,
+        "4-agent": 0.9972
+      },
+      "best_quality": "4-agent",
+      "winner": "1-agent"
+    },
+    "hard": {
+      "cases": 3,
+      "quality_index": {
+        "1-agent": 0.9644,
+        "2-agent": 0.9367,
+        "3-agent": 0.9468,
+        "4-agent": 0.9386
+      },
+      "best_quality": "1-agent",
+      "winner": "1-agent"
+    },
+    "adversarial": {
+      "cases": 3,
+      "quality_index": {
+        "1-agent": 0.9769,
+        "2-agent": 0.9831,
+        "3-agent": 0.9871,
+        "4-agent": 0.9993
+      },
+      "best_quality": "4-agent",
+      "winner": "1-agent"
+    }
+  },
+  "sensitivity": {
+    "equal": {
+      "best_quality": "4-agent",
+      "winner": "1-agent"
+    },
+    "trust_first": {
+      "best_quality": "4-agent",
+      "winner": "1-agent"
+    },
+    "overall_only": {
+      "best_quality": "4-agent",
+      "winner": "1-agent"
+    },
+    "blind_ranking": {
+      "best_quality": "4-agent",
+      "winner": null
+    }
+  },
+  "per_case": [
+    {
+      "case_id": "rag-benefits-001",
+      "difficulty": "easy",
+      "trials": 3,
+      "quality_index": {
+        "1-agent": 0.9978,
+        "2-agent": 0.9917,
+        "3-agent": 0.9967,
+        "4-agent": 0.9972
+      }
+    },
+    {
+      "case_id": "vector-db-purpose-002",
+      "difficulty": "easy",
+      "trials": 3,
+      "quality_index": {
+        "1-agent": 0.9989,
+        "2-agent": 0.9978,
+        "3-agent": 0.9978,
+        "4-agent": 0.9972
+      }
+    },
+    {
+      "case_id": "context-window-003",
+      "difficulty": "easy",
+      "trials": 3,
+      "quality_index": {
+        "1-agent": 0.9644,
+        "2-agent": 0.9772,
+        "3-agent": 0.9983,
+        "4-agent": 0.9972
+      }
+    },
+    {
+      "case_id": "rag-reliability-004",
+      "difficulty": "medium",
+      "trials": 3,
+      "quality_index": {
+        "1-agent": 0.9967,
+        "2-agent": 0.9967,
+        "3-agent": 0.9967,
+        "4-agent": 0.9967
+      }
+    },
+    {
+      "case_id": "build-vs-buy-005",
+      "difficulty": "medium",
+      "trials": 3,
+      "quality_index": {
+        "1-agent": 0.9978,
+        "2-agent": 0.9944,
+        "3-agent": 0.9967,
+        "4-agent": 0.9972
+      }
+    },
+    {
+      "case_id": "finetune-vs-rag-006",
+      "difficulty": "medium",
+      "trials": 3,
+      "quality_index": {
+        "1-agent": 0.99,
+        "2-agent": 0.9972,
+        "3-agent": 0.995,
+        "4-agent": 0.9978
+      }
+    },
+    {
+      "case_id": "conflicting-metrics-007",
+      "difficulty": "hard",
+      "trials": 3,
+      "quality_index": {
+        "1-agent": 0.955,
+        "2-agent": 0.9794,
+        "3-agent": 0.9892,
+        "4-agent": 0.9525
+      }
+    },
+    {
+      "case_id": "token-cost-math-008",
+      "difficulty": "hard",
+      "trials": 3,
+      "quality_index": {
+        "1-agent": 0.9989,
+        "2-agent": 0.9878,
+        "3-agent": 0.9961,
+        "4-agent": 1.0
+      }
+    },
+    {
+      "case_id": "distractor-study-009",
+      "difficulty": "hard",
+      "trials": 3,
+      "quality_index": {
+        "1-agent": 0.9392,
+        "2-agent": 0.8428,
+        "3-agent": 0.855,
+        "4-agent": 0.8633
+      }
+    },
+    {
+      "case_id": "insufficient-evidence-010",
+      "difficulty": "adversarial",
+      "trials": 3,
+      "quality_index": {
+        "1-agent": 0.9978,
+        "2-agent": 0.9728,
+        "3-agent": 0.9817,
+        "4-agent": 1.0
+      }
+    },
+    {
+      "case_id": "false-premise-011",
+      "difficulty": "adversarial",
+      "trials": 3,
+      "quality_index": {
+        "1-agent": 0.9339,
+        "2-agent": 0.9783,
+        "3-agent": 0.9819,
+        "4-agent": 0.9989
+      }
+    },
+    {
+      "case_id": "planted-claim-012",
+      "difficulty": "adversarial",
+      "trials": 3,
+      "quality_index": {
+        "1-agent": 0.9989,
+        "2-agent": 0.9983,
+        "3-agent": 0.9978,
+        "4-agent": 0.9989
+      }
+    }
+  ]
+}

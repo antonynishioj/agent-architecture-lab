@@ -1,579 +1,388 @@
-from fastapi import APIRouter, BackgroundTasks, HTTPException, WebSocket
+import asyncio
+import json
+from threading import Thread
 
-from agent_lab.api.results import ResultStore
+from fastapi import APIRouter, HTTPException, WebSocket, WebSocketDisconnect
+from fastapi.responses import PlainTextResponse
+
+from agent_lab.analysis.report import build_summary, summary_csv
 from agent_lab.api.schemas import (
-    BenchmarkListItem,
-    BenchmarkListResponse,
+    BenchmarkRunRequest,
     CustomExperimentRequest,
     ExperimentStartResponse,
-    ExperimentStatusResponse,
 )
 from agent_lab.api.state import JobManager
-from agent_lab.experiments.benchmark import BenchmarkLoader
+from agent_lab.architectures.definitions import ARCHITECTURES
+from agent_lab.architectures.roles import ROLE_SPECS
 from agent_lab.experiments.case import ExperimentCase
-from agent_lab.experiments.service import ExperimentService
+from agent_lab.experiments.engine import calls_per_item
+from agent_lab.experiments.factory import Lab
+from agent_lab.research.result import ResearchBundle, SearchResult
+
+
+TERMINAL_STATUSES = {"completed", "completed_with_errors", "failed", "paused"}
 
 
 class APIContext:
-    def __init__(
-        self,
-        service: ExperimentService,
-        benchmark_loader: BenchmarkLoader,
-        result_store: ResultStore,
-    ):
-        self.service = service
-        self.benchmark_loader = benchmark_loader
-        self.result_store = result_store
+    def __init__(self, lab: Lab):
+        self.lab = lab
         self.jobs = JobManager()
 
 
-def _registry_progress(run) -> int:
-    if run.total_cases == 0:
-        return 0
+def _execute(context: APIContext, run_id: str) -> None:
+    """Runs in a background thread; the manifest records the outcome."""
 
-    finished = (
-        run.completed_cases
-        + run.failed_cases
-    )
-
-    return int(
-        finished
-        / run.total_cases
-        * 100
-    )
-
-def _update_job_from_event(
-    context: APIContext,
-    run_id: str,
-    event: dict,
-) -> None:
-    stage = event.get("stage")
-
-    progress = event.get("progress")
-
-    if stage == "case_started":
-        context.jobs.update(
-            run_id,
-            progress=(
-                progress
-                if progress is not None
-                else 0
-            ),
-            message=(
-                f"Running case: "
-                f"{event.get('case_id')}"
-            ),
-            current_case=event.get("case_id"),
-            current_architecture=None,
-        )
-
-    elif stage == "research_started":
-        context.jobs.update(
-            run_id,
-            progress=(
-                progress
-                if progress is not None
-                else 0
-            ),
-            message="Researching the question...",
-        )
-
-    elif stage == "research_loaded":
-        context.jobs.update(
-            run_id,
-            progress=(
-                progress
-                if progress is not None
-                else 0
-            ),
-            message="Frozen benchmark research loaded.",
-        )
-
-    elif stage == "research_completed":
-        context.jobs.update(
-            run_id,
-            progress=(
-                progress
-                if progress is not None
-                else 0
-            ),
-            message=(
-                f"Research completed with "
-                f"{event.get('source_count', 0)} sources."
-            ),
-        )
-
-    elif stage == "architecture_started":
-        architecture = event.get(
-            "architecture"
-        )
-
-        context.jobs.update(
-            run_id,
-            progress=(
-                progress
-                if progress is not None
-                else 0
-            ),
-            message=(
-                f"Running "
-                f"{architecture} architecture..."
-            ),
-            current_architecture=architecture,
-        )
-
-    elif stage == "architecture_completed":
-        architecture = event.get(
-            "architecture"
-        )
-
-        context.jobs.update(
-            run_id,
-            progress=(
-                progress
-                if progress is not None
-                else 0
-            ),
-            message=(
-                f"{architecture} architecture completed."
-            ),
-            current_architecture=architecture,
-        )
-
-    elif stage == "evaluation_started":
-        context.jobs.update(
-            run_id,
-            progress=(
-                progress
-                if progress is not None
-                else 0
-            ),
-            message=(
-                f"Evaluating "
-                f"{event.get('architecture', 'architecture')}..."
-            ),
-        )
-
-    elif stage == "evaluation_completed":
-        context.jobs.update(
-            run_id,
-            progress=(
-                progress
-                if progress is not None
-                else 0
-            ),
-            message=(
-                f"Evaluation completed for "
-                f"{event.get('architecture', 'architecture')}."
-            ),
-        )
-
-    elif stage == "case_completed":
-        context.jobs.update(
-            run_id,
-            progress=(
-                progress
-                if progress is not None
-                else 0
-            ),
-            message="Case completed.",
-            current_architecture=None,
-        )
-
-    elif stage == "case_failed":
-        context.jobs.update(
-            run_id,
-            progress=(
-                progress
-                if progress is not None
-                else 0
-            ),
-            message=(
-                f"Case failed: "
-                f"{event.get('error')}"
-            ),
-            error=event.get("error"),
-            current_architecture=None,
-        )
-
-
-def _progress_callback(
-    context: APIContext,
-    run_id: str,
-):
-    def callback(event: dict) -> None:
-        _update_job_from_event(
-            context=context,
-            run_id=run_id,
-            event=event,
-        )
-
-    return callback
-
-
-def _run_custom(
-    context: APIContext,
-    run_id: str,
-    case: ExperimentCase,
-) -> None:
     try:
-        context.service.run_custom(
-            case=case,
-            run_id=run_id,
-            progress_callback=_progress_callback(
-                context,
-                run_id,
-            ),
+        manifest = context.lab.engine().run(
+            run_id,
+            progress=lambda event: context.jobs.record_event(run_id, event),
         )
 
         context.jobs.update(
             run_id,
-            status="completed",
+            status=manifest.status,
             progress=100,
-            message="Custom experiment completed.",
-            current_case=None,
-            current_architecture=None,
+            message=(
+                "Run completed."
+                if manifest.status == "completed"
+                else f"Run completed with {manifest.failed_items} failed unit(s)."
+            ),
         )
-
     except Exception as exc:
+        manifest = context.lab.store.load(run_id)
+        status = manifest.status if manifest and manifest.status == "paused" else "failed"
+
+        if manifest and status == "failed":
+            manifest.status = "failed"
+            manifest.error = str(exc)
+            context.lab.store.save(manifest)
+
         context.jobs.update(
             run_id,
-            status="failed",
-            message="Custom experiment failed.",
+            status=status,
+            message=(
+                "Paused: quota reached. Resume later from Run history."
+                if status == "paused"
+                else "Run failed."
+            ),
             error=str(exc),
-            current_case=None,
-            current_architecture=None,
         )
 
 
-def _run_benchmark(
-    context: APIContext,
-    run_id: str,
-    cases: list[ExperimentCase],
-) -> None:
-    try:
-        context.service.run_benchmark(
-            cases=cases,
-            run_id=run_id,
-            progress_callback=_progress_callback(
-                context,
-                run_id,
+def _ensure_can_start(context: APIContext) -> None:
+    active = context.jobs.active()
+
+    if active is not None:
+        raise HTTPException(
+            status_code=409,
+            detail=(
+                f"Run {active.run_id} is still in progress. Only one run "
+                f"executes at a time so runs do not compete for quota."
             ),
         )
 
-        run = context.service.registry.load(run_id)
-
-        if run is None:
-            raise RuntimeError(
-                f"Run disappeared from registry: {run_id}"
-            )
-
-        if run.status == "completed_with_errors":
-            context.jobs.update(
-                run_id,
-                status="completed_with_errors",
-                progress=100,
-                message=(
-                    f"Benchmark completed with "
-                    f"{run.failed_cases} failed case(s)."
-                ),
-                current_case=None,
-                current_architecture=None,
-            )
-        else:
-            context.jobs.update(
-                run_id,
-                status="completed",
-                progress=100,
-                message="Benchmark completed.",
-                current_case=None,
-                current_architecture=None,
-            )
-
-    except Exception as exc:
-        context.jobs.update(
-            run_id,
-            status="failed",
-            message="Benchmark failed.",
-            error=str(exc),
-            current_case=None,
-            current_architecture=None,
+    if not context.lab.settings.gemini_api_key:
+        raise HTTPException(
+            status_code=400,
+            detail="GEMINI_API_KEY is not set in the .env file.",
         )
 
 
-def create_router(
-    context: APIContext,
-) -> APIRouter:
+def _start(context: APIContext, run_id: str) -> None:
+    """Call _ensure_can_start first, before creating any run on disk."""
 
-    router = APIRouter(
-        prefix="/api",
-    )
+    context.jobs.create(run_id)
+    Thread(target=_execute, args=(context, run_id), daemon=True).start()
+
+
+def _job_payload(context: APIContext, run_id: str) -> dict | None:
+    job = context.jobs.get(run_id)
+
+    if job is not None:
+        return job.to_dict()
+
+    manifest = context.lab.store.load(run_id)
+
+    if manifest is None:
+        return None
+
+    finished = manifest.completed_items + manifest.failed_items
+
+    return {
+        "run_id": run_id,
+        "status": manifest.status,
+        "progress": int(finished / max(1, len(manifest.items)) * 100),
+        "message": f"{finished}/{len(manifest.items)} case-trials finished.",
+        "current_case": None,
+        "current_trial": None,
+        "current_architecture": None,
+        "error": manifest.error,
+        "events": [],
+    }
+
+
+def create_router(context: APIContext) -> APIRouter:
+    router = APIRouter(prefix="/api")
+    lab = context.lab
 
     @router.get("/health")
     def health():
+        return {"status": "healthy"}
+
+    @router.get("/config")
+    def config():
+        settings = lab.settings
+
         return {
-            "status": "healthy",
+            "generator_model": settings.generator_model,
+            "judge_model": settings.judge_model,
+            "generator_rpm": settings.generator_rpm,
+            "judge_rpm": settings.judge_rpm,
+            "generator_rpd": settings.generator_rpd,
+            "judge_rpd": settings.judge_rpd,
+            "api_key_configured": bool(settings.gemini_api_key),
+            "tavily_enabled": settings.tavily_enabled,
+            "usage_today": lab.usage.today(),
+            "active_run": (
+                job.run_id if (job := context.jobs.active()) else None
+            ),
+            "architectures": [
+                {
+                    "name": architecture.name,
+                    "agent_count": architecture.agent_count,
+                    "description": architecture.description,
+                    "agents": [
+                        [ROLE_SPECS[role].title for role in agent.responsibilities]
+                        for agent in architecture.agents
+                    ],
+                    "calls_per_case": calls_per_item([architecture.name]),
+                }
+                for architecture in ARCHITECTURES
+            ],
         }
 
-    @router.get(
-        "/benchmarks",
-        response_model=BenchmarkListResponse,
-    )
-    def list_benchmarks():
-        cases = context.benchmark_loader.load_all()
+    @router.get("/benchmarks")
+    def list_benchmarks(difficulty: str | None = None):
+        cases = lab.loader.load_all()
 
-        return BenchmarkListResponse(
-            count=len(cases),
-            cases=[
-                BenchmarkListItem(
-                    case_id=case.case_id,
-                    category=case.category,
-                    difficulty=case.difficulty,
-                    question=case.question,
-                )
+        return {
+            "version": lab.loader.version(),
+            "cases": [
+                {
+                    "case_id": case.case_id,
+                    "category": case.category,
+                    "difficulty": case.difficulty,
+                    "question": case.question,
+                    "design_notes": case.design_notes,
+                    "key_points": len(case.key_points),
+                    "sources": len(case.research.results) if case.research else 0,
+                }
                 for case in cases
+                if difficulty is None or case.difficulty == difficulty
             ],
-        )
+        }
 
     @router.get("/benchmarks/{case_id}")
     def get_benchmark(case_id: str):
         try:
-            case = context.benchmark_loader.load_case(
-                case_id
-            )
+            return lab.loader.load_case(case_id).model_dump()
         except KeyError:
-            raise HTTPException(
-                status_code=404,
-                detail=f"Benchmark case not found: {case_id}",
+            raise HTTPException(404, f"Benchmark case not found: {case_id}")
+
+    @router.post("/experiments/benchmark", response_model=ExperimentStartResponse)
+    def start_benchmark(request: BenchmarkRunRequest):
+        _ensure_can_start(context)
+        cases = lab.loader.load_all()
+
+        if request.case_ids:
+            wanted = set(request.case_ids)
+            cases = [case for case in cases if case.case_id in wanted]
+
+        try:
+            manifest = lab.create_run(
+                run_type="benchmark",
+                cases=cases,
+                trials=request.trials,
+                architectures=request.architectures,
+                label=request.label,
             )
+        except ValueError as exc:
+            raise HTTPException(400, str(exc))
 
-        return case.model_dump()
-
-    @router.post(
-        "/experiments/custom",
-        response_model=ExperimentStartResponse,
-    )
-    def start_custom_experiment(
-        request: CustomExperimentRequest,
-        background_tasks: BackgroundTasks,
-    ):
-        run, case = context.service.create_custom_run(
-            question=request.question,
-            reference_answer=request.reference_answer,
-            category=request.category,
-            difficulty=request.difficulty,
-        )
-
-        context.jobs.create(
-            run_id=run.run_id,
-            case_id=case.case_id,
-        )
-
-        background_tasks.add_task(
-            _run_custom,
-            context,
-            run.run_id,
-            case,
-        )
+        _start(context, manifest.run_id)
 
         return ExperimentStartResponse(
-            run_id=run.run_id,
+            run_id=manifest.run_id,
+            status="queued",
+            message=f"Benchmark started: {len(cases)} cases × {request.trials} trials.",
+        )
+
+    @router.post("/experiments/custom", response_model=ExperimentStartResponse)
+    def start_custom(request: CustomExperimentRequest):
+        _ensure_can_start(context)
+        research = None
+
+        if request.sources_mode == "manual":
+            if not request.sources:
+                raise HTTPException(400, "Paste at least one source.")
+
+            research = ResearchBundle(
+                query=request.question,
+                results=[
+                    SearchResult(**source.model_dump())
+                    for source in request.sources
+                ],
+            )
+        elif not lab.settings.tavily_enabled:
+            raise HTTPException(
+                400,
+                "Web search needs TAVILY_API_KEY in .env. Paste sources instead.",
+            )
+
+        case = ExperimentCase(
+            case_id="custom",
+            question=request.question,
+            reference_answer=request.reference_answer or None,
+            key_points=[point for point in request.key_points if point.strip()],
+            must_not_claim=[claim for claim in request.must_not_claim if claim.strip()],
+            category=request.category or "Custom",
+            difficulty=request.difficulty or "custom",
+            source_kind="user" if research else "web",
+            research=research,
+        )
+
+        try:
+            manifest = lab.create_run(
+                run_type="custom",
+                cases=[case],
+                trials=request.trials,
+                architectures=request.architectures,
+                label=request.label,
+            )
+        except ValueError as exc:
+            raise HTTPException(400, str(exc))
+
+        _start(context, manifest.run_id)
+
+        return ExperimentStartResponse(
+            run_id=manifest.run_id,
             status="queued",
             message="Custom experiment started.",
         )
 
-    @router.post(
-        "/experiments/benchmark",
-        response_model=ExperimentStartResponse,
-    )
-    def start_benchmark(
-        background_tasks: BackgroundTasks,
-    ):
-        cases = context.benchmark_loader.load_all()
+    @router.get("/experiments/{run_id}/status")
+    def get_status(run_id: str):
+        payload = _job_payload(context, run_id)
 
-        if not cases:
-            raise HTTPException(
-                status_code=400,
-                detail="No benchmark cases are configured.",
-            )
+        if payload is None:
+            raise HTTPException(404, f"Run not found: {run_id}")
 
-        run = context.service.create_benchmark_run(
-            cases=cases,
-        )
+        return payload
 
-        context.jobs.create(
-            run_id=run.run_id,
-        )
+    @router.get("/runs")
+    def list_runs():
+        return [
+            {
+                "run_id": manifest.run_id,
+                "directory": manifest.directory,
+                "run_type": manifest.run_type,
+                "label": manifest.label,
+                "status": (
+                    "running"
+                    if (job := context.jobs.get(manifest.run_id))
+                    and job.status in {"queued", "running"}
+                    else manifest.status
+                ),
+                "created_at": manifest.created_at,
+                "trials": manifest.trials,
+                "case_count": len(manifest.case_ids),
+                "architectures": manifest.architectures,
+                "completed_items": manifest.completed_items,
+                "failed_items": manifest.failed_items,
+                "total_items": len(manifest.items),
+                "generator_model": manifest.generator_model,
+                "error": manifest.error,
+            }
+            for manifest in lab.store.list()
+        ]
 
-        background_tasks.add_task(
-            _run_benchmark,
-            context,
-            run.run_id,
-            cases,
-        )
+    def _run_path(run_id: str):
+        path = lab.store.run_dir(run_id)
 
-        return ExperimentStartResponse(
-            run_id=run.run_id,
-            status="queued",
-            message=(
-                f"Benchmark started with "
-                f"{len(cases)} cases."
-            ),
-        )
+        if path is None:
+            raise HTTPException(404, f"Run not found: {run_id}")
 
-    @router.get(
-        "/experiments/{run_id}/status",
-        response_model=ExperimentStatusResponse,
-    )
-    def get_experiment_status(
-        run_id: str,
-    ):
-        job = context.jobs.get(run_id)
+        return path
 
-        if job is not None:
-            return ExperimentStatusResponse(
-                run_id=job.run_id,
-                status=job.status,
-                progress=job.progress,
-                message=job.message,
-                case_id=job.case_id,
-                current_case=job.current_case,
-                current_architecture=job.current_architecture,
-                error=job.error,
-            )
-
-        run = context.service.registry.load(run_id)
-
-        if run is None:
-            raise HTTPException(
-                status_code=404,
-                detail=f"Run not found: {run_id}",
-            )
-
-        return ExperimentStatusResponse(
-            run_id=run.run_id,
-            status=run.status,
-            progress=(
-                _registry_progress(run)
-                if run.total_cases
-                else 0
-            ),
-            message=(
-                f"{run.completed_cases}/"
-                f"{run.total_cases} cases completed."
-            ),
-            error=None,
-        )
-
-    @router.get("/experiments/{run_id}")
-    def get_experiment_results(
-        run_id: str,
-    ):
-        result = context.result_store.find(
-            run_id
-        )
-
-        if result is not None:
-            return result
-
-        run = context.service.registry.load(
-            run_id
-        )
-
-        if run is None:
-            raise HTTPException(
-                status_code=404,
-                detail=f"Run not found: {run_id}",
-            )
+    @router.get("/runs/{run_id}")
+    def get_run(run_id: str):
+        path = _run_path(run_id)
+        manifest = lab.store.load_from_dir(path)
 
         return {
-            "run_id": run_id,
-            "status": run.status,
-            "total_cases": run.total_cases,
-            "completed_cases": run.completed_cases,
-            "failed_cases": run.failed_cases,
-            "cases": [
-                case.model_dump()
-                for case in run.cases
-            ],
+            "manifest": manifest.model_dump() if manifest else None,
+            "cases": [case.model_dump() for case in lab.store.load_cases(path)],
+            "items": [item.model_dump() for item in lab.store.load_items(path)],
         }
 
-    @router.websocket(
-        "/ws/experiments/{run_id}"
-    )
-    async def experiment_websocket(
-        websocket: WebSocket,
-        run_id: str,
-    ):
+    @router.get("/runs/{run_id}/summary")
+    def get_summary(run_id: str):
+        return build_summary(_run_path(run_id))
+
+    @router.get("/runs/{run_id}/export.csv", response_class=PlainTextResponse)
+    def export_csv(run_id: str):
+        return PlainTextResponse(
+            summary_csv(build_summary(_run_path(run_id))),
+            media_type="text/csv",
+            headers={"Content-Disposition": f'attachment; filename="{run_id}.csv"'},
+        )
+
+    @router.post("/runs/{run_id}/resume", response_model=ExperimentStartResponse)
+    def resume_run(run_id: str):
+        manifest = lab.store.load(run_id)
+
+        if manifest is None:
+            raise HTTPException(404, f"Run not found: {run_id}")
+
+        if manifest.status == "completed":
+            raise HTTPException(400, "This run is already complete.")
+
+        _ensure_can_start(context)
+
+        _start(context, run_id)
+
+        return ExperimentStartResponse(
+            run_id=run_id,
+            status="queued",
+            message="Run resumed. Cached calls are reused.",
+        )
+
+    @router.websocket("/ws/experiments/{run_id}")
+    async def experiment_websocket(websocket: WebSocket, run_id: str):
         await websocket.accept()
 
         try:
+            last = None
+
             while True:
-                job = context.jobs.get(run_id)
+                payload = _job_payload(context, run_id) or {
+                    "run_id": run_id,
+                    "status": "not_found",
+                }
 
-                if job is None:
-                    run = context.service.registry.load(
-                        run_id
-                    )
+                encoded = json.dumps(payload, sort_keys=True)
 
-                    if run is None:
-                        await websocket.send_json(
-                            {
-                                "status": "not_found",
-                                "run_id": run_id,
-                            }
-                        )
-                        break
+                if encoded != last:
+                    await websocket.send_json(payload)
+                    last = encoded
 
-                    payload = {
-                        "run_id": run.run_id,
-                        "status": run.status,
-                        "progress": (
-                            int(
-                                (
-                                    run.completed_cases
-                                    + run.failed_cases
-                                )
-                                / run.total_cases
-                                * 100
-                            )
-                            if run.total_cases
-                            else 0
-                        ),
-                        "message": (
-                            f"{run.completed_cases}/"
-                            f"{run.total_cases} cases completed."
-                        ),
-                    }
-                else:
-                    payload = {
-                        "run_id": job.run_id,
-                        "status": job.status,
-                        "progress": job.progress,
-                        "message": job.message,
-                        "case_id": job.case_id,
-                        "current_case": job.current_case,
-                        "current_architecture": (
-                            job.current_architecture
-                        ),
-                        "error": job.error,
-                    }
-
-                await websocket.send_json(payload)
-
-                if payload["status"] in {
-                    "completed",
-                    "completed_with_errors",
-                    "failed",
-                    "not_found",
-                }:
+                if payload["status"] in TERMINAL_STATUSES | {"not_found"}:
                     break
 
-                import asyncio
-
                 await asyncio.sleep(0.5)
+        except WebSocketDisconnect:
+            return
 
-        finally:
-            await websocket.close()
+        await websocket.close()
 
     return router

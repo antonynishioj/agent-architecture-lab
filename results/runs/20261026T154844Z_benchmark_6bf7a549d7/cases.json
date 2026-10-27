@@ -1,0 +1,53 @@
+[
+  {
+    "case_id": "rag-benefits-001",
+    "question": "What are the main advantages of retrieval-augmented generation (RAG)?",
+    "reference_answer": "RAG gives a language model access to current and domain-specific information at answer time, grounds answers in retrieved evidence (which can reduce unsupported answers), lets organisations update knowledge by updating the document store instead of retraining the model, and makes it possible to show which sources an answer is based on.",
+    "category": "RAG",
+    "difficulty": "easy",
+    "key_points": [
+      "Access to current or domain-specific/private information",
+      "Answers grounded in retrieved evidence, which can reduce unsupported or hallucinated content",
+      "Knowledge can be updated without retraining the model",
+      "Answers can cite or show their sources"
+    ],
+    "must_not_claim": [
+      "RAG guarantees that answers are correct or eliminates hallucinations entirely"
+    ],
+    "design_notes": "All sources agree. Baseline task: a single agent should do as well as a team.",
+    "source_kind": "curated",
+    "research": {
+      "query": "What are the main advantages of retrieval augmented generation?",
+      "results": [
+        {
+          "title": "An Introduction to Retrieval-Augmented Generation",
+          "url": "https://example.com/rag/introduction",
+          "content": "Retrieval-augmented generation (RAG) retrieves relevant documents from an external knowledge source at query time and gives them to the language model as context. This lets the model use information that is newer than its training data or specific to an organisation, such as internal policies or product documentation.",
+          "score": 0.95,
+          "published": null
+        },
+        {
+          "title": "Grounding Language Model Outputs",
+          "url": "https://example.com/rag/grounding",
+          "content": "Because the model is asked to answer from retrieved passages, its responses can be grounded in evidence rather than only in what it memorised during training. In evaluations this tends to reduce unsupported statements, although it does not remove them completely.",
+          "score": 0.93,
+          "published": null
+        },
+        {
+          "title": "Keeping AI Knowledge Up to Date",
+          "url": "https://example.com/rag/updates",
+          "content": "With RAG, updating what the system knows means updating the document index. The language model itself does not have to be retrained or fine-tuned when facts change, which makes knowledge updates faster and cheaper.",
+          "score": 0.9,
+          "published": null
+        },
+        {
+          "title": "Traceability in Enterprise AI Assistants",
+          "url": "https://example.com/rag/traceability",
+          "content": "RAG systems can show users the passages an answer was based on, for example as citations or links. This traceability helps users verify answers and is often required in regulated settings.",
+          "score": 0.87,
+          "published": null
+        }
+      ]
+    }
+  }
+]

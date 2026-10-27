@@ -1,0 +1,397 @@
+{
+  "run_id": "c6f6d5e938",
+  "case_id": "context-window-003",
+  "trial": 2,
+  "difficulty": "easy",
+  "category": "LLM Fundamentals",
+  "question": "What is an LLM's context window, and what happens when the input is longer than it?",
+  "outcomes": [
+    {
+      "architecture": "1-agent",
+      "agent_count": 1,
+      "status": "completed",
+      "error": null,
+      "answer": "An LLM's context window is the maximum number of tokens a model can process in a single request, encompassing the prompt, any provided input documents, and the tokens generated in the model's response [S1].\n\nWhen an input exceeds the context window, the following typically occurs:\n\n*   **API Rejection:** Most APIs will reject the request and return a context-length error [S2].\n*   **Automatic Truncation:** Some client libraries may automatically truncate either the oldest or the last part of the input, causing that portion of the text to be ignored by the model [S2].\n\nTo manage inputs that exceed these limits, common strategies include splitting documents into smaller chunks, summarizing sections before processing, or using retrieval methods to include only the passages relevant to the specific query [S3]. Note that even when inputs remain within the context window, increasing the length of a prompt will increase both the cost and the response latency of the model [S4].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research",
+            "fact_check",
+            "critic",
+            "writer"
+          ],
+          "output": "An LLM's context window is the maximum number of tokens a model can process in a single request, encompassing the prompt, any provided input documents, and the tokens generated in the model's response [S1].\n\nWhen an input exceeds the context window, the following typically occurs:\n\n*   **API Rejection:** Most APIs will reject the request and return a context-length error [S2].\n*   **Automatic Truncation:** Some client libraries may automatically truncate either the oldest or the last part of the input, causing that portion of the text to be ignored by the model [S2].\n\nTo manage inputs that exceed these limits, common strategies include splitting documents into smaller chunks, summarizing sections before processing, or using retrieval methods to include only the passages relevant to the specific query [S3]. Note that even when inputs remain within the context window, increasing the length of a prompt will increase both the cost and the response latency of the model [S4].",
+          "input_tokens": 830,
+          "output_tokens": 200,
+          "thinking_tokens": 0,
+          "latency_ms": 2445.7934999954887,
+          "saw_sources": true
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 1,
+      "input_tokens": 830,
+      "output_tokens": 200,
+      "thinking_tokens": 0,
+      "total_tokens": 1030,
+      "latency_ms": 2445.7934999954887,
+      "retries": 0,
+      "estimated_cost_usd": 0.0005075,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 1.0,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Maximum number of tokens processed per request",
+            "status": "covered"
+          },
+          {
+            "point": "Includes both the input and the generated output",
+            "status": "covered"
+          },
+          {
+            "point": "Exceeding it causes an error or truncation (lost information)",
+            "status": "covered"
+          },
+          {
+            "point": "Workarounds: chunking, summarisation, or retrieving only relevant parts",
+            "status": "covered"
+          },
+          {
+            "point": "Longer context increases cost and latency",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer precisely covers all required key points, is fully supported by the provided sources, includes appropriate citations for each section, and avoids all traps. The response is concise, accurate, and completely relevant."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 155,
+        "citation_count": 5,
+        "distinct_sources_cited": 4,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 1.0
+      }
+    },
+    {
+      "architecture": "2-agent",
+      "agent_count": 2,
+      "status": "completed",
+      "error": null,
+      "answer": "### Critique\n*   **Sufficiency:** The evidence is sufficient to answer both parts of the question.\n*   **Missing Context:** The sources do not define \"tokens\" or the internal technical mechanisms of processing, which should be noted as a limitation.\n*   **Overgeneralizations:** None identified; the response correctly distinguishes between API-level errors and client-side truncation.\n*   **Recommendations:** Structure the answer by first defining the context window, then detailing the varied outcomes of exceeding it, and finally mentioning management strategies.\n\n***\n\n### Answer\nAn LLM's context window is the maximum number of tokens a model can process in a single request, a limit that encompasses the prompt, any provided documents, and the tokens generated in the response [S1]. \n\nWhen input exceeds this limit, the outcome depends on the specific implementation:\n*   **API Errors:** Most APIs will reject the request and return a \"context-length error\" [S2].\n*   **Truncation:** Some client libraries automatically truncate the oldest or last part of the input, resulting in the model being unable to \"see\" that portion of the text [S2].\n\nBecause the context window is a hard limit, long inputs are typically managed by splitting text into smaller chunks, summarizing sections, or using retrieval methods to include only relevant passages [S3]. Users should be aware that longer prompts generally result in increased costs and higher response latency [S4]. \n\nNote that the provided evidence does not define the technical nature of a \"token\" or the specific mechanisms by which a model processes them.",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research",
+            "fact_check"
+          ],
+          "output": "### Research Brief\n\n**Sub-questions:**\n1. What is an LLM's context window?\n2. What happens when the input exceeds the context window?\n\n**Extracted Facts:**\n*   **Definition:** A context window is the maximum number of tokens a model can process in a single request [S1].\n*   **Scope of limit:** The limit includes the prompt, any supplied documents, and the tokens generated in the response [S1].\n*   **API behavior:** Most APIs reject requests that exceed the context window with a \"context-length error\" [S2].\n*   **Client-side behavior:** Some client libraries automatically truncate the oldest or last part of the input, meaning the model never sees that text [S2].\n*   **Workarounds:** Long inputs are managed by splitting them into chunks, summarizing sections, or using retrieval to include only relevant passages [S3].\n*   **Performance/Cost:** Longer prompts increase costs (priced per token) and increase response latency [S4].\n\n**Disagreements:**\n*   There are no direct contradictions between sources. [S2] describes what happens when the limit is exceeded, while [S3] describes methods to avoid hitting that limit in the first place.\n\n**Gaps:**\n*   The sources do not define what a \"token\" is.\n*   The sources do not explain the technical mechanism of how a model \"processes\" tokens.\n\n---\n\n### Fact-Check Report\n\n**Claim Verification:**\n*   \"A context window is the maximum number of tokens a model can process in one request.\" — **SUPPORTED** [S1].\n*   \"The context window limit includes the prompt, input documents, and the model's generated response.\" — **SUPPORTED** [S1].\n*   \"Exceeding the context window usually results in an API error.\" — **SUPPORTED** [S2].\n*   \"Some systems truncate input when the limit is exceeded, causing data loss.\" — **SUPPORTED** [S2].\n*   \"Long inputs can be managed via chunking, summarization, or retrieval.\" — **SUPPORTED** [S3].\n*   \"Longer prompts increase cost and latency.\" — **SUPPORTED** [S4].\n\n**Conflicts:**\n*   None identified.\n\n**Premise Problems:**\n*   The question assumes there is a single universal outcome when input is too long. The sources clarify that outcomes vary (API error vs. truncation) depending on the specific implementation (API vs. client library).\n\n**Claims to Exclude:**\n*   Any explanation of how tokens are calculated (e.g., character-to-token ratios) as this is not in the provided sources.\n*   Any mention of specific model names (e.g., GPT-4, Claude) as they are not in the sources.",
+          "input_tokens": 739,
+          "output_tokens": 605,
+          "thinking_tokens": 0,
+          "latency_ms": 3540.066999994451,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "critic",
+            "writer"
+          ],
+          "output": "### Critique\n*   **Sufficiency:** The evidence is sufficient to answer both parts of the question.\n*   **Missing Context:** The sources do not define \"tokens\" or the internal technical mechanisms of processing, which should be noted as a limitation.\n*   **Overgeneralizations:** None identified; the response correctly distinguishes between API-level errors and client-side truncation.\n*   **Recommendations:** Structure the answer by first defining the context window, then detailing the varied outcomes of exceeding it, and finally mentioning management strategies.\n\n***\n\n### Answer\nAn LLM's context window is the maximum number of tokens a model can process in a single request, a limit that encompasses the prompt, any provided documents, and the tokens generated in the response [S1]. \n\nWhen input exceeds this limit, the outcome depends on the specific implementation:\n*   **API Errors:** Most APIs will reject the request and return a \"context-length error\" [S2].\n*   **Truncation:** Some client libraries automatically truncate the oldest or last part of the input, resulting in the model being unable to \"see\" that portion of the text [S2].\n\nBecause the context window is a hard limit, long inputs are typically managed by splitting text into smaller chunks, summarizing sections, or using retrieval methods to include only relevant passages [S3]. Users should be aware that longer prompts generally result in increased costs and higher response latency [S4]. \n\nNote that the provided evidence does not define the technical nature of a \"token\" or the specific mechanisms by which a model processes them.",
+          "input_tokens": 1043,
+          "output_tokens": 328,
+          "thinking_tokens": 0,
+          "latency_ms": 1565.0718999968376,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 2,
+      "input_tokens": 1782,
+      "output_tokens": 933,
+      "thinking_tokens": 0,
+      "total_tokens": 2715,
+      "latency_ms": 5105.138899991289,
+      "retries": 0,
+      "estimated_cost_usd": 0.0018449999999999999,
+      "evaluation": {
+        "answer_relevancy": 0.98,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.98,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Maximum number of tokens processed per request",
+            "status": "covered"
+          },
+          {
+            "point": "Includes both the input and the generated output",
+            "status": "covered"
+          },
+          {
+            "point": "Exceeding it causes an error or truncation (lost information)",
+            "status": "covered"
+          },
+          {
+            "point": "Workarounds: chunking, summarisation, or retrieving only relevant parts",
+            "status": "covered"
+          },
+          {
+            "point": "Longer context increases cost and latency",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer accurately covers all required key points using the provided sources, maintains strict faithfulness, cites sources correctly, and appropriately handles missing information without violating any traps."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 242,
+        "citation_count": 5,
+        "distinct_sources_cited": 4,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 0.5
+      }
+    },
+    {
+      "architecture": "3-agent",
+      "agent_count": 3,
+      "status": "completed",
+      "error": null,
+      "answer": "An LLM’s context window is the maximum number of tokens a model can process in a single request, a limit that encompasses the prompt, any input documents, and the tokens generated in the response [S1].\n\nWhen input exceeds this limit, the outcome depends on the system being used:\n*   **API rejection:** Most APIs will reject the request entirely and return a \"context-length error\" [S2].\n*   **Client-side truncation:** Some client libraries may automatically truncate either the oldest or the last part of the input [S2]. Any text that is truncated is never seen by the model [S2].\n\nTo manage inputs that approach or exceed these limits, users can employ strategies such as splitting text into chunks, summarizing sections before submission, or using retrieval methods to include only relevant passages [S3]. Additionally, users should note that longer prompts increase both the financial cost and the response latency, as pricing and processing time are tied to the total number of tokens [S4].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research"
+          ],
+          "output": "### Research Brief\n\n**Sub-questions:**\n1. What is an LLM's context window?\n2. What happens when the input exceeds the context window limit?\n\n---\n\n### Extracted Facts\n\n**1. Definition of a context window:**\n*   It is the maximum number of tokens a model can process in a single request [S1].\n*   The limit includes the prompt, any input documents, and the tokens generated in the response [S1].\n\n**2. Consequences of exceeding the context window:**\n*   Most APIs reject the request with a \"context-length error\" [S2].\n*   Some client libraries automatically truncate either the oldest or the last part of the input [S2].\n*   Truncated text is never seen by the model [S2].\n\n**3. Strategies for handling long inputs (Contextual context):**\n*   Inputs can be split into chunks [S3].\n*   Sections can be summarized before being passed to the model [S3].\n*   Retrieval methods can be used to include only relevant passages [S3].\n\n**4. Performance/Cost implications (Related context):**\n*   Longer prompts increase costs because pricing is based on tokens [S4].\n*   Longer prompts increase response latency because the model must process more input [S4].\n\n---\n\n### Disagreements and Conflicts\n*   There are no direct conflicts between the provided sources.\n\n### Gaps in Sources\n*   The sources do not specify *how* a user determines which truncation method (oldest vs. last) a specific client library uses.\n*   The sources do not provide information on how models behave if the *generated response* alone exceeds the remaining space in the context window (beyond the general definition that the limit covers the response).\n\n### Notes for Agent 2\n*   The research is strictly limited to the provided text.\n*   Note that [S3] provides methods for *avoiding* the limit, rather than describing what happens *when* the limit is exceeded, but it is included as relevant context for managing long inputs.",
+          "input_tokens": 614,
+          "output_tokens": 444,
+          "thinking_tokens": 0,
+          "latency_ms": 2899.758899991866,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "fact_check",
+            "critic"
+          ],
+          "output": "### Fact-Checking Report\n\n**Claim Verification:**\n*   **Claim:** An LLM's context window is the maximum number of tokens a model can process in a single request. **Verdict:** SUPPORTED [S1].\n*   **Claim:** The limit includes the prompt, input documents, and the tokens generated in the response. **Verdict:** SUPPORTED [S1].\n*   **Claim:** Most APIs reject requests exceeding the context window with a \"context-length error.\" **Verdict:** SUPPORTED [S2].\n*   **Claim:** Some client libraries automatically truncate the oldest or last part of the input. **Verdict:** SUPPORTED [S2].\n*   **Claim:** Truncated text is never seen by the model. **Verdict:** SUPPORTED [S2].\n*   **Claim:** Long inputs can be managed by splitting into chunks, summarizing sections, or using retrieval. **Verdict:** SUPPORTED [S3].\n*   **Claim:** Longer prompts increase costs (per token) and response latency. **Verdict:** SUPPORTED [S4].\n\n**Conflicts:**\n*   None identified.\n\n**Premise Problems:**\n*   The question contains no false or unsupported premises.\n\n**Claims to Exclude:**\n*   None. All extracted facts are supported by the provided sources.\n\n---\n\n### Critique\n\n**Answerability:**\n*   The evidence is sufficient to answer the question fully based on the provided sources.\n\n**Weaknesses and Limitations:**\n*   **Missing Context:** The sources do not explain how to identify which truncation method a specific library uses, nor do they detail the specific behavior when the *generated response* causes the total token count to exceed the limit during the generation process (only that the limit *includes* the response).\n*   **Overgeneralization:** Ensure the distinction between \"API-level\" behavior (rejection) and \"client library-level\" behavior (truncation) is maintained, as the sources treat these as distinct responses to the same problem.\n\n**Required Caveats:**\n*   State clearly that the context window limit is a hard constraint that encompasses the entire interaction (input + output).\n*   Note that strategies for handling long documents (chunking, summarization, retrieval) are proactive measures to avoid hitting the limit, rather than inherent behaviors of the model when the limit is reached.\n\n**Recommendations for Agent 3:**\n1.  **Structure:**\n    *   **Definition:** Define the context window clearly using [S1], emphasizing that it is a total limit (input + output).\n    *   **Consequences of Exceeding:** Detail the two primary outcomes: API rejection [S2] and client-side truncation [S2].\n    *   **Management Strategies:** Briefly mention that users can work around these limits using techniques like chunking, summarization, or retrieval [S3].\n    *   **Additional Considerations:** Mention cost and latency implications for long inputs [S4].\n2.  **Tone:** Keep the tone technical and objective.\n3.  **Clarity:** Ensure the distinction between \"input\" (the prompt/documents) and \"output\" (the generated response) is clear, as both contribute to the limit [S1].",
+          "input_tokens": 1203,
+          "output_tokens": 676,
+          "thinking_tokens": 0,
+          "latency_ms": 3451.771199994255,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 2,
+          "roles": [
+            "writer"
+          ],
+          "output": "An LLM’s context window is the maximum number of tokens a model can process in a single request, a limit that encompasses the prompt, any input documents, and the tokens generated in the response [S1].\n\nWhen input exceeds this limit, the outcome depends on the system being used:\n*   **API rejection:** Most APIs will reject the request entirely and return a \"context-length error\" [S2].\n*   **Client-side truncation:** Some client libraries may automatically truncate either the oldest or the last part of the input [S2]. Any text that is truncated is never seen by the model [S2].\n\nTo manage inputs that approach or exceed these limits, users can employ strategies such as splitting text into chunks, summarizing sections before submission, or using retrieval methods to include only relevant passages [S3]. Additionally, users should note that longer prompts increase both the financial cost and the response latency, as pricing and processing time are tied to the total number of tokens [S4].",
+          "input_tokens": 1493,
+          "output_tokens": 206,
+          "thinking_tokens": 0,
+          "latency_ms": 44308.95679999958,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 3,
+      "input_tokens": 3310,
+      "output_tokens": 1326,
+      "thinking_tokens": 0,
+      "total_tokens": 4636,
+      "latency_ms": 50660.4868999857,
+      "retries": 2,
+      "estimated_cost_usd": 0.0028165,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.98,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Maximum number of tokens processed per request",
+            "status": "covered"
+          },
+          {
+            "point": "Includes both the input and the generated output",
+            "status": "covered"
+          },
+          {
+            "point": "Exceeding it causes an error or truncation (lost information)",
+            "status": "covered"
+          },
+          {
+            "point": "Workarounds: chunking, summarisation, or retrieving only relevant parts",
+            "status": "covered"
+          },
+          {
+            "point": "Longer context increases cost and latency",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer covers all required key points accurately, is fully supported by the provided sources, uses precise citations, and completely avoids the trap claim. It directly and clearly answers the user's prompt."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 159,
+        "citation_count": 6,
+        "distinct_sources_cited": 4,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 1.0
+      }
+    },
+    {
+      "architecture": "4-agent",
+      "agent_count": 4,
+      "status": "completed",
+      "error": null,
+      "answer": "An LLM's context window is the maximum number of tokens a model can process in a single request, a limit that encompasses the entire exchange including the prompt, any input documents, and the tokens generated by the model in its response [S1].\n\nWhen an input exceeds this context window, the outcome depends on the specific system being used:\n*   **API Rejection:** Most APIs will reject the request and return a \"context-length error\" [S2].\n*   **Truncation:** Some client libraries automatically truncate either the oldest or the last part of the input, which results in the model failing to see that portion of the text [S2].\n\nTo manage inputs that approach or exceed these limits, common strategies include splitting text into chunks, summarizing sections, or using retrieval methods to include only relevant passages [S3]. \n\nSeparately, even when inputs remain within the context window, longer prompts have operational impacts, specifically increasing response latency and costs, as pricing is calculated per token [S4].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research"
+          ],
+          "output": "### Research Brief for Agent 2\n\n**Sub-questions:**\n1. What is an LLM's context window?\n2. What happens when the input exceeds the context window?\n\n---\n\n### Extracted Facts\n\n**1. What is an LLM's context window?**\n*   The context window is defined as the maximum number of tokens a model can process in one request [S1].\n*   This limit encompasses the entire exchange: the prompt, any input documents, and the tokens generated by the model in its response [S1].\n\n**2. What happens when the input is longer than the context window?**\n*   Most APIs will reject the request and return a \"context-length error\" [S2].\n*   Some client libraries automatically truncate either the oldest or the last part of the input, resulting in the model never seeing that portion of the text [S2].\n*   To manage long inputs, common strategies include splitting text into chunks, summarizing sections, or using retrieval to include only relevant passages [S3].\n*   *Note:* While not a direct result of exceeding the limit, longer prompts (even within the limit) increase costs (as pricing is per token) and increase response latency [S4].\n\n---\n\n### Disagreements and Gaps\n\n*   **Disagreements:** None found.\n*   **Outdated Sources:** None identified.\n*   **Gaps:** The sources do not specify which specific client libraries perform truncation versus which APIs return errors, nor do they provide a comprehensive list of all possible behaviors beyond rejection or truncation.",
+          "input_tokens": 617,
+          "output_tokens": 334,
+          "thinking_tokens": 0,
+          "latency_ms": 33892.629099980695,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "fact_check"
+          ],
+          "output": "### Fact-Check Report\n\n**Claim Verification:**\n\n1.  **The context window is the maximum number of tokens a model can process in a single request.**\n    *   Verdict: **SUPPORTED** [S1]\n2.  **The limit includes the prompt, input documents, and the tokens generated in the response.**\n    *   Verdict: **SUPPORTED** [S1]\n3.  **If a request exceeds the context window, most APIs reject it with a context-length error.**\n    *   Verdict: **SUPPORTED** [S2]\n4.  **Some client libraries automatically truncate the oldest or last part of the input, meaning the model does not see that text.**\n    *   Verdict: **SUPPORTED** [S2]\n5.  **Long inputs are managed by splitting them into chunks, summarizing sections, or using retrieval to include only relevant passages.**\n    *   Verdict: **SUPPORTED** [S3]\n6.  **Longer prompts (within the limit) increase costs (per-token pricing) and increase response latency.**\n    *   Verdict: **SUPPORTED** [S4]\n\n**Conflicts:**\n*   None identified.\n\n**Premise Problems:**\n*   The question contains no false or unsupported premises.\n\n**Claims to Exclude:**\n*   None. All extracted facts are supported by the provided sources.\n\n**Notes for Agent 3 (Critique):**\n*   The research is comprehensive based on the provided sources.\n*   Ensure the final answer distinguishes between what happens *when the limit is exceeded* (rejection or truncation [S2]) and *how to avoid exceeding the limit* (chunking, summarization, retrieval [S3]).\n*   Maintain the distinction that cost and latency [S4] are factors for long prompts *within* the limit, not consequences of exceeding it.",
+          "input_tokens": 995,
+          "output_tokens": 398,
+          "thinking_tokens": 0,
+          "latency_ms": 3614.470300002722,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 2,
+          "roles": [
+            "critic"
+          ],
+          "output": "### Critique\n\n**Answerability Verdict:**\nThe evidence is sufficient to answer the question fully based on the provided sources.\n\n**Weaknesses and Missing Context:**\n*   **Missing Context:** The sources do not define what a \"token\" is, nor do they explain the technical mechanism of how a model \"processes\" these tokens. Agent 4 must avoid speculating on these definitions and stick strictly to the provided functional definition of the context window.\n*   **Overgeneralizations:** The sources use terms like \"most APIs\" and \"some client libraries.\" Agent 4 must maintain this qualified language rather than implying these are universal behaviors for all LLMs.\n\n**Required Caveats/Limitations:**\n*   The answer must clarify that the consequences of exceeding the limit (rejection vs. truncation) depend on the specific API or client library used, as the sources do not provide a universal rule.\n*   The answer must explicitly distinguish between the *consequences of exceeding the limit* (errors/truncation) and *considerations for long inputs within the limit* (cost/latency), as these are distinct categories of information.\n\n**Recommendations for Structure and Content:**\n1.  **Definition:** Start by defining the context window as the maximum token capacity for a single request, explicitly noting that this total includes the prompt, input documents, and the generated response [S1].\n2.  **Consequences of Exceeding the Limit:**\n    *   Detail the two primary outcomes: API rejection (context-length error) and client-side truncation (loss of input data) [S2].\n3.  **Management Strategies:** Briefly list the methods for handling long inputs (chunking, summarization, retrieval) to provide a complete picture of how users navigate these constraints [S3].\n4.  **Operational Considerations:** Add a separate section for \"Considerations for long inputs\" to address cost and latency [S4], ensuring the reader understands these apply even when the input is *within* the limit, to avoid conflating them with the consequences of exceeding the limit.\n5.  **Tone:** Maintain a neutral, technical tone that strictly adheres to the provided evidence.",
+          "input_tokens": 1106,
+          "output_tokens": 448,
+          "thinking_tokens": 0,
+          "latency_ms": 3406.0080999915954,
+          "saw_sources": false
+        },
+        {
+          "agent_index": 3,
+          "roles": [
+            "writer"
+          ],
+          "output": "An LLM's context window is the maximum number of tokens a model can process in a single request, a limit that encompasses the entire exchange including the prompt, any input documents, and the tokens generated by the model in its response [S1].\n\nWhen an input exceeds this context window, the outcome depends on the specific system being used:\n*   **API Rejection:** Most APIs will reject the request and return a \"context-length error\" [S2].\n*   **Truncation:** Some client libraries automatically truncate either the oldest or the last part of the input, which results in the model failing to see that portion of the text [S2].\n\nTo manage inputs that approach or exceed these limits, common strategies include splitting text into chunks, summarizing sections, or using retrieval methods to include only relevant passages [S3]. \n\nSeparately, even when inputs remain within the context window, longer prompts have operational impacts, specifically increasing response latency and costs, as pricing is calculated per token [S4].",
+          "input_tokens": 1569,
+          "output_tokens": 209,
+          "thinking_tokens": 0,
+          "latency_ms": 1961.8067000119481,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 4,
+      "input_tokens": 4287,
+      "output_tokens": 1389,
+      "thinking_tokens": 0,
+      "total_tokens": 5676,
+      "latency_ms": 42874.91419998696,
+      "retries": 1,
+      "estimated_cost_usd": 0.00315525,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.98,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Maximum number of tokens processed per request",
+            "status": "covered"
+          },
+          {
+            "point": "Includes both the input and the generated output",
+            "status": "covered"
+          },
+          {
+            "point": "Exceeding it causes an error or truncation (lost information)",
+            "status": "covered"
+          },
+          {
+            "point": "Workarounds: chunking, summarisation, or retrieving only relevant parts",
+            "status": "covered"
+          },
+          {
+            "point": "Longer context increases cost and latency",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer covers all required key points accurately, matches the reference answer closely, includes proper source citations for every statement, and avoids all trap claims. The quality is exceptionally high."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 159,
+        "citation_count": 5,
+        "distinct_sources_cited": 4,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 1.0
+      }
+    }
+  ],
+  "ranking": {
+    "order": [
+      "4-agent",
+      "3-agent",
+      "1-agent",
+      "2-agent"
+    ],
+    "labels": {
+      "A": "3-agent",
+      "B": "1-agent",
+      "C": "2-agent",
+      "D": "4-agent"
+    },
+    "reasoning": "All answers accurately define the context window and what happens when it is exceeded using the provided sources. Answer D is very clean and captures all details including cost/latency. Answers A and B are also nearly identical and very strong. Answer C includes unnecessary critique meta-text at the beginning, making it slightly less polished than the others. Thus, the ranking places the most direct and well-formatted answers at the top."
+  },
+  "ranking_error": null,
+  "completed_at": "2026-10-27T03:15:11+00:00"
+}

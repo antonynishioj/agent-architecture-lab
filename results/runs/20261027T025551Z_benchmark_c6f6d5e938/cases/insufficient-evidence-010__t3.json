@@ -1,0 +1,381 @@
+{
+  "run_id": "c6f6d5e938",
+  "case_id": "insufficient-evidence-010",
+  "trial": 3,
+  "difficulty": "adversarial",
+  "category": "Missing Evidence",
+  "question": "Exactly how many parameters does the model behind Orion Assist (launched in 2025) have?",
+  "outcomes": [
+    {
+      "architecture": "1-agent",
+      "agent_count": 1,
+      "status": "completed",
+      "error": null,
+      "answer": "The exact number of parameters for the model behind Orion Assist is not publicly known. Orion Labs has officially declined to disclose the model's size or architecture, citing competitive reasons [S2]. While speculative estimates exist in online forums suggesting a 70B parameter model based on response speed, these figures are unverified hunches rather than official data [S3].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research",
+            "fact_check",
+            "critic",
+            "writer"
+          ],
+          "output": "The exact number of parameters for the model behind Orion Assist is not publicly known. Orion Labs has officially declined to disclose the model's size or architecture, citing competitive reasons [S2]. While speculative estimates exist in online forums suggesting a 70B parameter model based on response speed, these figures are unverified hunches rather than official data [S3].",
+          "input_tokens": 841,
+          "output_tokens": 73,
+          "thinking_tokens": 0,
+          "latency_ms": 2197.4909999989904,
+          "saw_sources": true
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 1,
+      "input_tokens": 841,
+      "output_tokens": 73,
+      "thinking_tokens": 0,
+      "total_tokens": 914,
+      "latency_ms": 2197.4909999989904,
+      "retries": 0,
+      "estimated_cost_usd": 0.00031975,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.98,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "States clearly that the parameter count is not disclosed / not in the sources",
+            "status": "covered"
+          },
+          {
+            "point": "Mentions that the company declined to disclose model details",
+            "status": "covered"
+          },
+          {
+            "point": "Identifies the 70B figure as unverified speculation",
+            "status": "covered"
+          },
+          {
+            "point": "Does not invent or estimate a number",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer precisely addresses the question using the provided sources. It correctly identifies that the parameter count is not disclosed, notes the CTO's refusal to share model details with proper citation, acknowledges the 70B forum rumor as speculative, and avoids all trap violations. Citations are accurate and relevant."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 57,
+        "citation_count": 2,
+        "distinct_sources_cited": 2,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 0.6666666666666666
+      }
+    },
+    {
+      "architecture": "2-agent",
+      "agent_count": 2,
+      "status": "completed",
+      "error": null,
+      "answer": "Orion Labs has not disclosed the number of parameters for the model behind Orion Assist [S2]. The company’s CTO has explicitly stated that they will not release information regarding the model's size or architecture due to competitive reasons [S2]. Consequently, there is no official or verified data available to answer this question.",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research",
+            "fact_check"
+          ],
+          "output": "### Research Brief\n\n**Sub-questions:**\n1. What is the parameter count of the model behind Orion Assist?\n2. Has Orion Labs officially disclosed the model size?\n\n**Extracted Facts:**\n*   Orion Assist was launched by Orion Labs on 2025-03-04 [S1].\n*   Orion Labs' CTO stated the company will not disclose the model's size or architecture due to competitive reasons [S2].\n*   A forum user speculates the model is around 70B based on response speed [S3].\n*   Orion Assist is available in 14 languages [S1].\n*   Orion Assist costs $12 per user per month [S4].\n\n**Disagreements/Gaps:**\n*   **Gaps:** There is no official information regarding the parameter count.\n*   **Disagreements:** None, as there is only one official statement on the matter [S2], which contradicts the speculation found in the forum [S3].\n\n---\n\n### Fact-Check Report\n\n**Claims Analysis:**\n*   \"Orion Labs launched Orion Assist in 2025.\" — **SUPPORTED** [S1].\n*   \"The model behind Orion Assist has a specific number of parameters.\" — **UNSUPPORTED** (The sources provide no evidence for a specific number).\n*   \"The model is a 70B model.\" — **UNSUPPORTED** (This is explicitly labeled as a \"hunch\" by a forum user [S3] and is contradicted by the CTO's refusal to disclose size [S2]).\n\n**Conflicts:**\n*   The forum user's speculation [S3] conflicts with the CTO's statement [S2]. The CTO's statement is more authoritative as it represents the company's official position, whereas the forum post is explicitly identified as a \"hunch.\"\n\n**Premise Problems:**\n*   The question assumes the parameter count is known (\"Exactly how many parameters...\"). This is a false premise based on the provided evidence, as the company has explicitly refused to disclose this information [S2].\n\n**Claims to Exclude:**\n*   Any claim stating the model is 70B (or any other specific number).\n*   Any claim suggesting the model size is public knowledge.\n\n**Notes for Agent 2:**\n*   State clearly that the information is not available.\n*   Cite the CTO's interview [S2] to explain why the information is withheld.\n*   Do not include the forum speculation [S3] as a factual claim, as it is explicitly identified as a guess.",
+          "input_tokens": 750,
+          "output_tokens": 562,
+          "thinking_tokens": 0,
+          "latency_ms": 4005.302400008077,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "critic",
+            "writer"
+          ],
+          "output": "Orion Labs has not disclosed the number of parameters for the model behind Orion Assist [S2]. The company’s CTO has explicitly stated that they will not release information regarding the model's size or architecture due to competitive reasons [S2]. Consequently, there is no official or verified data available to answer this question.",
+          "input_tokens": 1000,
+          "output_tokens": 65,
+          "thinking_tokens": 0,
+          "latency_ms": 2293.8697000208776,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 2,
+      "input_tokens": 1750,
+      "output_tokens": 627,
+      "thinking_tokens": 0,
+      "total_tokens": 2377,
+      "latency_ms": 6299.172100028954,
+      "retries": 0,
+      "estimated_cost_usd": 0.0013779999999999999,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 0.75,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 0.9,
+        "overall_quality": 0.9,
+        "judge_completeness": 0.75,
+        "key_points": [
+          {
+            "point": "States clearly that the parameter count is not disclosed / not in the sources",
+            "status": "covered"
+          },
+          {
+            "point": "Mentions that the company declined to disclose model details",
+            "status": "covered"
+          },
+          {
+            "point": "Identifies the 70B figure as unverified speculation",
+            "status": "missing"
+          },
+          {
+            "point": "Does not invent or estimate a number",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer correctly identifies that the parameter count is not disclosed and cites the CTO interview properly. It avoids falling into the trap of inventing a size. However, it completely omits mentioning the unverified 70B forum guess present in the sources, which makes it slightly incomplete regarding all available source context."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 52,
+        "citation_count": 2,
+        "distinct_sources_cited": 1,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 0.6666666666666666
+      }
+    },
+    {
+      "architecture": "3-agent",
+      "agent_count": 3,
+      "status": "completed",
+      "error": null,
+      "answer": "The exact parameter count for the model behind Orion Assist is not publicly available. Orion Labs has officially stated that they will not disclose the model's size or architecture, citing competitive reasons [S2]. While some users have speculated that the model may be around 70B parameters, this is unverified conjecture labeled as a \"hunch\" rather than a documented technical specification [S3].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research"
+          ],
+          "output": "### Research Brief for Agent 2\n\n**Sub-questions:**\n1. What is the parameter count of the model powering Orion Assist?\n2. Has Orion Labs officially disclosed the model size?\n\n**Extracted Facts:**\n*   Orion Assist was launched by Orion Labs on 2025-03-04 [S1].\n*   The CTO of Orion Labs stated that the company will not disclose the model's size or architecture, citing competitive reasons [S2].\n*   A forum user speculated that the model is around 70B parameters based on response speed, explicitly labeling this as a \"hunch\" [S3].\n*   Orion Assist is an AI assistant for project managers available in 14 languages [S1].\n*   Orion Assist costs $12 per user per month [S4].\n\n**Disagreements:**\n*   There is no direct disagreement between sources regarding the parameter count, as the official source [S2] refuses to provide the data, while the unofficial source [S3] provides a speculative estimate.\n\n**Gaps:**\n*   The provided sources do not contain the exact number of parameters for the model behind Orion Assist.\n*   The sources do not provide any technical specifications regarding the model's architecture or training data.\n\n**Notes for Fact-checking:**\n*   Source [S3] is a forum post and represents user speculation rather than verified technical documentation. It should be treated as an unverified opinion.\n*   Source [S2] is the primary official source regarding the model's specifications and explicitly confirms the information is withheld.",
+          "input_tokens": 625,
+          "output_tokens": 341,
+          "thinking_tokens": 0,
+          "latency_ms": 2570.443200005684,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "fact_check",
+            "critic"
+          ],
+          "output": "### Fact-checking Report\n\n**Claim Verification:**\n*   **Claim:** Orion Assist was launched by Orion Labs on 2025-03-04. **Verdict: SUPPORTED [S1]**\n*   **Claim:** Orion Labs has not disclosed the model's size or architecture. **Verdict: SUPPORTED [S2]**\n*   **Claim:** The model behind Orion Assist is a 70B parameter model. **Verdict: UNSUPPORTED [S3]** (The source explicitly labels this as a \"hunch\" and user speculation).\n\n**Conflicts:**\n*   There is no conflict between sources. Source [S2] (official) confirms the information is withheld; Source [S3] (unofficial) provides a guess. Source [S2] is authoritative and must be prioritized over the speculation in [S3].\n\n**Premise Check:**\n*   The question assumes the model has a specific number of parameters that can be identified. This is a false premise based on the provided evidence, as the manufacturer has explicitly refused to disclose this information.\n\n**Claims to Exclude:**\n*   The claim that the model is \"around 70B\" must be excluded as a factual statement. If mentioned at all, it must be clearly caveated as unverified user speculation from a forum.\n\n---\n\n### Critique\n\n**Answerability:**\n*   The question cannot be answered. The evidence explicitly states that the information is not public.\n\n**Weaknesses and Limitations:**\n*   The primary limitation is the lack of official data.\n*   The user's question implies a definitive answer exists; the response must clarify that this information is proprietary and withheld by the developer.\n\n**Recommendations for Agent 3:**\n1.  **Direct Answer:** State clearly that the exact parameter count is unknown because Orion Labs has not released this information.\n2.  **Cite Authority:** Reference the CTO’s statement from [S2] to explain *why* the information is unavailable (competitive reasons).\n3.  **Address Speculation:** If you choose to mention the 70B figure from [S3], you must explicitly frame it as \"unverified user speculation\" or a \"hunch\" found on a forum to ensure the reader understands it is not a technical fact.\n4.  **Structure:**\n    *   Start by stating the information is not publicly available.\n    *   Explain the official stance provided by the CTO [S2].\n    *   (Optional) Briefly note that while some users have speculated on the size [S3], there is no evidence to support these claims.\n    *   Conclude by confirming that no official technical specifications regarding the model's size exist in the provided sources.",
+          "input_tokens": 1111,
+          "output_tokens": 578,
+          "thinking_tokens": 0,
+          "latency_ms": 2708.75160000287,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 2,
+          "roles": [
+            "writer"
+          ],
+          "output": "The exact parameter count for the model behind Orion Assist is not publicly available. Orion Labs has officially stated that they will not disclose the model's size or architecture, citing competitive reasons [S2]. While some users have speculated that the model may be around 70B parameters, this is unverified conjecture labeled as a \"hunch\" rather than a documented technical specification [S3].",
+          "input_tokens": 1292,
+          "output_tokens": 79,
+          "thinking_tokens": 0,
+          "latency_ms": 1549.9912000086624,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 3,
+      "input_tokens": 3028,
+      "output_tokens": 998,
+      "thinking_tokens": 0,
+      "total_tokens": 4026,
+      "latency_ms": 6829.186000017216,
+      "retries": 0,
+      "estimated_cost_usd": 0.002254,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.98,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "States clearly that the parameter count is not disclosed / not in the sources",
+            "status": "covered"
+          },
+          {
+            "point": "Mentions that the company declined to disclose model details",
+            "status": "covered"
+          },
+          {
+            "point": "Identifies the 70B figure as unverified speculation",
+            "status": "covered"
+          },
+          {
+            "point": "Does not invent or estimate a number",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer successfully addresses all key points, accurately identifying that the parameter count is not publicly disclosed, noting the CTO's refusal to share size or architecture [S2], and correctly dismissing the 70B figure as unverified user speculation [S3]. It avoids any trap violations and is fully faithful to the sources."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 61,
+        "citation_count": 2,
+        "distinct_sources_cited": 2,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 0.6666666666666666
+      }
+    },
+    {
+      "architecture": "4-agent",
+      "agent_count": 4,
+      "status": "completed",
+      "error": null,
+      "answer": "The exact parameter count for the model behind Orion Assist is not publicly available. Orion Labs has officially declined to disclose the model's size or architecture, with the company's CTO citing competitive reasons for this decision [S2]. While some online users have speculated that the model is \"around a 70B model,\" these claims are explicitly identified as unverified hunches and lack a factual basis [S3].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research"
+          ],
+          "output": "### Research Brief for Agent 2\n\n**Sub-questions:**\n1. What is the parameter count of the model powering Orion Assist?\n2. Has Orion Labs officially disclosed the model's size?\n\n**Extracted Facts:**\n*   Orion Assist was launched by Orion Labs in 2025 [S1].\n*   The CTO of Orion Labs explicitly stated that the company will not disclose the model's size or architecture due to competitive reasons [S2].\n*   An online forum user speculates the model is \"around a 70B model\" based on response speed, explicitly labeling this as a \"hunch\" [S3].\n*   Orion Assist is available in 14 languages [S1].\n*   Orion Assist costs $12 per user per month [S4].\n\n**Disagreements:**\n*   There is no direct disagreement between sources regarding the parameter count, as the official source [S2] refuses to provide the data, while the unofficial source [S3] provides a speculative estimate.\n\n**Gaps:**\n*   The provided sources do not contain the exact number of parameters for the model behind Orion Assist.\n*   The sources do not provide any technical documentation or verified data regarding the model's architecture or size.\n\n**Notes on Source Reliability:**\n*   [S2] is the primary, official source regarding the model's specifications and confirms that the information is withheld by the developer.\n*   [S3] is an unverified forum post and constitutes speculation rather than factual evidence.",
+          "input_tokens": 628,
+          "output_tokens": 329,
+          "thinking_tokens": 0,
+          "latency_ms": 4465.282799996203,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "fact_check"
+          ],
+          "output": "### Fact-Check Report\n\n**Claim Verification:**\n\n1.  **Claim:** Orion Assist was launched in 2025.\n    *   **Verdict:** SUPPORTED [S1].\n2.  **Claim:** The model behind Orion Assist has a specific parameter count.\n    *   **Verdict:** UNSUPPORTED. The official source [S2] explicitly states the company will not disclose the size, and the only other mention [S3] is an unverified user \"hunch.\"\n3.  **Claim:** Orion Labs has officially disclosed the model's size or architecture.\n    *   **Verdict:** CONTRADICTED [S2].\n4.  **Claim:** The model is \"around a 70B model.\"\n    *   **Verdict:** UNSUPPORTED [S3]. This is explicitly identified as a user's \"hunch\" and lacks any factual basis in the provided evidence.\n\n**Conflicting Sources:**\n*   There is a conflict between the official stance of Orion Labs [S2] and the speculation found on a forum [S3].\n*   **Decision:** [S2] is the authoritative source as it reflects the official position of the company's CTO. [S3] is speculative and unreliable.\n\n**Premise Check:**\n*   The question contains a false premise: it assumes that the parameter count is a known, verifiable fact. The evidence confirms that this information is intentionally withheld by the developer [S2].\n\n**Claims to Exclude:**\n*   Any claim stating a specific parameter count (e.g., \"70B\") must be excluded, as it is speculative and not supported by official documentation.\n*   The final answer must state that the information is not publicly available.",
+          "input_tokens": 1001,
+          "output_tokens": 372,
+          "thinking_tokens": 0,
+          "latency_ms": 1623.3989000029396,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 2,
+          "roles": [
+            "critic"
+          ],
+          "output": "### Critique\n\n**Answerability Verdict:**\nThe question cannot be answered with the provided evidence. The evidence confirms that the specific parameter count is not public information.\n\n**Weaknesses and Missing Context:**\n*   **Missing Context:** There is no technical documentation or official disclosure regarding the model's size.\n*   **Overgeneralizations:** Any attempt to assign a number (such as the \"70B\" mentioned in [S3]) would be an overgeneralization and a failure to distinguish between verified fact and user speculation.\n*   **Conclusions:** The evidence allows for the conclusion that the information is intentionally withheld by Orion Labs [S2].\n\n**Limitations to State:**\n*   The exact parameter count is unknown.\n*   Orion Labs has explicitly refused to disclose this information [S2].\n*   Speculative figures found in unofficial sources (e.g., [S3]) lack factual basis and should be dismissed as unreliable.\n\n**Recommendations for Agent 4 (Writing):**\n1.  **Direct Answer:** State clearly that the exact parameter count for the model behind Orion Assist is not publicly available.\n2.  **Official Stance:** Cite the CTO of Orion Labs [S2] to explain *why* the information is unavailable (competitive reasons).\n3.  **Address Speculation:** Briefly mention that while there is online speculation regarding the model's size, it is unverified and lacks an evidentiary basis [S3].\n4.  **Tone:** Maintain a neutral, objective tone that prioritizes the official company statement over forum conjecture.\n5.  **Structure:**\n    *   Sentence 1: State that the parameter count is not disclosed.\n    *   Sentence 2: Reference the CTO’s official position [S2].\n    *   Sentence 3: Note that any external estimates are speculative and unverified [S3].",
+          "input_tokens": 1075,
+          "output_tokens": 391,
+          "thinking_tokens": 0,
+          "latency_ms": 2972.6857999921776,
+          "saw_sources": false
+        },
+        {
+          "agent_index": 3,
+          "roles": [
+            "writer"
+          ],
+          "output": "The exact parameter count for the model behind Orion Assist is not publicly available. Orion Labs has officially declined to disclose the model's size or architecture, with the company's CTO citing competitive reasons for this decision [S2]. While some online users have speculated that the model is \"around a 70B model,\" these claims are explicitly identified as unverified hunches and lack a factual basis [S3].",
+          "input_tokens": 1481,
+          "output_tokens": 84,
+          "thinking_tokens": 0,
+          "latency_ms": 2115.741400019033,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 4,
+      "input_tokens": 4185,
+      "output_tokens": 1176,
+      "thinking_tokens": 0,
+      "total_tokens": 5361,
+      "latency_ms": 11177.108900010353,
+      "retries": 0,
+      "estimated_cost_usd": 0.00281025,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 1.0,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "States clearly that the parameter count is not disclosed / not in the sources",
+            "status": "covered"
+          },
+          {
+            "point": "Mentions that the company declined to disclose model details",
+            "status": "covered"
+          },
+          {
+            "point": "Identifies the 70B figure as unverified speculation",
+            "status": "covered"
+          },
+          {
+            "point": "Does not invent or estimate a number",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer precisely addresses the question by explaining that the parameter count is unknown, citing the CTO's refusal to disclose details for competitive reasons, and properly contextualizing the 70B online forum guess as mere speculation. All required points are covered, citations are accurate, and no trap violations occurred."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 65,
+        "citation_count": 2,
+        "distinct_sources_cited": 2,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 0.6666666666666666
+      }
+    }
+  ],
+  "ranking": {
+    "order": [
+      "1-agent",
+      "4-agent",
+      "3-agent",
+      "2-agent"
+    ],
+    "labels": {
+      "A": "4-agent",
+      "B": "3-agent",
+      "C": "1-agent",
+      "D": "2-agent"
+    },
+    "reasoning": "All answers correctly identify that the parameter count is not publicly available based on the sources, with Answer D being slightly less complete by omitting the forum speculation mentioned in S3, while Answers A, B, and C properly include this context. Among A, B, and C, Answer C is slightly better phrased, followed closely by A and B."
+  },
+  "ranking_error": null,
+  "completed_at": "2026-10-27T03:38:31+00:00"
+}

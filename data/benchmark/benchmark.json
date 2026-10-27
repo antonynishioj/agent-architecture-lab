@@ -1,26 +1,223 @@
 {
-  "version": "1.0",
+  "version": "2.0",
+  "description": "12 research questions in four difficulty tiers. Evidence is curated and frozen in research.json. Sources are synthetic (example.com URLs) so that conflicts, outdated facts and traps are controlled.",
   "cases": [
     {
       "case_id": "rag-benefits-001",
       "category": "RAG",
       "difficulty": "easy",
-      "question": "What are the main advantages of retrieval augmented generation?",
-      "reference_answer": "Retrieval-augmented generation improves access to current and domain-specific information, can improve factual grounding, and can reduce the need for model retraining when knowledge changes."
+      "question": "What are the main advantages of retrieval-augmented generation (RAG)?",
+      "reference_answer": "RAG gives a language model access to current and domain-specific information at answer time, grounds answers in retrieved evidence (which can reduce unsupported answers), lets organisations update knowledge by updating the document store instead of retraining the model, and makes it possible to show which sources an answer is based on.",
+      "key_points": [
+        "Access to current or domain-specific/private information",
+        "Answers grounded in retrieved evidence, which can reduce unsupported or hallucinated content",
+        "Knowledge can be updated without retraining the model",
+        "Answers can cite or show their sources"
+      ],
+      "must_not_claim": [
+        "RAG guarantees that answers are correct or eliminates hallucinations entirely"
+      ],
+      "design_notes": "All sources agree. Baseline task: a single agent should do as well as a team."
     },
     {
-      "case_id": "rag-reliability-002",
+      "case_id": "vector-db-purpose-002",
+      "category": "AI Infrastructure",
+      "difficulty": "easy",
+      "question": "What is a vector database used for in AI applications?",
+      "reference_answer": "A vector database stores embeddings (numeric vectors that represent text, images or other data) and finds the stored vectors most similar to a query vector. It uses approximate nearest-neighbour indexes so similarity search stays fast at large scale. Typical uses are semantic search, recommendations and the retrieval step of RAG systems.",
+      "key_points": [
+        "Stores embeddings/vectors that represent data such as text or images",
+        "Finds the most similar vectors to a query (similarity search)",
+        "Uses approximate nearest-neighbour indexing for speed at scale",
+        "Used for semantic search, recommendations and RAG retrieval"
+      ],
+      "must_not_claim": [
+        "Vector databases always return exact nearest neighbours"
+      ],
+      "design_notes": "All sources agree. One source notes the approximate (not exact) nature of the search, which a careful answer keeps."
+    },
+    {
+      "case_id": "context-window-003",
+      "category": "LLM Fundamentals",
+      "difficulty": "easy",
+      "question": "What is an LLM's context window, and what happens when the input is longer than it?",
+      "reference_answer": "The context window is the maximum number of tokens a model can process in one request, counting both the input and the generated output. If the input exceeds it, the API either rejects the request with an error or the text has to be truncated, so information is lost. Applications handle long inputs by chunking, summarising or retrieving only the relevant parts. Longer contexts also increase cost and latency.",
+      "key_points": [
+        "Maximum number of tokens processed per request",
+        "Includes both the input and the generated output",
+        "Exceeding it causes an error or truncation (lost information)",
+        "Workarounds: chunking, summarisation, or retrieving only relevant parts",
+        "Longer context increases cost and latency"
+      ],
+      "must_not_claim": [
+        "The model automatically remembers text that did not fit in the context window"
+      ],
+      "design_notes": "All sources agree. Tests whether answers cover all key points without adding outside facts."
+    },
+    {
+      "case_id": "rag-reliability-004",
       "category": "RAG",
       "difficulty": "medium",
       "question": "Does retrieval-augmented generation actually make LLM answers more reliable? Explain both the benefits and limitations, and describe the conditions under which RAG is likely to improve reliability.",
-      "reference_answer": "Retrieval-augmented generation can improve the reliability of LLM answers by grounding responses in external evidence, including current, domain-specific, or private information. It can reduce reliance on information stored in the model's parameters and can make it easier to update knowledge without retraining the model. However, RAG does not guarantee reliable answers. The retrieval system may return irrelevant, incomplete, outdated, or incorrect information, and the model may still misinterpret or misuse the retrieved evidence. Therefore, RAG is most likely to improve reliability when the retrieval system returns relevant and trustworthy sources, the retrieved evidence adequately covers the question, and the model uses that evidence accurately."
+      "reference_answer": "RAG can improve reliability by grounding answers in external evidence, including current, domain-specific or private information, and lets knowledge be updated without retraining. It does not guarantee reliable answers: retrieval can return irrelevant, incomplete, outdated or incorrect documents, and the model can still misinterpret the evidence. RAG is most likely to help when retrieval returns relevant, trustworthy sources that cover the question and the model uses that evidence accurately.",
+      "key_points": [
+        "Benefit: grounding in external evidence improves factual support",
+        "Benefit: knowledge can be updated without retraining",
+        "Limitation: retrieval can return irrelevant, incomplete, outdated or incorrect information",
+        "Limitation: the model can misinterpret or misuse correct evidence",
+        "Condition: relevant, trustworthy sources with adequate coverage, used accurately"
+      ],
+      "must_not_claim": [
+        "RAG guarantees factual accuracy"
+      ],
+      "design_notes": "Balanced synthesis across five sources with both pros and cons."
     },
     {
-      "case_id": "multi-source-synthesis-003",
+      "case_id": "build-vs-buy-005",
       "category": "AI System Design",
       "difficulty": "medium",
       "question": "What factors should a company consider when deciding whether to build an AI system in-house or use an external AI platform? Discuss the trade-offs involving cost, control, data privacy, customization, maintenance, and scalability.",
-      "reference_answer": "A company deciding between building an AI system in-house and using an external AI platform should consider cost, control, data privacy, customization, maintenance, and scalability. Building in-house can provide greater control over the system, data, architecture, and customization. It may be more suitable when the company has specialized requirements or strict data constraints. However, it generally requires greater engineering effort, ongoing maintenance, infrastructure, and specialized expertise. An external AI platform can reduce the initial engineering burden and provide access to managed infrastructure and scalable services. However, it may reduce control over the underlying system, introduce dependence on the provider, and create data privacy or customization considerations. The appropriate choice therefore depends on the company's technical capabilities, requirements, data constraints, expected scale, long-term maintenance capacity, and the total cost of ownership rather than simply the initial development cost."
+      "reference_answer": "Building in-house gives more control over architecture, deployment, data handling and integration, and supports specialised requirements, but needs substantial engineering resources, infrastructure, monitoring, maintenance and expertise, so total cost includes ongoing operations. External platforms reduce the infrastructure and engineering burden and provide scalable capacity, but reduce control, create dependence on the provider, and require evaluating how data is transmitted, processed, stored and protected. The right choice depends on technical capability, requirements, data constraints, expected workload and the long-term operating model.",
+      "key_points": [
+        "Control and customization favour in-house",
+        "In-house requires ongoing engineering, infrastructure, maintenance and expertise (total cost of ownership)",
+        "External platforms reduce engineering burden and offer scalability",
+        "External platforms create provider dependence and data-handling/privacy considerations",
+        "Decision depends on capabilities, requirements, data constraints, workload and long-term operating model"
+      ],
+      "must_not_claim": [
+        "External platforms are always cheaper",
+        "In-house systems are always more secure"
+      ],
+      "design_notes": "Six trade-off dimensions must all be covered. Rewards completeness and structure."
+    },
+    {
+      "case_id": "finetune-vs-rag-006",
+      "category": "AI System Design",
+      "difficulty": "medium",
+      "question": "When should a team fine-tune a language model instead of using retrieval-augmented generation, and when does it make sense to combine them?",
+      "reference_answer": "Fine-tuning is best for changing behaviour: a consistent output format, style, tone or a narrow task, and it needs a curated set of training examples and retraining when requirements change. RAG is best when answers depend on knowledge that changes often or must be traceable to sources, because the document store can be updated without retraining. Fine-tuning is a poor way to add frequently changing facts. The two can be combined: a model fine-tuned for format or domain behaviour can still retrieve current facts with RAG.",
+      "key_points": [
+        "Fine-tuning suits behaviour, style, format or narrow tasks",
+        "Fine-tuning needs curated training examples and retraining when things change",
+        "RAG suits frequently changing knowledge and traceable/cited answers",
+        "Fine-tuning is a poor fit for injecting frequently changing facts",
+        "Combining: fine-tune for behaviour, use RAG for current knowledge"
+      ],
+      "must_not_claim": [
+        "Fine-tuning reliably teaches a model new facts that it will recall accurately"
+      ],
+      "design_notes": "Requires separating two kinds of need (behaviour vs knowledge) across sources."
+    },
+    {
+      "case_id": "conflicting-metrics-007",
+      "category": "Evidence Conflict",
+      "difficulty": "hard",
+      "question": "By how much did Northwind Logistics' AI support assistant reduce average ticket resolution time?",
+      "reference_answer": "The sources disagree. Northwind's 2023 launch press release and a later blog post that repeats it claim a 40% reduction, but that figure came from the first six weeks and was not adjusted for ticket mix. The independent 2024 audit, which corrected for the shift towards simpler tickets during the pilot, found a 22% reduction. The audited 22% is the better-supported figure, and the 40% figure should be treated as a preliminary, unadjusted claim.",
+      "key_points": [
+        "Reports that sources conflict (40% vs 22%)",
+        "Identifies the 22% audited figure as better supported",
+        "Explains the 40% figure was early/preliminary and not adjusted for ticket mix",
+        "Notes the blog post merely repeats the press release figure"
+      ],
+      "must_not_claim": [
+        "The reduction was 40% (stated as the established figure)",
+        "The 31% figure from Southwind Freight applies to Northwind"
+      ],
+      "design_notes": "Two credible-looking sources conflict; one is newer and methodologically stronger. A distractor reports a figure for a different company. Tests fact-checking and critique."
+    },
+    {
+      "case_id": "token-cost-math-008",
+      "category": "Quantitative Reasoning",
+      "difficulty": "hard",
+      "question": "A team runs an interactive customer chat that handles 2 million requests per month, with on average 1,500 input tokens and 300 output tokens per request. Using the provider's pricing in the sources, what is the expected monthly cost, and do any discounts apply?",
+      "reference_answer": "Using the current (2025) price list: input is 2,000,000 × 1,500 = 3 billion tokens × $0.40 per million = $1,200, and output is 2,000,000 × 300 = 600 million tokens × $1.60 per million = $960, for a total of $2,160 per month. The 10% volume discount needs more than 5 billion total tokens per month, and this workload is 3.6 billion, so it does not apply. The 50% batch discount only applies to asynchronous batch jobs, not interactive chat. The 2023 price list is outdated and should not be used.",
+      "key_points": [
+        "Input cost $1,200 (3 billion tokens at $0.40 per million)",
+        "Output cost $960 (600 million tokens at $1.60 per million)",
+        "Total $2,160 per month",
+        "Volume discount does not apply (3.6 billion < 5 billion tokens)",
+        "Batch discount does not apply to interactive traffic",
+        "Uses the current price list, not the outdated 2023 one"
+      ],
+      "must_not_claim": [
+        "Total of $3,000 per month (uses the outdated 2023 prices)",
+        "The 10% volume discount applies",
+        "The 50% batch discount applies"
+      ],
+      "design_notes": "Multi-step arithmetic across sources with an outdated price list and two discounts that look applicable but are not."
+    },
+    {
+      "case_id": "distractor-study-009",
+      "category": "Research Findings",
+      "difficulty": "hard",
+      "question": "What did the 2024 Helios study find about the effect of chain-of-thought prompting on small language models (under 3 billion parameters)?",
+      "reference_answer": "The Helios study found that chain-of-thought prompting did not help small models: for models under 3 billion parameters it reduced arithmetic accuracy by about 4 percentage points and made no significant difference on commonsense questions. The gains from chain-of-thought appeared only in models of 7 billion parameters and above. General claims that chain-of-thought always helps, and results from the unrelated Helios-2 vision benchmark, do not apply.",
+      "key_points": [
+        "For models under 3B, CoT reduced arithmetic accuracy (about 4 points)",
+        "No significant effect on commonsense tasks for small models",
+        "Benefits appeared only for models of 7B parameters and above",
+        "Helios-2 (vision benchmark) is a different study and not relevant"
+      ],
+      "must_not_claim": [
+        "Chain-of-thought improves small models",
+        "Results from the Helios-2 vision benchmark (e.g. 12% image-captioning gain) are findings of the Helios study"
+      ],
+      "design_notes": "Only one source answers the question; three are distractors, including a near-identical study name and a blog that overgeneralises."
+    },
+    {
+      "case_id": "insufficient-evidence-010",
+      "category": "Missing Evidence",
+      "difficulty": "adversarial",
+      "question": "Exactly how many parameters does the model behind Orion Assist (launched in 2025) have?",
+      "reference_answer": "The sources do not say. Orion Labs declined to disclose the model size or architecture. The only number in the sources is an unverified forum guess of about 70 billion parameters, which is speculation and not evidence. The honest answer is that the parameter count is not publicly known from these sources.",
+      "key_points": [
+        "States clearly that the parameter count is not disclosed / not in the sources",
+        "Mentions that the company declined to disclose model details",
+        "Identifies the 70B figure as unverified speculation",
+        "Does not invent or estimate a number"
+      ],
+      "must_not_claim": [
+        "Orion Assist has 70 billion parameters (stated as fact)",
+        "Any specific parameter count stated as fact"
+      ],
+      "design_notes": "The correct answer is 'unknown'. Tests whether the pipeline resists answering confidently from speculation."
+    },
+    {
+      "case_id": "false-premise-011",
+      "category": "False Premise",
+      "difficulty": "adversarial",
+      "question": "Why did the Lumen programming language deprecate garbage collection in version 3.0?",
+      "reference_answer": "The premise is false. According to the Lumen 3.0 release notes and the core team, garbage collection was not deprecated: it remains the default. Version 3.0 added optional region-based memory management for latency-sensitive code. A third-party blog post that claimed Lumen 'dropped' garbage collection misreported the release and was later corrected.",
+      "key_points": [
+        "Identifies that the premise is false",
+        "Garbage collection remains the default in Lumen 3.0",
+        "Version 3.0 added optional region-based memory management",
+        "The 'dropped GC' claim came from a misreporting blog post that was corrected"
+      ],
+      "must_not_claim": [
+        "Lumen 3.0 deprecated or removed garbage collection",
+        "Any reason for deprecating garbage collection presented as fact"
+      ],
+      "design_notes": "The question presupposes something the sources contradict. Tests premise checking."
+    },
+    {
+      "case_id": "planted-claim-012",
+      "category": "Unreliable Source",
+      "difficulty": "adversarial",
+      "question": "What chunk size does the Acme RAG Toolkit recommend for documents, and why?",
+      "reference_answer": "The official Acme RAG Toolkit documentation (v2.1) uses a default chunk size of 512 tokens and recommends a maximum of 1,024 tokens, because the bundled embedding model truncates input after 1,024 tokens, so anything beyond that is silently ignored. A content-farm article claiming Acme recommends 4,096-token chunks is wrong: a maintainer explicitly refuted it on the project's issue tracker.",
+      "key_points": [
+        "Default chunk size is 512 tokens",
+        "Recommended maximum is 1,024 tokens",
+        "Reason: the embedding model truncates input beyond 1,024 tokens",
+        "The 4,096-token recommendation is false and was refuted by a maintainer"
+      ],
+      "must_not_claim": [
+        "Acme recommends 4,096-token chunks"
+      ],
+      "design_notes": "A confident, low-quality source plants a wrong number that an official source and a maintainer contradict."
     }
   ]
 }

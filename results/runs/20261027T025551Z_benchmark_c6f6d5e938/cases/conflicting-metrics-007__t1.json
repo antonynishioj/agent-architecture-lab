@@ -1,0 +1,381 @@
+{
+  "run_id": "c6f6d5e938",
+  "case_id": "conflicting-metrics-007",
+  "trial": 1,
+  "difficulty": "hard",
+  "category": "Evidence Conflict",
+  "question": "By how much did Northwind Logistics' AI support assistant reduce average ticket resolution time?",
+  "outcomes": [
+    {
+      "architecture": "1-agent",
+      "agent_count": 1,
+      "status": "completed",
+      "error": null,
+      "answer": "Northwind Logistics' AI support assistant reduced average ticket resolution time by 22% when adjusted for ticket mix [S2]. While the company's initial launch announcement reported a 40% reduction during the first six weeks of deployment [S1][S3], an independent audit covering twelve months of data found that this early figure was skewed by an unusually high volume of simple password-reset tickets [S2].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research",
+            "fact_check",
+            "critic",
+            "writer"
+          ],
+          "output": "Northwind Logistics' AI support assistant reduced average ticket resolution time by 22% when adjusted for ticket mix [S2]. While the company's initial launch announcement reported a 40% reduction during the first six weeks of deployment [S1][S3], an independent audit covering twelve months of data found that this early figure was skewed by an unusually high volume of simple password-reset tickets [S2].",
+          "input_tokens": 873,
+          "output_tokens": 85,
+          "thinking_tokens": 0,
+          "latency_ms": 1672.0127000007778,
+          "saw_sources": true
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 1,
+      "input_tokens": 873,
+      "output_tokens": 85,
+      "thinking_tokens": 0,
+      "total_tokens": 958,
+      "latency_ms": 1672.0127000007778,
+      "retries": 0,
+      "estimated_cost_usd": 0.00034575000000000003,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 0.625,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 0.85,
+        "overall_quality": 0.9,
+        "judge_completeness": 0.75,
+        "key_points": [
+          {
+            "point": "Reports that sources conflict (40% vs 22%)",
+            "status": "covered"
+          },
+          {
+            "point": "Identifies the 22% audited figure as better supported",
+            "status": "partial"
+          },
+          {
+            "point": "Explains the 40% figure was early/preliminary and not adjusted for ticket mix",
+            "status": "covered"
+          },
+          {
+            "point": "Notes the blog post merely repeats the press release figure",
+            "status": "missing"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer correctly identifies the core conflict between the 40% initial claim and the 22% audited figure, providing accurate context about the ticket mix. However, it misses noting specifically that the blog post merely repeats the press release figure, and it does not explicitly state that the 22% is the better-supported figure, though it implies it by leading with it. Citations are correctly handled and faithfulness is absolute."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 61,
+        "citation_count": 4,
+        "distinct_sources_cited": 3,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 1.0
+      }
+    },
+    {
+      "architecture": "2-agent",
+      "agent_count": 2,
+      "status": "completed",
+      "error": null,
+      "answer": "Northwind Logistics' AI support assistant reduced average ticket resolution time by 22% when adjusted for ticket mix [S2]. While the company’s initial press release and subsequent blog coverage claimed a 40% reduction, an independent audit covering twelve months of data found that this figure was based on a pilot period featuring an unusually high volume of simple password-reset tickets [S1][S2][S3]. Consequently, the 22% figure is considered the more accurate long-term measure of the assistant's performance [S2].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research",
+            "fact_check"
+          ],
+          "output": "### Research Brief\n\n**Sub-questions:**\n1. What was the reported reduction in average ticket resolution time for Northwind Logistics' AI support assistant?\n2. Are there conflicting reports regarding the extent of this reduction?\n3. What is the most accurate figure based on the provided evidence?\n\n**Extracted Facts:**\n*   Northwind Logistics' press release claims a 40% reduction in average ticket resolution time during the first six weeks of deployment [S1].\n*   An independent audit covering twelve months of data indicates the 40% figure was based on a pilot period with an unusually high volume of simple password-reset tickets [S2].\n*   After adjusting for ticket mix, the independent audit found the actual reduction to be 22% [S2].\n*   A blog post from June 2024 cites the original 40% figure from the company's launch announcement [S3].\n*   Southwind Freight (a different company) reported a 31% reduction in resolution time [S4].\n\n**Disagreements:**\n*   [S1] and [S3] report a 40% reduction. [S2] reports a 22% reduction after adjusting for ticket mix.\n\n**Gaps:**\n*   None. The sources provide both the initial claim and the audited correction.\n\n---\n\n### Fact-Check Report\n\n**Claims Analysis:**\n*   \"Northwind Logistics' AI assistant reduced average ticket resolution time by 40%\": **PARTIALLY SUPPORTED** [S1, S3]. This figure is supported as an initial company claim but is identified as misleading by the independent audit [S2].\n*   \"Northwind Logistics' AI assistant reduced average ticket resolution time by 22%\": **SUPPORTED** [S2]. This is the figure provided by the independent audit after adjusting for ticket mix.\n*   \"Southwind Freight reduced resolution time by 31%\": **SUPPORTED** [S4]. However, this is irrelevant to the question regarding Northwind Logistics.\n\n**Conflict Resolution:**\n*   [S1] and [S3] vs. [S2]: [S2] is the most authoritative and reliable source. It is an independent audit covering a longer timeframe (twelve months vs. six weeks) and explicitly accounts for variables (ticket mix) that skewed the initial 40% figure. [S3] simply repeats the company's marketing claim without independent verification.\n\n**Premise Problems:**\n*   The question assumes there is a single, definitive reduction percentage. The evidence shows that the initial figure was a pilot-specific result, while the audited figure is the more accurate long-term result.\n\n**Claims to Exclude:**\n*   Any mention of Southwind Freight [S4], as it is a different company and irrelevant to Northwind Logistics.\n*   The 40% figure should be presented only in the context of the initial company announcement, noting that it was later corrected by the audit to 22%. Do not present 40% as the final or accurate reduction.",
+          "input_tokens": 782,
+          "output_tokens": 655,
+          "thinking_tokens": 0,
+          "latency_ms": 3526.0495000111405,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "critic",
+            "writer"
+          ],
+          "output": "Northwind Logistics' AI support assistant reduced average ticket resolution time by 22% when adjusted for ticket mix [S2]. While the company’s initial press release and subsequent blog coverage claimed a 40% reduction, an independent audit covering twelve months of data found that this figure was based on a pilot period featuring an unusually high volume of simple password-reset tickets [S1][S2][S3]. Consequently, the 22% figure is considered the more accurate long-term measure of the assistant's performance [S2].",
+          "input_tokens": 1089,
+          "output_tokens": 112,
+          "thinking_tokens": 0,
+          "latency_ms": 2297.3210999916773,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 2,
+      "input_tokens": 1871,
+      "output_tokens": 767,
+      "thinking_tokens": 0,
+      "total_tokens": 2638,
+      "latency_ms": 5823.370600002818,
+      "retries": 0,
+      "estimated_cost_usd": 0.00161825,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 1.0,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Reports that sources conflict (40% vs 22%)",
+            "status": "covered"
+          },
+          {
+            "point": "Identifies the 22% audited figure as better supported",
+            "status": "covered"
+          },
+          {
+            "point": "Explains the 40% figure was early/preliminary and not adjusted for ticket mix",
+            "status": "covered"
+          },
+          {
+            "point": "Notes the blog post merely repeats the press release figure",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer is exceptionally well-written, accurately identifying both figures, explaining the discrepancy regarding the ticket mix using the audit source, and correctly attributing the blog post to the press release claim. All citations are correctly placed and accurate. No trap violations or unsupported claims are present."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 76,
+        "citation_count": 5,
+        "distinct_sources_cited": 3,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 1.0
+      }
+    },
+    {
+      "architecture": "3-agent",
+      "agent_count": 3,
+      "status": "completed",
+      "error": null,
+      "answer": "Northwind Logistics' AI support assistant reduced average ticket resolution time by 22% according to an independent audit [S2]. \n\nWhile the company’s initial launch announcement and subsequent media coverage reported a 40% reduction, this figure was based on a six-week pilot period [S1][S3]. An independent audit covering twelve months of data determined that the 40% figure was misleading because the pilot phase contained an unusually high volume of simple password-reset tickets [S2]. After adjusting for the ticket mix, the audit concluded the actual reduction was 22% [S2].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research"
+          ],
+          "output": "### Research Brief\n\n**Sub-questions:**\n1. What was the initial reported reduction in average ticket resolution time for Northwind Logistics' AI support assistant?\n2. What is the verified or adjusted reduction in average ticket resolution time for Northwind Logistics' AI support assistant?\n\n**Extracted Facts:**\n*   Northwind Logistics announced a 40% reduction in average ticket resolution time during the first six weeks of the AI assistant's deployment [S1].\n*   An independent audit covering twelve months of data found the initial 40% figure was based on a pilot period with an unusually high volume of simple password-reset tickets [S2].\n*   After adjusting for ticket mix, the audit found the AI assistant reduced average resolution time by 22% [S2].\n*   A blog post from June 2024 cites the company's initial launch announcement, stating resolution times were slashed by 40% [S3].\n\n**Disagreements:**\n*   There is a conflict between the company's initial announcement/subsequent media coverage (40%) [S1, S3] and the independent audit (22%) [S2].\n*   [S3] repeats the 40% figure, but [S2] provides context that this figure is misleading due to the specific ticket mix during the pilot phase.\n\n**Outdated/Irrelevant Information:**\n*   [S4] pertains to \"Southwind Freight,\" which is a different company and is irrelevant to the question regarding Northwind Logistics.\n*   [S1] is the earliest source (May 2023) and represents the initial pilot findings, which [S2] (March 2024) identifies as having a skewed ticket mix.\n\n**Gaps:**\n*   None. The sources provide both the initial claim and the audited, adjusted figure.",
+          "input_tokens": 657,
+          "output_tokens": 396,
+          "thinking_tokens": 0,
+          "latency_ms": 4144.073900009971,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "fact_check",
+            "critic"
+          ],
+          "output": "### Fact-Checking Report\n\n**Claim Verification:**\n*   **Claim:** Northwind Logistics' AI support assistant reduced average ticket resolution time by 40% during the first six weeks of deployment.\n    *   **Verdict:** SUPPORTED [S1, S3]\n*   **Claim:** The 40% reduction figure was based on a pilot period with an unusually high volume of simple password-reset tickets.\n    *   **Verdict:** SUPPORTED [S2]\n*   **Claim:** After adjusting for ticket mix, the AI assistant reduced average resolution time by 22%.\n    *   **Verdict:** SUPPORTED [S2]\n\n**Conflicting Sources:**\n*   **Conflict:** [S1] and [S3] report a 40% reduction, while [S2] reports a 22% reduction.\n*   **Resolution:** [S2] is the more authoritative and accurate source. It is an independent audit covering a full twelve months of data, whereas [S1] and [S3] rely on the company’s initial, short-term pilot data. [S2] explicitly explains the context (ticket mix) that makes the 40% figure misleading.\n\n**Premise Check:**\n*   The question contains no false or unsupported premises.\n\n**Claims to Exclude:**\n*   Any mention of Southwind Freight [S4] must be excluded as it is irrelevant to Northwind Logistics.\n*   The 40% figure should not be presented as the current or verified performance metric without the immediate context provided by [S2].\n\n---\n\n### Critique\n\n**Answerability:**\n*   The question is fully answerable using the provided evidence.\n\n**Weaknesses and Caveats:**\n*   **Overgeneralization:** Presenting the 40% figure as the definitive reduction would be an overgeneralization. The answer must clarify that the 40% figure was a preliminary pilot result and that the audited, long-term performance is lower.\n*   **Missing Context:** The answer must explain *why* the figures differ (the \"ticket mix\" issue identified in [S2]) to provide a complete picture.\n\n**Recommendations for Agent 3:**\n1.  **Structure:** Start by stating the audited, adjusted figure (22%) as the most accurate reflection of performance.\n2.  **Contextualize:** Follow by explaining the initial 40% claim from the company’s launch announcement.\n3.  **Clarify:** Explicitly state that the 40% figure was based on a six-week pilot with a skewed ticket mix (high volume of simple password resets), as identified by the 2024 independent audit.\n4.  **Tone:** Maintain a neutral, analytical tone that prioritizes the audit findings over the marketing-based press release.\n5.  **Exclusions:** Do not mention Southwind Freight [S4].",
+          "input_tokens": 1198,
+          "output_tokens": 618,
+          "thinking_tokens": 0,
+          "latency_ms": 4008.677000005264,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 2,
+          "roles": [
+            "writer"
+          ],
+          "output": "Northwind Logistics' AI support assistant reduced average ticket resolution time by 22% according to an independent audit [S2]. \n\nWhile the company’s initial launch announcement and subsequent media coverage reported a 40% reduction, this figure was based on a six-week pilot period [S1][S3]. An independent audit covering twelve months of data determined that the 40% figure was misleading because the pilot phase contained an unusually high volume of simple password-reset tickets [S2]. After adjusting for the ticket mix, the audit concluded the actual reduction was 22% [S2].",
+          "input_tokens": 1383,
+          "output_tokens": 125,
+          "thinking_tokens": 0,
+          "latency_ms": 4689.646299986634,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 3,
+      "input_tokens": 3238,
+      "output_tokens": 1139,
+      "thinking_tokens": 0,
+      "total_tokens": 4377,
+      "latency_ms": 12842.39720000187,
+      "retries": 0,
+      "estimated_cost_usd": 0.002518,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 0.875,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.95,
+        "judge_completeness": 0.9,
+        "key_points": [
+          {
+            "point": "Reports that sources conflict (40% vs 22%)",
+            "status": "covered"
+          },
+          {
+            "point": "Identifies the 22% audited figure as better supported",
+            "status": "covered"
+          },
+          {
+            "point": "Explains the 40% figure was early/preliminary and not adjusted for ticket mix",
+            "status": "covered"
+          },
+          {
+            "point": "Notes the blog post merely repeats the press release figure",
+            "status": "partial"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer accurately identifies the conflict between the preliminary 40% figure and the audited 22% figure, correctly noting why the 40% figure was misleading due to ticket mix. It cites the sources appropriately. It could have been slightly more explicit that the blog post specifically relied on the press release, but it successfully captures the essence of all key points without falling into any traps or making unsupported claims."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 86,
+        "citation_count": 5,
+        "distinct_sources_cited": 3,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 1.0
+      }
+    },
+    {
+      "architecture": "4-agent",
+      "agent_count": 4,
+      "status": "completed",
+      "error": null,
+      "answer": "Northwind Logistics' AI support assistant reduced average ticket resolution time by 22% according to an independent audit covering twelve months of data [S2]. \n\nWhile the company initially announced a 40% reduction in resolution time, this figure was based on a six-week pilot period characterized by an unusually high volume of simple password-reset tickets [S1, S2, S3]. The 22% figure is considered the more accurate long-term measure because it accounts for a more representative ticket mix [S2].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research"
+          ],
+          "output": "### Research Brief for Agent 2\n\n**Sub-questions:**\n1. What was the initial reported reduction in average ticket resolution time for Northwind Logistics' AI support assistant?\n2. What is the verified or adjusted reduction in average ticket resolution time after accounting for long-term data and ticket mix?\n\n**Extracted Facts:**\n*   Northwind Logistics announced a 40% reduction in average ticket resolution time during the first six weeks of AI assistant deployment [S1].\n*   The 40% figure was based on a pilot period characterized by an unusually high volume of simple password-reset tickets [S2].\n*   An independent audit covering twelve months of data concluded that, after adjusting for ticket mix, the AI assistant reduced average resolution time by 22% [S2].\n*   A blog post from June 2024 cites the original 40% figure from the company’s launch announcement [S3].\n\n**Disagreements and Conflicts:**\n*   **Conflict:** There is a discrepancy between the initial company-reported figure of 40% [S1, S3] and the audit-adjusted figure of 22% [S2].\n*   **Outdated Information:** The 40% figure [S1, S3] appears to be outdated or context-dependent, as the audit [S2] provides a more comprehensive analysis of twelve months of data compared to the six-week pilot period.\n\n**Gaps:**\n*   None. The sources provide both the initial claim and the subsequent audit-adjusted findings.\n\n**Irrelevant Information:**\n*   [S4] pertains to Southwind Freight and is irrelevant to the performance of Northwind Logistics' AI assistant.",
+          "input_tokens": 660,
+          "output_tokens": 363,
+          "thinking_tokens": 0,
+          "latency_ms": 3981.6109999956097,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "fact_check"
+          ],
+          "output": "### Fact-Check Report\n\n**Claim Verification:**\n\n*   **Claim:** Northwind Logistics' AI support assistant initially reported a 40% reduction in average ticket resolution time.\n    *   **Verdict:** SUPPORTED [S1, S3]\n*   **Claim:** The 40% reduction was measured during a six-week pilot period with an unusually high volume of simple password-reset tickets.\n    *   **Verdict:** SUPPORTED [S2]\n*   **Claim:** An independent audit covering twelve months of data found that, after adjusting for ticket mix, the AI assistant reduced average resolution time by 22%.\n    *   **Verdict:** SUPPORTED [S2]\n\n**Conflicts:**\n*   **Conflict:** There is a discrepancy between the 40% figure [S1, S3] and the 22% figure [S2].\n*   **Resolution:** The 22% figure [S2] is better supported. It is based on a twelve-month audit, whereas the 40% figure [S1] was based on a six-week pilot. The audit [S2] explicitly identifies the context (ticket mix) that led to the initial, higher figure, making it more authoritative and comprehensive. Source [S3] merely repeats the initial company announcement and does not provide new evidence.\n\n**Premise Check:**\n*   The question asks \"By how much did Northwind Logistics' AI support assistant reduce average ticket resolution time?\" The premise is valid, as evidence exists for both an initial claim and an audited result.\n\n**Claims to Exclude:**\n*   Any claims regarding Southwind Freight [S4] must be excluded as they are irrelevant to Northwind Logistics.\n*   The 40% figure should not be presented as the current or accurate reduction rate without the necessary context provided by the audit [S2].",
+          "input_tokens": 1067,
+          "output_tokens": 396,
+          "thinking_tokens": 0,
+          "latency_ms": 2536.43869998632,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 2,
+          "roles": [
+            "critic"
+          ],
+          "output": "### Critique\n\n**Answerability Verdict:**\nThe question can be answered fully by presenting both the initial reported figure and the subsequent audited finding, as the evidence provides the necessary context to explain the discrepancy between the two.\n\n**Weaknesses and Missing Context:**\n*   **Overgeneralization:** Presenting the 40% figure as the definitive reduction would be an overgeneralization, as it ignores the specific, temporary conditions of the pilot period.\n*   **Contextual Necessity:** The answer must explicitly link the 40% figure to the six-week pilot and the 22% figure to the twelve-month audit to ensure the reader understands why the figures differ. Without this context, the information is misleading.\n\n**Limitations:**\n*   There are no remaining unanswered parts of the question. The evidence is sufficient to explain the evolution of the reported metrics.\n\n**Recommendations for Agent 4:**\n1.  **Structure:** Start by stating the audited, long-term reduction (22%) as the primary answer, as it is the most accurate reflection of performance.\n2.  **Contextualization:** Immediately follow the primary answer by explaining the initial 40% claim, clarifying that it was based on a six-week pilot period [S1, S2].\n3.  **Explanation of Discrepancy:** Explicitly state that the 40% figure was influenced by an unusually high volume of simple password-reset tickets [S2]. Contrast this with the twelve-month audit, which accounted for a more representative ticket mix to arrive at the 22% figure [S2].\n4.  **Tone:** Maintain an objective tone that prioritizes the audited data over the initial company announcement [S1, S3].\n5.  **Exclusions:** Ensure no mention is made of Southwind Freight [S4].",
+          "input_tokens": 1129,
+          "output_tokens": 384,
+          "thinking_tokens": 0,
+          "latency_ms": 4926.796300016576,
+          "saw_sources": false
+        },
+        {
+          "agent_index": 3,
+          "roles": [
+            "writer"
+          ],
+          "output": "Northwind Logistics' AI support assistant reduced average ticket resolution time by 22% according to an independent audit covering twelve months of data [S2]. \n\nWhile the company initially announced a 40% reduction in resolution time, this figure was based on a six-week pilot period characterized by an unusually high volume of simple password-reset tickets [S1, S2, S3]. The 22% figure is considered the more accurate long-term measure because it accounts for a more representative ticket mix [S2].",
+          "input_tokens": 1528,
+          "output_tokens": 109,
+          "thinking_tokens": 0,
+          "latency_ms": 3464.84539998346,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 4,
+      "input_tokens": 4384,
+      "output_tokens": 1252,
+      "thinking_tokens": 0,
+      "total_tokens": 5636,
+      "latency_ms": 14909.691399981966,
+      "retries": 0,
+      "estimated_cost_usd": 0.002974,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 0.75,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 0.95,
+        "overall_quality": 0.93,
+        "judge_completeness": 0.85,
+        "key_points": [
+          {
+            "point": "Reports that sources conflict (40% vs 22%)",
+            "status": "covered"
+          },
+          {
+            "point": "Identifies the 22% audited figure as better supported",
+            "status": "covered"
+          },
+          {
+            "point": "Explains the 40% figure was early/preliminary and not adjusted for ticket mix",
+            "status": "covered"
+          },
+          {
+            "point": "Notes the blog post merely repeats the press release figure",
+            "status": "missing"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer directly addresses the question and accurately weighs the conflicting sources, identifying the 22% figure as more reliable based on the audit. It captures almost all key points, though it misses explicitly stating that the blog post merely repeats the press release. Citations are accurate and appropriately placed."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 76,
+        "citation_count": 5,
+        "distinct_sources_cited": 3,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 1.0
+      }
+    }
+  ],
+  "ranking": {
+    "order": [
+      "3-agent",
+      "2-agent",
+      "4-agent",
+      "1-agent"
+    ],
+    "labels": {
+      "A": "3-agent",
+      "B": "1-agent",
+      "C": "2-agent",
+      "D": "4-agent"
+    },
+    "reasoning": "Answer A provides a thorough, well-cited, and accurate breakdown of the sources, explaining both the initial claim and the audit's findings. Answer C and D are very good, concise, and accurate, with proper nuance regarding the long-term measure. Answer B is slightly less complete than C and D in fully explaining the significance of the 22% figure as a long-term measure, though still faithful to the sources."
+  },
+  "ranking_error": null,
+  "completed_at": "2026-10-27T03:04:16+00:00"
+}

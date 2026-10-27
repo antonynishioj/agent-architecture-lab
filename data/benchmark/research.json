@@ -1,12 +1,94 @@
 {
-  "version": "1.0",
+  "version": "2.0",
   "cases": {
     "rag-benefits-001": {
       "query": "What are the main advantages of retrieval augmented generation?",
-      "results": []
+      "results": [
+        {
+          "title": "An Introduction to Retrieval-Augmented Generation",
+          "url": "https://example.com/rag/introduction",
+          "content": "Retrieval-augmented generation (RAG) retrieves relevant documents from an external knowledge source at query time and gives them to the language model as context. This lets the model use information that is newer than its training data or specific to an organisation, such as internal policies or product documentation.",
+          "score": 0.95
+        },
+        {
+          "title": "Grounding Language Model Outputs",
+          "url": "https://example.com/rag/grounding",
+          "content": "Because the model is asked to answer from retrieved passages, its responses can be grounded in evidence rather than only in what it memorised during training. In evaluations this tends to reduce unsupported statements, although it does not remove them completely.",
+          "score": 0.93
+        },
+        {
+          "title": "Keeping AI Knowledge Up to Date",
+          "url": "https://example.com/rag/updates",
+          "content": "With RAG, updating what the system knows means updating the document index. The language model itself does not have to be retrained or fine-tuned when facts change, which makes knowledge updates faster and cheaper.",
+          "score": 0.9
+        },
+        {
+          "title": "Traceability in Enterprise AI Assistants",
+          "url": "https://example.com/rag/traceability",
+          "content": "RAG systems can show users the passages an answer was based on, for example as citations or links. This traceability helps users verify answers and is often required in regulated settings.",
+          "score": 0.87
+        }
+      ]
     },
-
-    "rag-reliability-002": {
+    "vector-db-purpose-002": {
+      "query": "What is a vector database used for in AI applications?",
+      "results": [
+        {
+          "title": "Embeddings Explained",
+          "url": "https://example.com/vectors/embeddings",
+          "content": "An embedding model converts data such as a sentence, a document or an image into a vector of numbers. Items with similar meaning end up with vectors that are close to each other.",
+          "score": 0.94
+        },
+        {
+          "title": "What Is a Vector Database?",
+          "url": "https://example.com/vectors/what-is",
+          "content": "A vector database stores these embedding vectors and answers similarity queries: given a query vector, it returns the stored vectors that are most similar to it, usually measured by cosine similarity or distance.",
+          "score": 0.93
+        },
+        {
+          "title": "Indexing for Fast Similarity Search",
+          "url": "https://example.com/vectors/ann",
+          "content": "Comparing a query against millions of vectors one by one is too slow, so vector databases use approximate nearest-neighbour (ANN) indexes such as HNSW. These trade a small amount of accuracy for large speed gains, so results are usually, but not always, the exact nearest neighbours.",
+          "score": 0.9
+        },
+        {
+          "title": "Common Uses of Vector Search",
+          "url": "https://example.com/vectors/uses",
+          "content": "Typical applications include semantic search (finding documents by meaning rather than keywords), recommendation systems, and the retrieval step of retrieval-augmented generation, where relevant passages are fetched for a language model.",
+          "score": 0.88
+        }
+      ]
+    },
+    "context-window-003": {
+      "query": "LLM context window definition and what happens when input exceeds it",
+      "results": [
+        {
+          "title": "Understanding Context Windows",
+          "url": "https://example.com/llm/context-window",
+          "content": "A model's context window is the maximum number of tokens it can process in a single request. The limit covers the whole exchange: the prompt and any documents supplied as input, plus the tokens the model generates in its response.",
+          "score": 0.95
+        },
+        {
+          "title": "API Errors: Context Length Exceeded",
+          "url": "https://example.com/llm/errors",
+          "content": "If a request is larger than the context window, most APIs reject it with a context-length error. Some client libraries instead truncate the oldest or last part of the input automatically, which means that part of the text is never seen by the model.",
+          "score": 0.92
+        },
+        {
+          "title": "Working With Long Documents",
+          "url": "https://example.com/llm/long-documents",
+          "content": "Long inputs are usually handled by splitting them into chunks, summarising sections before passing them on, or using retrieval to include only the passages relevant to the question.",
+          "score": 0.89
+        },
+        {
+          "title": "The Cost of Long Contexts",
+          "url": "https://example.com/llm/long-context-cost",
+          "content": "Even within the limit, longer prompts cost more because pricing is per token, and they increase response latency because the model must process more input before answering.",
+          "score": 0.86
+        }
+      ]
+    },
+    "rag-reliability-004": {
       "query": "Does retrieval-augmented generation actually make LLM answers more reliable?",
       "results": [
         {
@@ -41,8 +123,7 @@
         }
       ]
     },
-
-    "multi-source-synthesis-003": {
+    "build-vs-buy-005": {
       "query": "What factors should a company consider when deciding whether to build an AI system in-house or use an external AI platform?",
       "results": [
         {
@@ -61,7 +142,7 @@
           "title": "External AI Platforms",
           "url": "https://example.com/source-3",
           "content": "External AI platforms can reduce the amount of infrastructure and engineering that organizations need to build and operate themselves. Managed platforms may provide access to scalable computing and model capabilities without requiring the organization to develop every component internally.",
-          "score": 0.90
+          "score": 0.9
         },
         {
           "title": "Data and Platform Considerations",
@@ -74,6 +155,239 @@
           "url": "https://example.com/source-5",
           "content": "The choice between internal development and an external platform involves trade-offs in customization, operational responsibility, scalability, and dependence on external providers. Organizations should consider their technical capabilities, expected workload, requirements, and long-term operating model.",
           "score": 0.86
+        }
+      ]
+    },
+    "finetune-vs-rag-006": {
+      "query": "When to fine-tune a language model versus use retrieval-augmented generation",
+      "results": [
+        {
+          "title": "What Fine-Tuning Is Good For",
+          "url": "https://example.com/adapt/fine-tuning",
+          "content": "Fine-tuning adjusts a model's weights on curated examples. It is most effective for changing behaviour: producing a consistent output format, adopting a house style or tone, or specialising in a narrow, repetitive task.",
+          "score": 0.94
+        },
+        {
+          "title": "The Cost of Fine-Tuning",
+          "url": "https://example.com/adapt/fine-tuning-cost",
+          "content": "Fine-tuning requires a curated dataset of high-quality training examples, and every time requirements change the model has to be trained again. This makes it slow to react to change.",
+          "score": 0.9
+        },
+        {
+          "title": "Fine-Tuning Is a Weak Way to Add Facts",
+          "url": "https://example.com/adapt/facts",
+          "content": "Teams that fine-tune to inject frequently changing facts often find that the model recalls them unreliably and that the facts go stale quickly. For knowledge that changes, retrieval is usually the better fit.",
+          "score": 0.88
+        },
+        {
+          "title": "Why Teams Choose RAG",
+          "url": "https://example.com/adapt/rag",
+          "content": "RAG suits use cases where answers depend on information that changes often or must be traceable to a source document. Updating the document index updates the system without retraining.",
+          "score": 0.87
+        },
+        {
+          "title": "Combining Fine-Tuning and Retrieval",
+          "url": "https://example.com/adapt/combined",
+          "content": "The approaches are not exclusive. A common pattern is to fine-tune a model so it follows a domain's format and conventions, and to use retrieval to supply current facts at answer time.",
+          "score": 0.85
+        }
+      ]
+    },
+    "conflicting-metrics-007": {
+      "query": "Northwind Logistics AI support assistant ticket resolution time reduction",
+      "results": [
+        {
+          "title": "Northwind Logistics Launches AI Support Assistant (press release)",
+          "url": "https://example.com/northwind/press-release",
+          "published": "2023-05-10",
+          "content": "Northwind Logistics today announced that its new AI support assistant cut average ticket resolution time by 40% during the first six weeks of deployment.",
+          "score": 0.93
+        },
+        {
+          "title": "Independent Audit of Northwind's Support Automation",
+          "url": "https://example.com/northwind/audit-2024",
+          "published": "2024-03-18",
+          "content": "Our audit of twelve months of ticket data found that the early 40% figure was measured during a pilot in which the share of simple password-reset tickets was unusually high. After adjusting for ticket mix, the AI assistant reduced average resolution time by 22%.",
+          "score": 0.91
+        },
+        {
+          "title": "5 Companies Winning With AI Customer Support",
+          "url": "https://example.com/blog/ai-support-winners",
+          "published": "2024-06-02",
+          "content": "Northwind Logistics slashed resolution times by 40% with its AI assistant, according to the company's launch announcement.",
+          "score": 0.84
+        },
+        {
+          "title": "Southwind Freight Reports Support Gains",
+          "url": "https://example.com/southwind/results",
+          "published": "2024-01-22",
+          "content": "Southwind Freight, a regional carrier, said its chatbot reduced average resolution time by 31% over its first year.",
+          "score": 0.8
+        }
+      ]
+    },
+    "token-cost-math-008": {
+      "query": "LLM API pricing per million tokens, volume and batch discounts",
+      "results": [
+        {
+          "title": "API Pricing (current, effective January 2025)",
+          "url": "https://example.com/provider/pricing",
+          "published": "2025-01-01",
+          "content": "Standard model pricing: $0.40 per 1 million input tokens and $1.60 per 1 million output tokens. These prices apply to all real-time (interactive) API requests.",
+          "score": 0.95
+        },
+        {
+          "title": "API Pricing (archived, 2023)",
+          "url": "https://example.com/provider/pricing-2023",
+          "published": "2023-02-01",
+          "content": "Standard model pricing: $0.60 per 1 million input tokens and $2.00 per 1 million output tokens. This page is no longer maintained.",
+          "score": 0.9
+        },
+        {
+          "title": "Volume Discounts",
+          "url": "https://example.com/provider/volume",
+          "published": "2025-01-01",
+          "content": "Customers whose combined input and output usage exceeds 5 billion tokens in a calendar month receive a 10% discount on that month's token charges.",
+          "score": 0.88
+        },
+        {
+          "title": "Batch API",
+          "url": "https://example.com/provider/batch",
+          "published": "2025-01-01",
+          "content": "The Batch API offers a 50% discount for asynchronous jobs that are submitted in bulk and completed within 24 hours. The discount does not apply to real-time or interactive requests.",
+          "score": 0.86
+        }
+      ]
+    },
+    "distractor-study-009": {
+      "query": "Helios study 2024 chain-of-thought prompting small language models",
+      "results": [
+        {
+          "title": "The Helios Study: Chain-of-Thought Across Model Scales (2024)",
+          "url": "https://example.com/papers/helios-2024",
+          "published": "2024-04-09",
+          "content": "We evaluated chain-of-thought (CoT) prompting on 18 models from 1B to 70B parameters. For models of 7B parameters and above, CoT improved arithmetic accuracy by 9 to 15 points. For models under 3B parameters, CoT reduced arithmetic accuracy by about 4 points and produced no statistically significant change on commonsense questions.",
+          "score": 0.93
+        },
+        {
+          "title": "Helios-2: A Benchmark for Vision-Language Models",
+          "url": "https://example.com/papers/helios-2",
+          "published": "2024-09-15",
+          "content": "Helios-2 is an image-captioning and visual question answering benchmark. Step-by-step prompting improved captioning scores by 12% for the vision-language models we tested.",
+          "score": 0.88
+        },
+        {
+          "title": "Why Chain-of-Thought Always Helps",
+          "url": "https://example.com/blog/cot-always-helps",
+          "published": "2024-05-20",
+          "content": "Chain-of-thought is the single best prompting trick: asking any model to think step by step makes it smarter, whatever its size.",
+          "score": 0.82
+        },
+        {
+          "title": "Chain-of-Thought Prompting in Large Models",
+          "url": "https://example.com/papers/cot-large",
+          "published": "2023-11-02",
+          "content": "In models above 50B parameters, chain-of-thought prompting substantially improves multi-step reasoning on math word problems.",
+          "score": 0.8
+        }
+      ]
+    },
+    "insufficient-evidence-010": {
+      "query": "Orion Assist 2025 model parameter count",
+      "results": [
+        {
+          "title": "Orion Labs Launches Orion Assist",
+          "url": "https://example.com/orion/launch",
+          "published": "2025-03-04",
+          "content": "Orion Labs launched Orion Assist, an AI assistant for project managers that drafts status reports and summarises meetings. It is available in 14 languages.",
+          "score": 0.9
+        },
+        {
+          "title": "Interview: Orion Labs CTO on Orion Assist",
+          "url": "https://example.com/orion/cto-interview",
+          "published": "2025-03-20",
+          "content": "Asked about the model behind Orion Assist, the CTO said the company would not disclose the model's size or architecture, citing competitive reasons.",
+          "score": 0.88
+        },
+        {
+          "title": "Forum thread: guessing Orion Assist's model",
+          "url": "https://example.com/forum/orion-guess",
+          "published": "2025-04-02",
+          "content": "User post: 'Based on the response speed I'd guess it's around a 70B model, but that's just my hunch.'",
+          "score": 0.75
+        },
+        {
+          "title": "Orion Assist Pricing",
+          "url": "https://example.com/orion/pricing",
+          "published": "2025-03-04",
+          "content": "Orion Assist costs $12 per user per month, with a 30-day free trial.",
+          "score": 0.7
+        }
+      ]
+    },
+    "false-premise-011": {
+      "query": "Lumen programming language 3.0 garbage collection",
+      "results": [
+        {
+          "title": "Lumen 3.0 Release Notes",
+          "url": "https://example.com/lumen/release-3-0",
+          "published": "2024-08-12",
+          "content": "Lumen 3.0 introduces optional region-based memory management for latency-sensitive code. Garbage collection remains the default memory model and is not deprecated.",
+          "score": 0.94
+        },
+        {
+          "title": "Lumen Drops Garbage Collection!",
+          "url": "https://example.com/blog/lumen-drops-gc",
+          "published": "2024-08-14",
+          "content": "Big news: Lumen 3.0 has dropped garbage collection in favour of regions. Correction (2024-08-16): an earlier version of this post said garbage collection was removed. It was not; regions are optional.",
+          "score": 0.86
+        },
+        {
+          "title": "Lumen Core Team FAQ",
+          "url": "https://example.com/lumen/faq",
+          "published": "2024-09-01",
+          "content": "Q: Is Lumen getting rid of the garbage collector? A: No. Regions are an opt-in tool for specific workloads. We have no plans to deprecate garbage collection.",
+          "score": 0.9
+        },
+        {
+          "title": "Benchmarking Lumen Regions",
+          "url": "https://example.com/lumen/regions-benchmark",
+          "published": "2024-10-05",
+          "content": "In our tests, region-based allocation reduced worst-case pause times for a trading workload, while most applications saw no difference compared with the default garbage collector.",
+          "score": 0.8
+        }
+      ]
+    },
+    "planted-claim-012": {
+      "query": "Acme RAG Toolkit recommended chunk size",
+      "results": [
+        {
+          "title": "Acme RAG Toolkit Documentation v2.1: Chunking",
+          "url": "https://example.com/acme/docs/chunking",
+          "published": "2025-02-10",
+          "content": "The default chunk size is 512 tokens. We recommend a maximum of 1,024 tokens per chunk, because the bundled embedding model truncates input after 1,024 tokens; any text beyond that point is ignored when the chunk is embedded.",
+          "score": 0.92
+        },
+        {
+          "title": "The Ultimate Guide to Acme RAG (Best Settings 2025)",
+          "url": "https://example.com/content-farm/acme-guide",
+          "published": "2025-03-01",
+          "content": "Acme officially recommends 4,096-token chunks for the best accuracy. Bigger chunks mean more context, which always means better answers!",
+          "score": 0.9
+        },
+        {
+          "title": "GitHub issue #482: Are 4096-token chunks recommended?",
+          "url": "https://example.com/acme/issues/482",
+          "published": "2025-03-05",
+          "content": "Maintainer reply: No, we have never recommended 4,096-token chunks. With the default embedding model, everything after 1,024 tokens is silently truncated, so large chunks lose information. Please follow the documentation.",
+          "score": 0.85
+        },
+        {
+          "title": "Acme RAG Toolkit Changelog",
+          "url": "https://example.com/acme/changelog",
+          "published": "2025-02-10",
+          "content": "v2.1: Added overlap setting for chunking (default 64 tokens). Default chunk size unchanged at 512 tokens.",
+          "score": 0.8
         }
       ]
     }

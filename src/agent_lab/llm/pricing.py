@@ -1,4 +1,6 @@
+import json
 from dataclasses import dataclass
+from pathlib import Path
 
 
 @dataclass(frozen=True)
@@ -8,6 +10,10 @@ class ModelPricing:
 
     Prices are expressed in USD per 1 million tokens.
     None means pricing is not configured.
+
+    On the Gemini free tier the real cost is $0. These prices give an
+    "equivalent cost if you were on the paid tier" so architectures
+    can be compared in money as well as tokens.
     """
 
     input_per_million_usd: float | None = None
@@ -45,6 +51,30 @@ class PricingRegistry:
 
     def __init__(self):
         self._pricing: dict[str, ModelPricing] = {}
+
+    @classmethod
+    def from_file(cls, path: Path) -> "PricingRegistry":
+        registry = cls()
+
+        if not path.exists():
+            return registry
+
+        data = json.loads(path.read_text(encoding="utf-8"))
+
+        for model, prices in data.get("models", {}).items():
+            registry.register(
+                model=model,
+                pricing=ModelPricing(
+                    input_per_million_usd=prices.get(
+                        "input_per_million_usd"
+                    ),
+                    output_per_million_usd=prices.get(
+                        "output_per_million_usd"
+                    ),
+                ),
+            )
+
+        return registry
 
     def register(
         self,

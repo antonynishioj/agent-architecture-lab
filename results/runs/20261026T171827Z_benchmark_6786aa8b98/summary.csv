@@ -1,0 +1,5 @@
+architecture,agent_count,quality_index,quality_ci_low,quality_ci_high,answer_relevancy,completeness,faithfulness,citation_quality,uncertainty_handling,overall_quality,win_rate,mean_rank,trap_violation_rate,unsupported_claims_per_answer,citation_validity,calls_per_answer,total_tokens,latency_s,estimated_cost_usd,quality_per_1k_tokens,units_completed,units_failed
+1-agent,1,0.9771,0.9725,0.9817,0.99,0.9375,0.995,0.995,0.975,0.97,0.0,4.0,0.0,0.0,1.0,1.0,1014.5,24.6438,0.000712,0.9631,2,0
+2-agent,2,0.9825,0.98,0.985,0.98,1.0,0.985,0.985,0.965,0.98,0.5,2.0,0.0,0.0,1.0,2.0,3040.5,35.2802,0.003244,0.3231,2,0
+3-agent,3,0.9867,0.9767,0.9967,0.99,1.0,0.99,0.99,0.975,0.975,0.5,1.5,0.0,0.0,1.0,3.0,4941.5,62.3936,0.004796,0.1997,2,0
+4-agent,4,0.9867,0.9833,0.99,0.985,1.0,0.99,0.985,0.975,0.985,0.0,2.5,0.0,0.0,1.0,4.0,6230.5,81.1211,0.005429,0.1584,2,0

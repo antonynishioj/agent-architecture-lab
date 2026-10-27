@@ -1,4 +1,5 @@
-from dataclasses import dataclass
+import time
+from dataclasses import asdict, dataclass, field
 from threading import Lock
 
 
@@ -8,29 +9,38 @@ class JobState:
     status: str
     progress: int = 0
     message: str = ""
-    case_id: str | None = None
     current_case: str | None = None
+    current_trial: int | None = None
     current_architecture: str | None = None
     error: str | None = None
+    events: list[dict] = field(default_factory=list)
+
+    def to_dict(self) -> dict:
+        return asdict(self)
+
+
+ACTIVE_STATUSES = {"queued", "running"}
 
 
 class JobManager:
+    """
+    In-memory progress for runs executing in this server process.
+
+    The durable state lives in the run's manifest.json. This only
+    holds the live progress feed shown in the UI.
+    """
+
+    MAX_EVENTS = 40
+
     def __init__(self):
         self._jobs: dict[str, JobState] = {}
         self._lock = Lock()
 
-    def create(
-        self,
-        run_id: str,
-        case_id: str | None = None,
-    ) -> JobState:
-
+    def create(self, run_id: str) -> JobState:
         job = JobState(
             run_id=run_id,
             status="queued",
-            progress=0,
             message="Experiment queued.",
-            case_id=case_id,
         )
 
         with self._lock:
@@ -38,41 +48,60 @@ class JobManager:
 
         return job
 
-    def update(
-        self,
-        run_id: str,
-        *,
-        status: str | None = None,
-        progress: int | None = None,
-        message: str | None = None,
-        current_case: str | None = None,
-        current_architecture: str | None = None,
-        error: str | None = None,
-    ) -> JobState:
+    def active(self) -> JobState | None:
+        with self._lock:
+            for job in self._jobs.values():
+                if job.status in ACTIVE_STATUSES:
+                    return job
 
+        return None
+
+    def update(self, run_id: str, **changes) -> None:
         with self._lock:
             job = self._jobs[run_id]
 
-            if status is not None:
-                job.status = status
+            for key, value in changes.items():
+                setattr(job, key, value)
 
-            if progress is not None:
-                job.progress = max(0, min(100, progress))
+    def record_event(self, run_id: str, event: dict) -> None:
+        with self._lock:
+            job = self._jobs.get(run_id)
 
-            if message is not None:
-                job.message = message
+            if job is None:
+                return
 
-            if current_case is not None:
-                job.current_case = current_case
+            job.status = "running"
 
-            if current_architecture is not None:
-                job.current_architecture = current_architecture
+            if event.get("progress") is not None:
+                job.progress = max(job.progress, int(event["progress"]))
 
-            if error is not None:
-                job.error = error
+            if event.get("message"):
+                job.message = event["message"]
 
-            return job
+            if "case_id" in event:
+                job.current_case = event["case_id"]
+
+            if "trial" in event:
+                job.current_trial = event["trial"]
+
+            if "architecture" in event:
+                job.current_architecture = event["architecture"]
+
+            if event.get("message"):
+                job.events.append(
+                    {
+                        "time": time.strftime("%H:%M:%S"),
+                        "stage": event.get("stage"),
+                        "message": event["message"],
+                    }
+                )
+                job.events = job.events[-self.MAX_EVENTS:]
 
     def get(self, run_id: str) -> JobState | None:
         with self._lock:
-            return self._jobs.get(run_id)
+            job = self._jobs.get(run_id)
+
+            if job is None:
+                return None
+
+            return JobState(**{**job.to_dict(), "events": list(job.events)})

@@ -1,0 +1,53 @@
+[
+  {
+    "case_id": "vector-db-purpose-002",
+    "question": "What is a vector database used for in AI applications?",
+    "reference_answer": "A vector database stores embeddings (numeric vectors that represent text, images or other data) and finds the stored vectors most similar to a query vector. It uses approximate nearest-neighbour indexes so similarity search stays fast at large scale. Typical uses are semantic search, recommendations and the retrieval step of RAG systems.",
+    "category": "AI Infrastructure",
+    "difficulty": "easy",
+    "key_points": [
+      "Stores embeddings/vectors that represent data such as text or images",
+      "Finds the most similar vectors to a query (similarity search)",
+      "Uses approximate nearest-neighbour indexing for speed at scale",
+      "Used for semantic search, recommendations and RAG retrieval"
+    ],
+    "must_not_claim": [
+      "Vector databases always return exact nearest neighbours"
+    ],
+    "design_notes": "All sources agree. One source notes the approximate (not exact) nature of the search, which a careful answer keeps.",
+    "source_kind": "curated",
+    "research": {
+      "query": "What is a vector database used for in AI applications?",
+      "results": [
+        {
+          "title": "Embeddings Explained",
+          "url": "https://example.com/vectors/embeddings",
+          "content": "An embedding model converts data such as a sentence, a document or an image into a vector of numbers. Items with similar meaning end up with vectors that are close to each other.",
+          "score": 0.94,
+          "published": null
+        },
+        {
+          "title": "What Is a Vector Database?",
+          "url": "https://example.com/vectors/what-is",
+          "content": "A vector database stores these embedding vectors and answers similarity queries: given a query vector, it returns the stored vectors that are most similar to it, usually measured by cosine similarity or distance.",
+          "score": 0.93,
+          "published": null
+        },
+        {
+          "title": "Indexing for Fast Similarity Search",
+          "url": "https://example.com/vectors/ann",
+          "content": "Comparing a query against millions of vectors one by one is too slow, so vector databases use approximate nearest-neighbour (ANN) indexes such as HNSW. These trade a small amount of accuracy for large speed gains, so results are usually, but not always, the exact nearest neighbours.",
+          "score": 0.9,
+          "published": null
+        },
+        {
+          "title": "Common Uses of Vector Search",
+          "url": "https://example.com/vectors/uses",
+          "content": "Typical applications include semantic search (finding documents by meaning rather than keywords), recommendation systems, and the retrieval step of retrieval-augmented generation, where relevant passages are fetched for a language model.",
+          "score": 0.88,
+          "published": null
+        }
+      ]
+    }
+  }
+]

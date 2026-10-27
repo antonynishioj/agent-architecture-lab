@@ -1,0 +1,40 @@
+{
+  "run_id": "6bf7a549d7",
+  "directory": "20261026T154844Z_benchmark_6bf7a549d7",
+  "run_type": "benchmark",
+  "label": "smoke test",
+  "status": "completed",
+  "created_at": "2026-10-26T15:48:44+00:00",
+  "started_at": "2026-10-26T15:48:46+00:00",
+  "completed_at": "2026-10-26T15:54:25+00:00",
+  "error": null,
+  "generator_model": "gemini-3.5-flash-lite",
+  "judge_model": "gemini-3.5-flash",
+  "generator_temperature": 0.3,
+  "judge_temperature": 0.0,
+  "max_output_tokens": 4096,
+  "trials": 1,
+  "architectures": [
+    "1-agent",
+    "2-agent",
+    "3-agent",
+    "4-agent"
+  ],
+  "case_ids": [
+    "rag-benefits-001"
+  ],
+  "benchmark_version": "2.0",
+  "benchmark_fingerprint": "3352f17db8b4c6de",
+  "prompt_fingerprint": "8b075615a0f0fe7b",
+  "git_commit": "7deff28-dirty",
+  "app_version": "0.2.0",
+  "items": [
+    {
+      "case_id": "rag-benefits-001",
+      "trial": 1,
+      "status": "completed",
+      "error": null,
+      "file": "cases/rag-benefits-001__t1.json"
+    }
+  ]
+}

@@ -1,23 +1,16 @@
-import os
-
 import requests
-from dotenv import load_dotenv
 
 from agent_lab.research.base import ResearchTool
 from agent_lab.research.result import ResearchBundle, SearchResult
-
-
-load_dotenv()
 
 
 class TavilyResearchTool(ResearchTool):
 
     def __init__(
         self,
+        api_key: str | None,
         max_results: int = 5,
     ):
-        api_key = os.getenv("TAVILY_API_KEY")
-
         if not api_key:
             raise ValueError("TAVILY_API_KEY is not set.")
 
@@ -53,6 +46,7 @@ class TavilyResearchTool(ResearchTool):
                 url=result.get("url", ""),
                 content=result.get("content", ""),
                 score=result.get("score", 0.0),
+                published=result.get("published_date"),
             )
             for result in data.get("results", [])
         ]

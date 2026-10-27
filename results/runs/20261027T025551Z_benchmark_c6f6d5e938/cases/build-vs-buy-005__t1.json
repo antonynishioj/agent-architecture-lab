@@ -1,0 +1,397 @@
+{
+  "run_id": "c6f6d5e938",
+  "case_id": "build-vs-buy-005",
+  "trial": 1,
+  "difficulty": "medium",
+  "category": "AI System Design",
+  "question": "What factors should a company consider when deciding whether to build an AI system in-house or use an external AI platform? Discuss the trade-offs involving cost, control, data privacy, customization, maintenance, and scalability.",
+  "outcomes": [
+    {
+      "architecture": "1-agent",
+      "agent_count": 1,
+      "status": "completed",
+      "error": null,
+      "answer": "Deciding between building an in-house AI system and utilizing an external platform requires balancing organizational needs for control and customization against the operational burdens of maintenance and infrastructure.\n\n**Control and Customization**\nBuilding in-house provides greater control over system architecture, deployment, data handling, and integration with existing infrastructure [S1]. This approach is particularly beneficial for meeting highly specialized requirements that standardized external services may not satisfy [S1]. Conversely, external platforms offer managed capabilities that may limit the degree of customization available [S3][S5].\n\n**Cost and Maintenance**\nIn-house development requires significant long-term investment, including initial development costs and ongoing operational expenses related to infrastructure, monitoring, maintenance, and specialized technical expertise [S2]. External platforms can reduce these burdens by providing access to computing and model capabilities without requiring the organization to build and manage every component internally [S3].\n\n**Data Privacy**\nWhen using external AI services, organizations must evaluate how their data is transmitted, processed, stored, and protected [S4]. Organizations with strict data privacy requirements may find that external services necessitate additional controls, or they may prefer the greater control over data handling provided by an in-house architecture [S1][S4].\n\n**Scalability and Strategy**\nExternal platforms can provide scalable computing resources [S3]. However, choosing an external provider introduces a degree of dependence on that provider [S5]. When making this decision, organizations should assess their own technical capabilities, expected workloads, specific requirements, and their desired long-term operating model [S5].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research",
+            "fact_check",
+            "critic",
+            "writer"
+          ],
+          "output": "Deciding between building an in-house AI system and utilizing an external platform requires balancing organizational needs for control and customization against the operational burdens of maintenance and infrastructure.\n\n**Control and Customization**\nBuilding in-house provides greater control over system architecture, deployment, data handling, and integration with existing infrastructure [S1]. This approach is particularly beneficial for meeting highly specialized requirements that standardized external services may not satisfy [S1]. Conversely, external platforms offer managed capabilities that may limit the degree of customization available [S3][S5].\n\n**Cost and Maintenance**\nIn-house development requires significant long-term investment, including initial development costs and ongoing operational expenses related to infrastructure, monitoring, maintenance, and specialized technical expertise [S2]. External platforms can reduce these burdens by providing access to computing and model capabilities without requiring the organization to build and manage every component internally [S3].\n\n**Data Privacy**\nWhen using external AI services, organizations must evaluate how their data is transmitted, processed, stored, and protected [S4]. Organizations with strict data privacy requirements may find that external services necessitate additional controls, or they may prefer the greater control over data handling provided by an in-house architecture [S1][S4].\n\n**Scalability and Strategy**\nExternal platforms can provide scalable computing resources [S3]. However, choosing an external provider introduces a degree of dependence on that provider [S5]. When making this decision, organizations should assess their own technical capabilities, expected workloads, specific requirements, and their desired long-term operating model [S5].",
+          "input_tokens": 914,
+          "output_tokens": 317,
+          "thinking_tokens": 0,
+          "latency_ms": 8596.584899991285,
+          "saw_sources": true
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 1,
+      "input_tokens": 914,
+      "output_tokens": 317,
+      "thinking_tokens": 0,
+      "total_tokens": 1231,
+      "latency_ms": 8596.584899991285,
+      "retries": 0,
+      "estimated_cost_usd": 0.000704,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.98,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Control and customization favour in-house",
+            "status": "covered"
+          },
+          {
+            "point": "In-house requires ongoing engineering, infrastructure, maintenance and expertise (total cost of ownership)",
+            "status": "covered"
+          },
+          {
+            "point": "External platforms reduce engineering burden and offer scalability",
+            "status": "covered"
+          },
+          {
+            "point": "External platforms create provider dependence and data-handling/privacy considerations",
+            "status": "covered"
+          },
+          {
+            "point": "Decision depends on capabilities, requirements, data constraints, workload and long-term operating model",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer covers all required key points thoroughly, correctly cites the provided sources for every section, avoids all trap claims, and directly addresses the question with high accuracy and clarity."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 231,
+        "citation_count": 12,
+        "distinct_sources_cited": 5,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 0.9090909090909091
+      }
+    },
+    {
+      "architecture": "2-agent",
+      "agent_count": 2,
+      "status": "completed",
+      "error": null,
+      "answer": "### Critique\nThe provided evidence is sufficient to address the core trade-offs requested, though it lacks quantitative data to compare the financial impact of each approach. The response must clearly state that the sources do not provide a definitive framework for weighing these factors against one another. I will structure the answer by contrasting the two approaches across the requested categories, ensuring that the limitations regarding cost and strategic weighting are explicitly noted.\n\n***\n\n### Answer\nWhen deciding between building an AI system in-house or utilizing an external platform, organizations must evaluate their internal technical capabilities, expected workloads, and long-term operating requirements [S5].\n\n**Cost and Maintenance**\nIn-house development requires significant investment in specialized expertise, infrastructure, and ongoing operational maintenance [S2]. Conversely, external platforms reduce the burden of building and operating infrastructure, allowing organizations to leverage existing scalable computing and model capabilities [S3]. While in-house development involves long-term costs associated with both initial creation and continuous operational work, the sources do not provide specific financial metrics to determine which approach is more cost-effective [S2].\n\n**Control and Customization**\nBuilding in-house provides greater control over system architecture, deployment, and infrastructure integration [S1]. This approach is particularly suited for highly specialized requirements that standardized external services may not satisfy [S1]. External platforms offer less customization but provide immediate access to advanced capabilities without the need to develop every component internally [S3].\n\n**Data Privacy and Scalability**\nData privacy is a critical consideration for external platforms, requiring organizations to evaluate how data is transmitted, processed, stored, and protected [S4]. Organizations with strict data requirements may prefer in-house architectures to maintain greater control over their data handling [S4]. Regarding scalability, external platforms provide access to scalable computing resources, whereas in-house systems require the organization to manage their own infrastructure to meet workload demands [S2][S3].\n\n**Strategic Considerations**\nThe choice between these models involves balancing operational responsibility against dependence on external providers [S5]. Because the provided evidence does not offer a method for weighing these factors, organizations must determine their own priorities based on their specific technical capacity and long-term strategic goals [S5].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research",
+            "fact_check"
+          ],
+          "output": "### Research Brief\n\n**Sub-questions:**\n1. What are the benefits and requirements of building an AI system in-house?\n2. What are the benefits and requirements of using an external AI platform?\n3. How do these options compare regarding cost, control, data privacy, customization, maintenance, and scalability?\n4. What strategic factors should organizations consider when choosing between these two approaches?\n\n**Extracted Facts:**\n*   **In-House Development:**\n    *   Provides greater control over system architecture, deployment, data handling, and infrastructure integration [S1].\n    *   Supports highly specialized requirements that standardized services may not meet [S1].\n    *   Requires substantial engineering resources, infrastructure, monitoring, maintenance, and specialized expertise [S2].\n    *   Long-term costs include both initial development and ongoing operational work [S2].\n*   **External AI Platforms:**\n    *   Reduces the amount of infrastructure and engineering an organization must build/operate [S3].\n    *   Provides access to scalable computing and model capabilities without needing to develop every component internally [S3].\n    *   Requires evaluation of how data is transmitted, processed, stored, and protected [S4].\n    *   Organizations with strict data requirements may need additional controls or may prefer in-house architectures for better control [S4].\n*   **Strategic Considerations:**\n    *   Trade-offs involve customization, operational responsibility, scalability, and dependence on external providers [S5].\n    *   Organizations should evaluate their technical capabilities, expected workload, requirements, and long-term operating model [S5].\n\n**Disagreements/Gaps:**\n*   **Disagreements:** None identified. The sources provide complementary perspectives on the trade-offs.\n*   **Gaps:** The sources do not provide specific financial figures or quantitative metrics to compare costs. There is no guidance on how to weigh these factors against each other.\n\n---\n\n### Fact-Check Report\n\n**Claim Verification:**\n*   \"In-house development offers superior control over data and architecture.\" — **SUPPORTED** [S1, S4].\n*   \"External platforms reduce the burden of infrastructure and engineering.\" — **SUPPORTED** [S3].\n*   \"In-house development requires significant specialized expertise and ongoing maintenance.\" — **SUPPORTED** [S2].\n*   \"External platforms provide scalable computing capabilities.\" — **SUPPORTED** [S3].\n*   \"Data privacy/handling is a critical evaluation point for external services.\" — **SUPPORTED** [S4].\n*   \"Strategic choice depends on technical capabilities and long-term operating models.\" — **SUPPORTED** [S5].\n\n**Conflicts:**\n*   None.\n\n**Premise Problems:**\n*   The question assumes these are the only two options; the sources do not mention hybrid models or other alternatives, but the premise is not false within the context of the provided evidence.\n\n**Claims to Exclude:**\n*   Any claims regarding specific cloud providers (e.g., AWS, Azure, Google Cloud) or specific AI frameworks (e.g., PyTorch, TensorFlow), as these are not mentioned in the sources.\n*   Any claims regarding the \"cheaper\" option, as the sources discuss cost components (resources, maintenance) but do not definitively state which approach is more cost-effective.",
+          "input_tokens": 823,
+          "output_tokens": 708,
+          "thinking_tokens": 0,
+          "latency_ms": 4739.346399990609,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "critic",
+            "writer"
+          ],
+          "output": "### Critique\nThe provided evidence is sufficient to address the core trade-offs requested, though it lacks quantitative data to compare the financial impact of each approach. The response must clearly state that the sources do not provide a definitive framework for weighing these factors against one another. I will structure the answer by contrasting the two approaches across the requested categories, ensuring that the limitations regarding cost and strategic weighting are explicitly noted.\n\n***\n\n### Answer\nWhen deciding between building an AI system in-house or utilizing an external platform, organizations must evaluate their internal technical capabilities, expected workloads, and long-term operating requirements [S5].\n\n**Cost and Maintenance**\nIn-house development requires significant investment in specialized expertise, infrastructure, and ongoing operational maintenance [S2]. Conversely, external platforms reduce the burden of building and operating infrastructure, allowing organizations to leverage existing scalable computing and model capabilities [S3]. While in-house development involves long-term costs associated with both initial creation and continuous operational work, the sources do not provide specific financial metrics to determine which approach is more cost-effective [S2].\n\n**Control and Customization**\nBuilding in-house provides greater control over system architecture, deployment, and infrastructure integration [S1]. This approach is particularly suited for highly specialized requirements that standardized external services may not satisfy [S1]. External platforms offer less customization but provide immediate access to advanced capabilities without the need to develop every component internally [S3].\n\n**Data Privacy and Scalability**\nData privacy is a critical consideration for external platforms, requiring organizations to evaluate how data is transmitted, processed, stored, and protected [S4]. Organizations with strict data requirements may prefer in-house architectures to maintain greater control over their data handling [S4]. Regarding scalability, external platforms provide access to scalable computing resources, whereas in-house systems require the organization to manage their own infrastructure to meet workload demands [S2][S3].\n\n**Strategic Considerations**\nThe choice between these models involves balancing operational responsibility against dependence on external providers [S5]. Because the provided evidence does not offer a method for weighing these factors, organizations must determine their own priorities based on their specific technical capacity and long-term strategic goals [S5].",
+          "input_tokens": 1169,
+          "output_tokens": 449,
+          "thinking_tokens": 0,
+          "latency_ms": 2064.4785999902524,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 2,
+      "input_tokens": 1992,
+      "output_tokens": 1157,
+      "thinking_tokens": 0,
+      "total_tokens": 3149,
+      "latency_ms": 6803.824999980861,
+      "retries": 0,
+      "estimated_cost_usd": 0.0022335000000000002,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.98,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Control and customization favour in-house",
+            "status": "covered"
+          },
+          {
+            "point": "In-house requires ongoing engineering, infrastructure, maintenance and expertise (total cost of ownership)",
+            "status": "covered"
+          },
+          {
+            "point": "External platforms reduce engineering burden and offer scalability",
+            "status": "covered"
+          },
+          {
+            "point": "External platforms create provider dependence and data-handling/privacy considerations",
+            "status": "covered"
+          },
+          {
+            "point": "Decision depends on capabilities, requirements, data constraints, workload and long-term operating model",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer covers all required key points, correctly uses source citations, avoids all trap violations, and handles missing comparative financial information by explicitly noting the limitations of the provided text. The quality and faithfulness are exceptionally high."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 344,
+        "citation_count": 13,
+        "distinct_sources_cited": 5,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 0.8
+      }
+    },
+    {
+      "architecture": "3-agent",
+      "agent_count": 3,
+      "status": "completed",
+      "error": null,
+      "answer": "When deciding between building an AI system in-house or using an external platform, organizations must evaluate their internal technical capabilities, expected workloads, and long-term operating models [S5]. This strategic choice involves balancing the high control and customization of internal development against the reduced infrastructure burden and scalability of external services [S1][S3][S5].\n\n### In-House Development\n*   **Control and Customization:** Building internally provides greater control over system architecture, deployment decisions, data handling, and integration with existing infrastructure [S1]. It is particularly suited for highly specialized requirements that standardized external services cannot satisfy [S1].\n*   **Costs and Maintenance:** This approach requires significant engineering resources, infrastructure, and specialized technical expertise [S2]. Organizations must account for both initial development costs and ongoing operational maintenance [S2].\n\n### External AI Platforms\n*   **Infrastructure and Scalability:** Using an external platform reduces the amount of infrastructure and engineering an organization must build and operate [S3]. These platforms provide access to scalable computing and model capabilities [S3].\n*   **Data Privacy and Strategy:** Organizations must evaluate how data is transmitted, processed, stored, and protected by the provider [S4]. Those with strict requirements may need additional controls or may prefer internal architectures to ensure data security [S4]. Furthermore, this path involves trade-offs regarding dependence on external providers and the shifting of operational responsibilities [S5].\n\n### Trade-offs and Limitations\nThe decision-making process involves several key trade-offs, though the provided evidence has limitations:\n*   **Cost:** While in-house development is noted for its high operational and development costs [S2], the sources do not provide comparative pricing models or cost structures for external platforms.\n*   **Maintenance:** Internal development requires substantial, ongoing maintenance [S2]. While external platforms reduce the engineering burden, the sources do not explicitly detail the specific maintenance tasks that remain for the user.\n*   **Scalability:** External platforms offer scalable computing [S3], but the evidence does not provide data on the scalability of in-house systems, preventing a direct performance comparison.\n\nUltimately, the choice depends on an organization's specific requirements and its capacity to manage the operational responsibilities associated with each model [S5].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research"
+          ],
+          "output": "### Research Brief for Agent 2\n\n**Sub-questions:**\n1. What are the benefits and requirements of building an AI system in-house?\n2. What are the benefits and requirements of using an external AI platform?\n3. How do cost, control, data privacy, customization, maintenance, and scalability factor into this decision?\n\n---\n\n### Extracted Facts\n\n**1. In-House Development**\n*   **Control:** Provides greater control over system architecture, deployment decisions, data handling, and integration with existing infrastructure [S1].\n*   **Customization:** Supports highly specialized requirements that are difficult to satisfy with standardized external services [S1].\n*   **Costs/Maintenance:** Requires substantial engineering resources, infrastructure, monitoring, maintenance, and specialized technical expertise [S2]. Long-term costs include both initial development and ongoing operational work [S2].\n\n**2. External AI Platforms**\n*   **Infrastructure/Scalability:** Reduces the amount of infrastructure and engineering an organization must build and operate [S3]. Provides access to scalable computing and model capabilities [S3].\n*   **Data Privacy:** Requires evaluation of how data is transmitted, processed, stored, and protected [S4]. Organizations with strict requirements may need additional controls or may prefer architectures with greater control over data handling [S4].\n*   **Strategy/Operational Responsibility:** Involves trade-offs regarding dependence on external providers and operational responsibility [S5].\n\n**3. General Decision Factors**\n*   Organizations should consider their technical capabilities, expected workload, requirements, and long-term operating model [S5].\n\n---\n\n### Disagreements and Conflicts\n*   No direct contradictions were found between the provided sources. The sources are complementary, focusing on different aspects of the same decision-making process.\n\n### Gaps in Evidence\n*   **Cost Comparison:** While [S2] details the costs of internal systems, the sources do not provide specific cost structures or comparative pricing models for external platforms (e.g., subscription vs. usage-based costs).\n*   **Specific Scalability Metrics:** While [S3] mentions external platforms provide \"scalable computing,\" there is no evidence comparing the upper limits or performance of internal vs. external scalability.\n*   **Maintenance Comparison:** [S2] highlights the burden of internal maintenance, but the sources do not explicitly detail the level of maintenance required for an external platform beyond the implication that it is reduced.",
+          "input_tokens": 698,
+          "output_tokens": 507,
+          "thinking_tokens": 0,
+          "latency_ms": 41422.17380000511,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "fact_check",
+            "critic"
+          ],
+          "output": "### Fact-Check Report\n\n**Claim Verification:**\n*   **In-house development provides greater control over architecture, deployment, data, and integration:** SUPPORTED [S1].\n*   **In-house development supports highly specialized requirements:** SUPPORTED [S1].\n*   **In-house development requires substantial engineering, infrastructure, and specialized expertise:** SUPPORTED [S2].\n*   **In-house development costs include both initial development and ongoing operational work:** SUPPORTED [S2].\n*   **External platforms reduce the need for internal infrastructure and engineering:** SUPPORTED [S3].\n*   **External platforms provide access to scalable computing and model capabilities:** SUPPORTED [S3].\n*   **External platforms require evaluation of data transmission, processing, storage, and protection:** SUPPORTED [S4].\n*   **Organizations with strict data requirements may need additional controls or internal architectures:** SUPPORTED [S4].\n*   **The decision involves trade-offs regarding dependence on external providers and operational responsibility:** SUPPORTED [S5].\n*   **Organizations should consider technical capabilities, workload, requirements, and long-term operating models:** SUPPORTED [S5].\n\n**Conflicts:**\n*   None identified. The sources are complementary.\n\n**Premise Problems:**\n*   The question contains no false or unsupported premises.\n\n**Claims to Exclude:**\n*   None. All extracted facts are supported by the provided sources.\n\n---\n\n### Critique\n\n**Answerability:**\n*   The evidence is sufficient to provide a comprehensive overview of the factors involved in the decision-making process. However, it cannot provide a quantitative comparison (e.g., \"which is cheaper\") or specific technical benchmarks.\n\n**Weaknesses and Missing Context:**\n*   **Cost:** The evidence identifies that in-house development has high operational costs [S2], but it lacks specific information on the cost structure of external platforms (e.g., subscription fees, API costs), making a direct financial trade-off analysis impossible.\n*   **Maintenance:** While the burden of internal maintenance is clear [S2], the \"maintenance\" required for external platforms is only implied to be lower [S3]. The evidence does not define what maintenance tasks remain for the user of an external platform.\n*   **Scalability:** The sources mention external platforms provide \"scalable computing\" [S3], but do not provide evidence on the scalability of in-house systems, preventing a direct comparison.\n\n**Required Caveats:**\n*   The final answer must explicitly state that the sources do not provide comparative cost data or specific performance metrics for scalability.\n*   It should be noted that the \"maintenance\" burden for external platforms is not zero, even if it is reduced compared to in-house development.\n\n**Recommendations for Structure and Content:**\n1.  **Introduction:** Frame the decision as a strategic choice based on technical capabilities, workload, and long-term operating models [S5].\n2.  **In-House Development Section:** Focus on the benefits of control (architecture, data, integration) and customization [S1], balanced against the high requirements for specialized expertise and long-term operational costs [S2].\n3.  **External Platform Section:** Focus on the benefits of reduced infrastructure/engineering burden and access to scalable capabilities [S3], balanced against the need for rigorous data security evaluation [S4] and the risk of provider dependence [S5].\n4.  **Trade-off Summary:** Use a comparative approach for the requested categories (Control, Data Privacy, Customization, Maintenance, Scalability, Cost). Where evidence is limited (e.g., specific cost comparisons), clearly state that the sources do not provide this data.\n5.  **Conclusion:** Emphasize that the decision is highly context-dependent, relying on the organization's specific requirements and internal capacity [S5].",
+          "input_tokens": 1350,
+          "output_tokens": 806,
+          "thinking_tokens": 0,
+          "latency_ms": 9374.320400005672,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 2,
+          "roles": [
+            "writer"
+          ],
+          "output": "When deciding between building an AI system in-house or using an external platform, organizations must evaluate their internal technical capabilities, expected workloads, and long-term operating models [S5]. This strategic choice involves balancing the high control and customization of internal development against the reduced infrastructure burden and scalability of external services [S1][S3][S5].\n\n### In-House Development\n*   **Control and Customization:** Building internally provides greater control over system architecture, deployment decisions, data handling, and integration with existing infrastructure [S1]. It is particularly suited for highly specialized requirements that standardized external services cannot satisfy [S1].\n*   **Costs and Maintenance:** This approach requires significant engineering resources, infrastructure, and specialized technical expertise [S2]. Organizations must account for both initial development costs and ongoing operational maintenance [S2].\n\n### External AI Platforms\n*   **Infrastructure and Scalability:** Using an external platform reduces the amount of infrastructure and engineering an organization must build and operate [S3]. These platforms provide access to scalable computing and model capabilities [S3].\n*   **Data Privacy and Strategy:** Organizations must evaluate how data is transmitted, processed, stored, and protected by the provider [S4]. Those with strict requirements may need additional controls or may prefer internal architectures to ensure data security [S4]. Furthermore, this path involves trade-offs regarding dependence on external providers and the shifting of operational responsibilities [S5].\n\n### Trade-offs and Limitations\nThe decision-making process involves several key trade-offs, though the provided evidence has limitations:\n*   **Cost:** While in-house development is noted for its high operational and development costs [S2], the sources do not provide comparative pricing models or cost structures for external platforms.\n*   **Maintenance:** Internal development requires substantial, ongoing maintenance [S2]. While external platforms reduce the engineering burden, the sources do not explicitly detail the specific maintenance tasks that remain for the user.\n*   **Scalability:** External platforms offer scalable computing [S3], but the evidence does not provide data on the scalability of in-house systems, preventing a direct performance comparison.\n\nUltimately, the choice depends on an organization's specific requirements and its capacity to manage the operational responsibilities associated with each model [S5].",
+          "input_tokens": 1709,
+          "output_tokens": 467,
+          "thinking_tokens": 0,
+          "latency_ms": 3689.8119999968912,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 3,
+      "input_tokens": 3757,
+      "output_tokens": 1780,
+      "thinking_tokens": 0,
+      "total_tokens": 5537,
+      "latency_ms": 54486.306200007675,
+      "retries": 0,
+      "estimated_cost_usd": 0.00360925,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.98,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Control and customization favour in-house",
+            "status": "covered"
+          },
+          {
+            "point": "In-house requires ongoing engineering, infrastructure, maintenance and expertise (total cost of ownership)",
+            "status": "covered"
+          },
+          {
+            "point": "External platforms reduce engineering burden and offer scalability",
+            "status": "covered"
+          },
+          {
+            "point": "External platforms create provider dependence and data-handling/privacy considerations",
+            "status": "covered"
+          },
+          {
+            "point": "Decision depends on capabilities, requirements, data constraints, workload and long-term operating model",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer covers all required key points thoroughly and accurately, utilizing the provided sources with correct citations. It includes a thoughtful analysis of the trade-offs and explicitly notes the limitations of the evidence without hallucinating outside information or violating any negative traps."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 337,
+        "citation_count": 17,
+        "distinct_sources_cited": 5,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 0.9375
+      }
+    },
+    {
+      "architecture": "4-agent",
+      "agent_count": 4,
+      "status": "completed",
+      "error": null,
+      "answer": "When deciding between building an AI system in-house or using an external platform, a company must evaluate its technical capabilities, expected workload, and long-term operating model [S5]. There is no provided financial data or quantitative framework to compare the cost-effectiveness of these approaches, so the decision relies on qualitative trade-offs regarding control, maintenance, and operational strategy [S2][S3][S5].\n\n**Control and Customization**\nIn-house development offers greater control over system architecture, deployment decisions, data handling, and integration with existing infrastructure [S1]. This approach is particularly suited for highly specialized requirements that standardized external services cannot satisfy [S1]. Conversely, external platforms provide access to model capabilities without requiring the organization to develop every component internally [S3].\n\n**Cost and Maintenance**\nBuilding in-house requires substantial engineering resources, specialized technical expertise, and ongoing monitoring, with costs encompassing both initial development and long-term operational work [S2]. Using an external platform reduces the amount of infrastructure and engineering an organization must build and operate itself [S3].\n\n**Data Privacy**\nIn-house development allows for direct control over data handling [S1]. When using an external platform, an organization must evaluate how its data is transmitted, processed, stored, and protected [S4]. Organizations with strict data requirements may need to implement additional controls or may prefer in-house architectures to maintain greater oversight [S4].\n\n**Scalability and Strategy**\nExternal platforms provide access to scalable computing and model capabilities [S3]. However, choosing an external provider introduces trade-offs regarding dependence on that provider, whereas in-house development places the full burden of operational responsibility on the organization [S5].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research"
+          ],
+          "output": "### Research Brief for Agent 2\n\n**Sub-questions:**\n1. What are the benefits and trade-offs of building an AI system in-house?\n2. What are the benefits and trade-offs of using an external AI platform?\n3. How do cost, control, data privacy, customization, maintenance, and scalability factor into the decision?\n\n---\n\n### Extracted Facts\n\n**In-House Development:**\n*   **Control:** Provides greater control over system architecture, deployment decisions, data handling, and integration with existing infrastructure [S1].\n*   **Customization:** Supports highly specialized requirements that are difficult to satisfy with standardized external services [S1].\n*   **Costs/Maintenance:** Requires substantial engineering resources, infrastructure, monitoring, and specialized technical expertise [S2]. Long-term costs include initial development and ongoing operational work [S2].\n\n**External AI Platforms:**\n*   **Costs/Maintenance:** Reduces the amount of infrastructure and engineering an organization must build and operate itself [S3].\n*   **Scalability:** Provides access to scalable computing and model capabilities without requiring the organization to develop every component internally [S3].\n*   **Data Privacy:** Requires evaluation of how data is transmitted, processed, stored, and protected [S4]. Organizations with strict data requirements may need additional controls [S4].\n*   **Strategy/Dependencies:** Involves trade-offs regarding dependence on external providers and operational responsibility [S5].\n\n**General Decision Factors:**\n*   Organizations should consider their technical capabilities, expected workload, requirements, and long-term operating model [S5].\n\n---\n\n### Disagreements and Conflicts\n*   No direct contradictions were found between the provided sources. The sources present complementary perspectives on the trade-offs between internal and external development.\n\n### Gaps in Evidence\n*   **Specific Cost Comparison:** While sources mention that internal systems require \"substantial\" resources [S2] and external platforms can \"reduce\" infrastructure needs [S3], there is no data provided to compare the *relative* cost-effectiveness of one approach over the other.\n*   **Quantifiable Metrics:** The sources do not provide metrics or frameworks to quantify \"strict data requirements\" or \"highly specialized requirements\" [S1, S4].\n*   **Security/Privacy Specifics:** While data handling is mentioned [S1, S4], the sources do not provide specific security standards or regulatory compliance details.",
+          "input_tokens": 701,
+          "output_tokens": 507,
+          "thinking_tokens": 0,
+          "latency_ms": 5264.6668999805115,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "fact_check"
+          ],
+          "output": "### Fact-Check Report\n\n**Claim Verification:**\n\n1.  **In-house development provides greater control over architecture, deployment, data handling, and integration.**\n    *   Verdict: **SUPPORTED** [S1]\n2.  **In-house development supports highly specialized requirements better than standardized external services.**\n    *   Verdict: **SUPPORTED** [S1]\n3.  **In-house development requires substantial engineering resources, infrastructure, monitoring, maintenance, and specialized expertise.**\n    *   Verdict: **SUPPORTED** [S2]\n4.  **In-house development costs include both initial development and ongoing operational work.**\n    *   Verdict: **SUPPORTED** [S2]\n5.  **External AI platforms reduce the amount of infrastructure and engineering an organization must build and operate.**\n    *   Verdict: **SUPPORTED** [S3]\n6.  **External AI platforms provide access to scalable computing and model capabilities without requiring internal development of every component.**\n    *   Verdict: **SUPPORTED** [S3]\n7.  **External AI platforms require organizations to evaluate data transmission, processing, storage, and protection.**\n    *   Verdict: **SUPPORTED** [S4]\n8.  **Organizations with strict data requirements may need additional controls or may prefer architectures with more control over data handling.**\n    *   Verdict: **SUPPORTED** [S4]\n9.  **The choice involves trade-offs regarding dependence on external providers and operational responsibility.**\n    *   Verdict: **SUPPORTED** [S5]\n10. **Organizations should consider technical capabilities, expected workload, requirements, and long-term operating model when deciding.**\n    *   Verdict: **SUPPORTED** [S5]\n\n**Conflicting Sources:**\n*   None. The sources provide complementary information regarding the trade-offs of AI development strategies.\n\n**Premise Check:**\n*   The question contains no false or unsupported premises. It asks for a discussion of factors and trade-offs, all of which are addressed by the provided sources.\n\n**Claims to Exclude:**\n*   Any claims regarding the *relative* cost-effectiveness (e.g., \"In-house is more expensive than external\" or vice versa) must be excluded, as the sources only describe the *nature* of the costs (resource-heavy vs. reduced infrastructure) rather than providing a direct financial comparison.\n*   Any specific security standards, regulatory compliance details, or quantitative metrics for \"strict\" or \"specialized\" requirements must be excluded, as they are not present in the provided evidence.",
+          "input_tokens": 1252,
+          "output_tokens": 550,
+          "thinking_tokens": 0,
+          "latency_ms": 6518.905700009782,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 2,
+          "roles": [
+            "critic"
+          ],
+          "output": "### Critique\n\n**Answerability Verdict:**\nThe evidence is sufficient to answer the question **partly**. The provided sources allow for a qualitative discussion of the trade-offs between in-house and external AI development across the requested categories. However, the evidence lacks the depth to provide a comprehensive decision-making framework, as it does not offer comparative cost analysis or specific criteria for evaluating \"specialized\" versus \"standardized\" needs.\n\n**Weaknesses and Missing Context:**\n*   **Lack of Comparative Cost Data:** While the sources identify the *types* of costs (e.g., engineering resources vs. infrastructure reduction), they do not provide information to weigh these against each other.\n*   **Subjectivity of Requirements:** The terms \"strict data requirements\" [S4] and \"highly specialized requirements\" [S1] are mentioned but not defined or contextualized with examples, leaving the reader without a clear benchmark for when to choose one path over the other.\n*   **Security/Compliance Depth:** The evidence mentions data privacy [S4] but lacks detail on how external platforms might actually mitigate or exacerbate these risks compared to in-house solutions.\n\n**Required Caveats (Limitations):**\n*   The final answer must state that the provided evidence does not contain financial data or quantitative metrics to compare the cost-effectiveness of in-house versus external systems.\n*   It must clarify that the decision-making process relies on qualitative assessments of an organization's specific technical capabilities and operational goals, as no standardized industry framework is provided.\n\n**Recommendations for Structure and Content:**\n1.  **Introduction:** Briefly state that the decision depends on an organization's technical capabilities, expected workload, and long-term operating model [S5].\n2.  **Comparative Analysis (The Core):** Use a structured approach to address the user's specific categories:\n    *   **Control & Customization:** Contrast the high control/specialization of in-house [S1] with the standardized nature of external platforms [S1].\n    *   **Cost & Maintenance:** Contrast the \"substantial\" internal engineering/operational burden [S2] with the reduced infrastructure requirements of external platforms [S3].\n    *   **Data Privacy:** Highlight the need for internal evaluation of data handling in external systems [S4] versus the inherent control maintained in-house [S1].\n    *   **Scalability:** Frame this as a benefit of external platforms [S3].\n3.  **Strategic Considerations:** Conclude by noting the trade-off regarding dependence on external providers versus the responsibility of managing internal systems [S5].\n4.  **Tone:** Maintain a neutral, analytical tone. Ensure all claims are explicitly tied to the provided source IDs. Avoid suggesting that one approach is objectively \"better.\"",
+          "input_tokens": 1454,
+          "output_tokens": 577,
+          "thinking_tokens": 0,
+          "latency_ms": 5245.7785999868065,
+          "saw_sources": false
+        },
+        {
+          "agent_index": 3,
+          "roles": [
+            "writer"
+          ],
+          "output": "When deciding between building an AI system in-house or using an external platform, a company must evaluate its technical capabilities, expected workload, and long-term operating model [S5]. There is no provided financial data or quantitative framework to compare the cost-effectiveness of these approaches, so the decision relies on qualitative trade-offs regarding control, maintenance, and operational strategy [S2][S3][S5].\n\n**Control and Customization**\nIn-house development offers greater control over system architecture, deployment decisions, data handling, and integration with existing infrastructure [S1]. This approach is particularly suited for highly specialized requirements that standardized external services cannot satisfy [S1]. Conversely, external platforms provide access to model capabilities without requiring the organization to develop every component internally [S3].\n\n**Cost and Maintenance**\nBuilding in-house requires substantial engineering resources, specialized technical expertise, and ongoing monitoring, with costs encompassing both initial development and long-term operational work [S2]. Using an external platform reduces the amount of infrastructure and engineering an organization must build and operate itself [S3].\n\n**Data Privacy**\nIn-house development allows for direct control over data handling [S1]. When using an external platform, an organization must evaluate how its data is transmitted, processed, stored, and protected [S4]. Organizations with strict data requirements may need to implement additional controls or may prefer in-house architectures to maintain greater oversight [S4].\n\n**Scalability and Strategy**\nExternal platforms provide access to scalable computing and model capabilities [S3]. However, choosing an external provider introduces trade-offs regarding dependence on that provider, whereas in-house development places the full burden of operational responsibility on the organization [S5].",
+          "input_tokens": 2046,
+          "output_tokens": 350,
+          "thinking_tokens": 0,
+          "latency_ms": 1970.6280000100378,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 4,
+      "input_tokens": 5453,
+      "output_tokens": 1984,
+      "thinking_tokens": 0,
+      "total_tokens": 7437,
+      "latency_ms": 18999.979199987138,
+      "retries": 0,
+      "estimated_cost_usd": 0.00433925,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.99,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Control and customization favour in-house",
+            "status": "covered"
+          },
+          {
+            "point": "In-house requires ongoing engineering, infrastructure, maintenance and expertise (total cost of ownership)",
+            "status": "covered"
+          },
+          {
+            "point": "External platforms reduce engineering burden and offer scalability",
+            "status": "covered"
+          },
+          {
+            "point": "External platforms create provider dependence and data-handling/privacy considerations",
+            "status": "covered"
+          },
+          {
+            "point": "Decision depends on capabilities, requirements, data constraints, workload and long-term operating model",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer covers all required key points thoroughly, correctly cites sources for all statements, introduces no unsupported claims or trap violations, and addresses all dimensions of the prompt with high fidelity."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 249,
+        "citation_count": 14,
+        "distinct_sources_cited": 5,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 1.0
+      }
+    }
+  ],
+  "ranking": {
+    "order": [
+      "4-agent",
+      "3-agent",
+      "1-agent",
+      "2-agent"
+    ],
+    "labels": {
+      "A": "2-agent",
+      "B": "4-agent",
+      "C": "1-agent",
+      "D": "3-agent"
+    },
+    "reasoning": "Answer B provides a comprehensive, well-structured response that directly addresses all aspects of the prompt while maintaining strict fidelity to the sources and explicitly acknowledging uncertainties and lack of quantitative financial data. Answer D is also very strong, particularly in calling out source limitations, but includes slight structural formatting redundancies. Answer A includes an awkward meta-commentary block (critique) at the beginning. Answer C is solid but slightly less comprehensive in its direct handling of all sub-points compared to B and D."
+  },
+  "ranking_error": null,
+  "completed_at": "2026-10-27T03:01:43+00:00"
+}

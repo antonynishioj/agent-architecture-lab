@@ -1,0 +1,381 @@
+{
+  "run_id": "6786aa8b98",
+  "case_id": "rag-benefits-001",
+  "trial": 1,
+  "difficulty": "easy",
+  "category": "RAG",
+  "question": "What are the main advantages of retrieval-augmented generation (RAG)?",
+  "outcomes": [
+    {
+      "architecture": "1-agent",
+      "agent_count": 1,
+      "status": "completed",
+      "error": null,
+      "answer": "Retrieval-augmented generation (RAG) offers several key advantages for language models, primarily concerning information access, accuracy, cost-efficiency, and transparency. \n\n* **Access to Current and Specific Information:** RAG retrieves relevant documents from external sources at query time, allowing models to utilize information that is newer than their training data or specific to an organisation, such as internal policies and product documentation [S1].\n* **Grounded Responses and Reduced Hallucinations:** By prompting models to answer from retrieved passages, responses are grounded in evidence rather than solely on memorised training data, which helps reduce unsupported statements [S2].\n* **Faster and Cheaper Knowledge Updates:** Updating the system's knowledge only requires updating the document index, eliminating the need to retrain or fine-tune the underlying language model when facts change [S3].\n* **Traceability and Verification:** RAG systems can provide users with citations or links to the passages used to base an answer, helping users verify the information, which is frequently required in regulated environments [S4].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research",
+            "fact_check",
+            "critic",
+            "writer"
+          ],
+          "output": "Retrieval-augmented generation (RAG) offers several key advantages for language models, primarily concerning information access, accuracy, cost-efficiency, and transparency. \n\n* **Access to Current and Specific Information:** RAG retrieves relevant documents from external sources at query time, allowing models to utilize information that is newer than their training data or specific to an organisation, such as internal policies and product documentation [S1].\n* **Grounded Responses and Reduced Hallucinations:** By prompting models to answer from retrieved passages, responses are grounded in evidence rather than solely on memorised training data, which helps reduce unsupported statements [S2].\n* **Faster and Cheaper Knowledge Updates:** Updating the system's knowledge only requires updating the document index, eliminating the need to retrain or fine-tune the underlying language model when facts change [S3].\n* **Traceability and Verification:** RAG systems can provide users with citations or links to the passages used to base an answer, helping users verify the information, which is frequently required in regulated environments [S4].",
+          "input_tokens": 839,
+          "output_tokens": 215,
+          "thinking_tokens": 0,
+          "latency_ms": 27073.541099991417,
+          "saw_sources": true
+        }
+      ],
+      "model": "gemini-3.5-flash-lite",
+      "call_count": 1,
+      "input_tokens": 839,
+      "output_tokens": 215,
+      "thinking_tokens": 0,
+      "total_tokens": 1054,
+      "latency_ms": 27073.541099991417,
+      "retries": 0,
+      "estimated_cost_usd": 0.0007892,
+      "evaluation": {
+        "answer_relevancy": 0.98,
+        "completeness": 1.0,
+        "faithfulness": 0.99,
+        "citation_quality": 0.99,
+        "uncertainty_handling": 0.95,
+        "overall_quality": 0.98,
+        "judge_completeness": 0.98,
+        "key_points": [
+          {
+            "point": "Access to current or domain-specific/private information",
+            "status": "covered"
+          },
+          {
+            "point": "Answers grounded in retrieved evidence, which can reduce unsupported or hallucinated content",
+            "status": "covered"
+          },
+          {
+            "point": "Knowledge can be updated without retraining the model",
+            "status": "covered"
+          },
+          {
+            "point": "Answers can cite or show their sources",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer accurately and concisely addresses all key points requested, using precise citations to all provided sources without making any unsupported claims or falling into any trap claims. It correctly notes that grounding helps reduce rather than eliminate unsupported statements."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 157,
+        "citation_count": 4,
+        "distinct_sources_cited": 4,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 0.8
+      }
+    },
+    {
+      "architecture": "2-agent",
+      "agent_count": 2,
+      "status": "completed",
+      "error": null,
+      "answer": "Retrieval-augmented generation (RAG) offers several key advantages, including access to up-to-date and organization-specific information, improved response grounding and accuracy, efficient system maintenance, and enhanced traceability.\n\n* **Information Currency and Specificity:** RAG allows language models to utilize information that is newer than their training data, as well as data specific to an organization, such as internal policies or product documentation [S1].\n* **Grounding and Reduced Errors:** By answering from retrieved passages, responses are grounded in evidence rather than relying solely on memorized training data [S2]. Evaluations indicate that this tends to reduce unsupported statements, though it does not eliminate them entirely [S2].\n* **Faster and Cheaper Updates:** Updating system knowledge only requires modifying the document index rather than retraining or fine-tuning the language model itself, making knowledge updates both faster and cheaper when facts change [S3].\n* **Traceability and Verification:** Systems can provide users with the source passages used for an answer—such as citations or links—which aids in verification and is frequently required in regulated environments [S4].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research",
+            "fact_check"
+          ],
+          "output": "### Structured Research Brief\n\n#### Sub-Questions\n1. What is retrieval-augmented generation (RAG) and how does it work?\n2. What are the advantages of RAG regarding information currency and organization-specific data?\n3. How does RAG affect the accuracy and grounding of language model outputs?\n4. What are the benefits of RAG regarding system updates and maintenance?\n5. How does RAG impact traceability and verification for users?\n\n#### Extracted Facts\n* **Definition and Mechanism:**\n  * RAG retrieves relevant documents from an external knowledge source at query time and provides them to the language model as context [S1].\n* **Information Currency and Specificity:**\n  * RAG allows models to use information newer than their training data [S1].\n  * RAG allows models to use information specific to an organization, such as internal policies or product documentation [S1].\n* **Grounding and Reduction of Errors:**\n  * Responses can be grounded in evidence rather than only memorized training data because the model answers from retrieved passages [S2].\n  * Evaluations show this tends to reduce unsupported statements, though it does not remove them completely [S2].\n* **Updates and Maintenance:**\n  * Updating system knowledge requires updating the document index rather than retraining or fine-tuning the language model itself [S3].\n  * This makes knowledge updates faster and cheaper when facts change [S3].\n* **Traceability and Verification:**\n  * Systems can show users the passages an answer was based on (e.g., as citations or links) [S4].\n  * Traceability helps users verify answers and is often required in regulated settings [S4].\n\n#### Disagreements and Outdated Sources\n* *Disagreements:* None identified among the sources.\n* *Outdated Sources:* None identified.\n\n#### Gaps\n* The sources do not discuss potential disadvantages, latency impacts, scalability challenges, or retrieval errors associated with RAG.\n\n---\n\n### Fact-Check Report\n\n#### Claim-by-Claim Verification\n* *Claim:* RAG retrieves relevant documents at query time and supplies them as context to the language model. -> **SUPPORTED** [S1]\n* *Claim:* RAG enables the use of information newer than the model's training data. -> **SUPPORTED** [S1]\n* *Claim:* RAG allows the use of organization-specific information like internal policies or product documentation. -> **SUPPORTED** [S1]\n* *Claim:* Responses are grounded in evidence rather than solely on memorized training data. -> **SUPPORTED** [S2]\n* *Claim:* RAG tends to reduce unsupported statements in evaluations, though not completely. -> **SUPPORTED** [S2]\n* *Claim:* Updating system knowledge only requires updating the document index, avoiding model retraining or fine-tuning. -> **SUPPORTED** [S3]\n* *Claim:* Knowledge updates are faster and cheaper with RAG. -> **SUPPORTED** [S3]\n* *Claim:* RAG systems can show source passages as citations or links for traceability. -> **SUPPORTED** [S4]\n* *Claim:* Traceability helps users verify answers and is frequently required in regulated environments. -> **SUPPORTED** [S4]\n\n#### Conflicts Between Sources\n* No conflicts detected.\n\n#### Premise Problems\n* The question (\"What are the main advantages of retrieval-augmented generation (RAG)?\") does not contain a false or unsupported premise; the provided sources directly support the existence of several advantages.\n\n#### Claims to Exclude\n* Any claims regarding disadvantages, costs of retrieval infrastructure, latency, or specific technical implementation details (such as vector databases or embedding models) must not appear in the final answer because they are absent from the provided evidence.",
+          "input_tokens": 748,
+          "output_tokens": 798,
+          "thinking_tokens": 0,
+          "latency_ms": 24193.302800005767,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "critic",
+            "writer"
+          ],
+          "output": "Retrieval-augmented generation (RAG) offers several key advantages, including access to up-to-date and organization-specific information, improved response grounding and accuracy, efficient system maintenance, and enhanced traceability.\n\n* **Information Currency and Specificity:** RAG allows language models to utilize information that is newer than their training data, as well as data specific to an organization, such as internal policies or product documentation [S1].\n* **Grounding and Reduced Errors:** By answering from retrieved passages, responses are grounded in evidence rather than relying solely on memorized training data [S2]. Evaluations indicate that this tends to reduce unsupported statements, though it does not eliminate them entirely [S2].\n* **Faster and Cheaper Updates:** Updating system knowledge only requires modifying the document index rather than retraining or fine-tuning the language model itself, making knowledge updates both faster and cheaper when facts change [S3].\n* **Traceability and Verification:** Systems can provide users with the source passages used for an answer—such as citations or links—which aids in verification and is frequently required in regulated environments [S4].",
+          "input_tokens": 1229,
+          "output_tokens": 227,
+          "thinking_tokens": 0,
+          "latency_ms": 13783.282099990174,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.5-flash-lite",
+      "call_count": 2,
+      "input_tokens": 1977,
+      "output_tokens": 1025,
+      "thinking_tokens": 0,
+      "total_tokens": 3002,
+      "latency_ms": 37976.58489999594,
+      "retries": 0,
+      "estimated_cost_usd": 0.0031555999999999997,
+      "evaluation": {
+        "answer_relevancy": 0.98,
+        "completeness": 1.0,
+        "faithfulness": 0.98,
+        "citation_quality": 0.98,
+        "uncertainty_handling": 0.96,
+        "overall_quality": 0.98,
+        "judge_completeness": 0.98,
+        "key_points": [
+          {
+            "point": "Access to current or domain-specific/private information",
+            "status": "covered"
+          },
+          {
+            "point": "Answers grounded in retrieved evidence, which can reduce unsupported or hallucinated content",
+            "status": "covered"
+          },
+          {
+            "point": "Knowledge can be updated without retraining the model",
+            "status": "covered"
+          },
+          {
+            "point": "Answers can cite or show their sources",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer is exceptionally well-written, accurately addressing all key points required by the prompt. It cites sources faithfully and appropriately handles nuances, explicitly noting that RAG reduces unsupported statements without entirely eliminating them, thereby avoiding the trap claim."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 166,
+        "citation_count": 5,
+        "distinct_sources_cited": 4,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 0.8333333333333334
+      }
+    },
+    {
+      "architecture": "3-agent",
+      "agent_count": 3,
+      "status": "completed",
+      "error": null,
+      "answer": "Retrieval-augmented generation (RAG) offers several key advantages, including access to external and up-to-date information, improved response grounding, efficient knowledge updates, and enhanced traceability [S1][S2][S3][S4]. \n\nThe main advantages of RAG are:\n\n* **Access to External and New Information:** RAG retrieves relevant documents from an external knowledge source at query time to supply as context to the language model [S1]. This allows the model to utilize information that is newer than its training data, as well as organization-specific data such as product documentation and internal policies [S1].\n* **Improved Grounding:** By having the model answer from retrieved passages, responses are grounded in evidence rather than depending solely on training memorization [S2]. Evaluations indicate that this tends to reduce unsupported statements, though it does not eliminate them entirely [S2].\n* **Efficient Knowledge Updates:** System knowledge is updated by modifying the document index rather than retraining or fine-tuning the language model itself when facts change [S3]. This makes updating knowledge both faster and more cost-effective [S3].\n* **Traceability and Verification:** RAG systems can provide links or citations to display the specific passages used as the basis for an answer [S4]. This traceability helps users verify answers and is frequently required in regulated settings [S4].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research"
+          ],
+          "output": "**Research Brief for Agent 2**\n\n### Sub-Questions\n1. How does retrieval-augmented generation (RAG) work, and what are its core advantages regarding external and up-to-date information?\n2. How does RAG affect the accuracy and grounding of language model outputs?\n3. What are the operational and cost benefits of RAG regarding knowledge updates?\n4. How does RAG support traceability and verification for users in regulated settings?\n\n---\n\n### Extracted Facts (with Source IDs)\n* **Definition and External/New Information Integration:**\n  * RAG retrieves relevant documents from an external knowledge source at query time and supplies them to the language model as context [S1].\n  * It allows the model to utilize information that is newer than its training data [S1].\n  * It allows the model to use organization-specific information, such as internal policies or product documentation [S1].\n\n* **Grounding and Reduction of Unsupported Statements:**\n  * By asking the model to answer from retrieved passages, responses are grounded in evidence instead of solely relying on memorization from training [S2].\n  * Evaluations show this tends to reduce unsupported statements, though it does not eliminate them completely [S2].\n\n* **Efficiency of Knowledge Updates:**\n  * Updating system knowledge in RAG involves updating the document index [S3].\n  * The language model itself does not require retraining or fine-tuning when facts change [S3].\n  * This makes knowledge updates both faster and cheaper [S3].\n\n* **Traceability and Verification:**\n  * RAG systems can display the passages used as the basis for an answer (e.g., via citations or links) [S4].\n  * This traceability aids users in verifying answers [S4].\n  * Traceability is frequently required in regulated settings [S4].\n\n---\n\n### Disagreements\n* None identified among the provided sources.\n\n---\n\n### Outdated Information\n* None identified among the provided sources.\n\n---\n\n### Gaps / Unanswered Sub-Questions\n* The sources do not detail potential disadvantages, limitations (other than not completely removing unsupported statements), or implementation challenges of RAG systems.",
+          "input_tokens": 623,
+          "output_tokens": 461,
+          "thinking_tokens": 0,
+          "latency_ms": 15401.38600001228,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "fact_check",
+            "critic"
+          ],
+          "output": "### Fact-Check Report\n\n#### 1. Claim Verification\n* **Claim:** RAG retrieves relevant documents from an external knowledge source at query time and supplies them to the language model as context.\n  * **Verdict:** SUPPORTED [S1]\n* **Claim:** RAG allows the model to utilize information newer than its training data.\n  * **Verdict:** SUPPORTED [S1]\n* **Claim:** RAG allows the model to use organization-specific information, such as internal policies or product documentation.\n  * **Verdict:** SUPPORTED [S1]\n* **Claim:** By asking the model to answer from retrieved passages, responses are grounded in evidence rather than solely relying on training memorization.\n  * **Verdict:** SUPPORTED [S2]\n* **Claim:** Evaluations show RAG tends to reduce unsupported statements, though it does not eliminate them completely.\n  * **Verdict:** SUPPORTED [S2]\n* **Claim:** Updating system knowledge in RAG involves updating the document index, and the language model does not require retraining or fine-tuning when facts change.\n  * **Verdict:** SUPPORTED [S3]\n* **Claim:** This makes knowledge updates faster and cheaper.\n  * **Verdict:** SUPPORTED [S3]\n* **Claim:** RAG systems can display the passages used as the basis for an answer (e.g., via citations or links).\n  * **Verdict:** SUPPORTED [S4]\n* **Claim:** This traceability aids users in verifying answers and is frequently required in regulated settings.\n  * **Verdict:** SUPPORTED [S4]\n\n#### 2. Conflicting Sources\n* None. The sources are entirely complementary and do not conflict.\n\n#### 3. Premise Check\n* The question (\"What are the main advantages of retrieval-augmented generation (RAG)?\") does not contain any false or unsupported premises.\n\n#### 4. Claims to Exclude\n* No claims need to be excluded, as all extracted facts are directly and cleanly supported by the provided sources.\n\n---\n\n### Critique\n\n#### 1. Answerability Verdict\n* **Verdict:** Fully answerable based on the provided evidence regarding the *advantages* of RAG. (Note: The sources do not cover disadvantages or technical implementation details, but the question specifically asks only for advantages).\n\n#### 2. Weaknesses, Missing Context, and Overgeneralisations\n* **Limitation of Grounding:** The final answer must note that while RAG reduces unsupported statements, it does not remove them completely [S2]. \n* **Scope:** The evidence restricts the advantages to specific domains (newer info, org-specific info [S1], grounding [S2], cheaper/faster updates [S3], and traceability [S4]). Agent 3 must stick strictly to these categories without generalizing about overall system performance or speed beyond knowledge updates.\n\n#### 3. Unanswered Parts / Required Limitations\n* The prompt asks for main advantages, which are fully covered. However, the final answer must include the caveat from [S2] that unsupported statements are reduced *but not completely eliminated*.\n\n#### 4. Recommendations for Structure and Content (for Agent 3)\n* **Structure:** Use a clear, multi-paragraph or bulleted structure addressing each distinct advantage outlined in the sources.\n  1. **Introduction/Definition:** Briefly define RAG based on [S1].\n  2. **Access to New and Internal Information:** Cover newer-than-training data and organization-specific data [S1].\n  3. **Improved Grounding:** Explain evidence-based responses and the reduction (though not elimination) of unsupported statements [S2].\n  4. **Efficient Knowledge Updates:** Detail the lack of need for retraining/fine-tuning and the cost/speed benefits of updating document indexes [S3].\n  5. **Traceability and Compliance:** Discuss citations, links, user verification, and utility in regulated settings [S4].\n* **Content Rule:** Ensure every single advantage point is explicitly anchored with its corresponding source ID ([S1], [S2], [S3], or [S4]). Do not introduce outside knowledge, metrics, or examples.",
+          "input_tokens": 1229,
+          "output_tokens": 877,
+          "thinking_tokens": 0,
+          "latency_ms": 19248.068000015337,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 2,
+          "roles": [
+            "writer"
+          ],
+          "output": "Retrieval-augmented generation (RAG) offers several key advantages, including access to external and up-to-date information, improved response grounding, efficient knowledge updates, and enhanced traceability [S1][S2][S3][S4]. \n\nThe main advantages of RAG are:\n\n* **Access to External and New Information:** RAG retrieves relevant documents from an external knowledge source at query time to supply as context to the language model [S1]. This allows the model to utilize information that is newer than its training data, as well as organization-specific data such as product documentation and internal policies [S1].\n* **Improved Grounding:** By having the model answer from retrieved passages, responses are grounded in evidence rather than depending solely on training memorization [S2]. Evaluations indicate that this tends to reduce unsupported statements, though it does not eliminate them entirely [S2].\n* **Efficient Knowledge Updates:** System knowledge is updated by modifying the document index rather than retraining or fine-tuning the language model itself when facts change [S3]. This makes updating knowledge both faster and more cost-effective [S3].\n* **Traceability and Verification:** RAG systems can provide links or citations to display the specific passages used as the basis for an answer [S4]. This traceability helps users verify answers and is frequently required in regulated settings [S4].",
+          "input_tokens": 1704,
+          "output_tokens": 280,
+          "thinking_tokens": 0,
+          "latency_ms": 14480.042099981802,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.5-flash-lite",
+      "call_count": 3,
+      "input_tokens": 3556,
+      "output_tokens": 1618,
+      "thinking_tokens": 0,
+      "total_tokens": 5174,
+      "latency_ms": 49129.49610000942,
+      "retries": 0,
+      "estimated_cost_usd": 0.0051118,
+      "evaluation": {
+        "answer_relevancy": 0.98,
+        "completeness": 1.0,
+        "faithfulness": 0.98,
+        "citation_quality": 0.98,
+        "uncertainty_handling": 0.95,
+        "overall_quality": 0.97,
+        "judge_completeness": 0.98,
+        "key_points": [
+          {
+            "point": "Access to current or domain-specific/private information",
+            "status": "covered"
+          },
+          {
+            "point": "Answers grounded in retrieved evidence, which can reduce unsupported or hallucinated content",
+            "status": "covered"
+          },
+          {
+            "point": "Knowledge can be updated without retraining the model",
+            "status": "covered"
+          },
+          {
+            "point": "Answers can cite or show their sources",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer is exceptionally strong. It accurately covers all key points, directly cites the source material for every claim made, and explicitly avoids the trap claim by noting that RAG reduces unsupported statements rather than eliminating them entirely."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 200,
+        "citation_count": 12,
+        "distinct_sources_cited": 4,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 1.0
+      }
+    },
+    {
+      "architecture": "4-agent",
+      "agent_count": 4,
+      "status": "completed",
+      "error": null,
+      "answer": "Retrieval-augmented generation (RAG) offers several key advantages, including access to up-to-date and organization-specific information, improved response grounding, cost-effective knowledge updates, and enhanced traceability [S1][S2][S3][S4]. \n\nThe main advantages of RAG are:\n\n* **Access to Current and Specific Information:** By retrieving relevant documents from an external source at query time, RAG allows language models to utilize information newer than their training data [S1]. It also enables models to access organization-specific details, such as internal policies or product documentation [S1].\n* **Improved Grounding and Accuracy:** Responses are grounded in evidence from retrieved passages rather than relying solely on memorized training data [S2]. Evaluations show that this tends to reduce unsupported statements, though it does not eliminate them completely [S2].\n* **Efficient Knowledge Updates:** Updating system knowledge requires only modifying the document index rather than retraining or fine-tuning the language model [S3]. This makes updating information both faster and cheaper [S3].\n* **Traceability and Verification:** RAG systems can provide users with the underlying source passages as links or citations [S4]. This traceability helps users verify answers and assists in meeting compliance requirements in regulated settings [S4].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research"
+          ],
+          "output": "**Research Brief for Agent 2 (Fact-checking)**\n\n**1. Sub-questions:**\n* What are the main advantages of retrieval-augmented generation (RAG)?\n* How does RAG handle information currency compared to standard language models?\n* How does RAG impact response grounding, verification, and traceability?\n\n**2. Extracted Facts:**\n* RAG retrieves relevant documents from an external knowledge source at query time and provides them to the language model as context [S1].\n* It allows the model to use information that is newer than its training data [S1].\n* It allows the model to use information specific to an organisation, such as internal policies or product documentation [S1].\n* Responses can be grounded in evidence rather than only memorized training data, because the model is asked to answer from retrieved passages [S2].\n* In evaluations, RAG tends to reduce unsupported statements, though it does not remove them completely [S2].\n* Updating system knowledge only requires updating the document index, avoiding the need to retrain or fine-tune the language model when facts change [S3].\n* Making knowledge updates through RAG is faster and cheaper [S3].\n* RAG systems can show users the passages an answer was based on (e.g., as citations or links) [S4].\n* Traceability helps users verify answers and is often required in regulated settings [S4].\n\n**3. Disagreements:**\n* None found among the sources.\n\n**4. Outdated Sources:**\n* None identified based on the provided text.\n\n**5. Unanswered Sub-questions:**\n* None of the sources present disadvantages or limitations of RAG (other than noting that it does not completely remove unsupported statements [S2]), but the question specifically asks for \"main advantages,\" which are fully covered.",
+          "input_tokens": 626,
+          "output_tokens": 385,
+          "thinking_tokens": 0,
+          "latency_ms": 23508.98679997772,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "fact_check"
+          ],
+          "output": "**Fact-Check Report for Agent 3 (Critique)**\n\n### 1. Claim Verification\n* **Claim:** RAG retrieves relevant documents from an external knowledge source at query time and provides them as context to the language model.  \n  * **Verdict:** SUPPORTED [S1]\n* **Claim:** RAG allows the model to use information that is newer than its training data.  \n  * **Verdict:** SUPPORTED [S1]\n* **Claim:** RAG allows the model to use information specific to an organisation, such as internal policies or product documentation.  \n  * **Verdict:** SUPPORTED [S1]\n* **Claim:** Responses can be grounded in evidence rather than only memorized training data because the model answers from retrieved passages.  \n  * **Verdict:** SUPPORTED [S2]\n* **Claim:** In evaluations, RAG tends to reduce unsupported statements, though it does not remove them completely.  \n  * **Verdict:** SUPPORTED [S2]\n* **Claim:** Updating system knowledge requires only updating the document index, avoiding the need to retrain or fine-tune the language model when facts change.  \n  * **Verdict:** SUPPORTED [S3]\n* **Claim:** Making knowledge updates through RAG is faster and cheaper.  \n  * **Verdict:** SUPPORTED [S3]\n* **Claim:** RAG systems can show users the passages an answer was based on (e.g., as citations or links).  \n  * **Verdict:** SUPPORTED [S4]\n* **Claim:** Traceability helps users verify answers and is often required in regulated settings.  \n  * **Verdict:** SUPPORTED [S4]\n\n### 2. Conflicting Sources\n* None found. The sources [S1, S2, S3, S4] complement each other without contradiction.\n\n### 3. Premise Problems\n* The question (\"What are the main advantages of retrieval-augmented generation (RAG)?\") does not contain any false or unsupported premises. The provided sources directly discuss the advantages and benefits of RAG systems.\n\n### 4. Claims to Exclude\n* No extracted claims must be excluded, as all findings are fully supported by the provided evidence.",
+          "input_tokens": 1055,
+          "output_tokens": 471,
+          "thinking_tokens": 0,
+          "latency_ms": 14603.730300004827,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 2,
+          "roles": [
+            "critic"
+          ],
+          "output": "**Critique for Agent 4 (Writing)**\n\n### 1. Answerability Verdict\nThe verified evidence is **fully** sufficient to answer the question about the main advantages of retrieval-augmented generation (RAG).\n\n### 2. Weaknesses, Missing Context, and Overgeneralisations\n* **Weaknesses/Limitations:** While RAG reduces unsupported statements, the evidence explicitly notes that it *does not remove them completely* [S2]. This nuance must be included to avoid overgeneralising RAG as a flawless solution for accuracy.\n* **Overgeneralisations to Avoid:** Do not claim that RAG entirely eliminates hallucinations or errors; strictly state that it \"tends to reduce unsupported statements\" [S2]. \n\n### 3. Unanswered Parts of the Question (Limitations to State)\n* The provided sources focus exclusively on advantages. Therefore, no broader disadvantages or operational failures of RAG (other than the persistence of some unsupported statements) are available in the text. This is not a limitation for answering the specific prompt, but the writer should frame the response strictly around the advantages documented in the sources without implying these are the *only* features of RAG overall.\n\n### 4. Concrete Recommendations for Structure and Content\nStructure the final answer logically by grouping the verified advantages into distinct thematic categories:\n1. **Access to Current and Specific Information:** Explain how RAG uses external knowledge sources at query time to incorporate newer information than training data, as well as organization-specific information like internal policies or product documentation [S1].\n2. **Improved Grounding and Accuracy:** Highlight that responses are grounded in evidence from retrieved passages rather than just memorized data, and note that this tends to reduce (though not entirely eliminate) unsupported statements [S2].\n3. **Efficiency in Knowledge Updates:** Detail how system updates require only modifying the document index rather than retraining or fine-tuning the language model, making updates faster and cheaper [S3].\n4. **Traceability and Verification:** Explain that RAG systems can display source passages as citations or links, aiding user verification and meeting requirements in regulated settings [S4]. \n\nEnsure every factual point includes its corresponding source bracket ([S1], [S2], [S3], or [S4]).",
+          "input_tokens": 1223,
+          "output_tokens": 466,
+          "thinking_tokens": 0,
+          "latency_ms": 22761.18000000133,
+          "saw_sources": false
+        },
+        {
+          "agent_index": 3,
+          "roles": [
+            "writer"
+          ],
+          "output": "Retrieval-augmented generation (RAG) offers several key advantages, including access to up-to-date and organization-specific information, improved response grounding, cost-effective knowledge updates, and enhanced traceability [S1][S2][S3][S4]. \n\nThe main advantages of RAG are:\n\n* **Access to Current and Specific Information:** By retrieving relevant documents from an external source at query time, RAG allows language models to utilize information newer than their training data [S1]. It also enables models to access organization-specific details, such as internal policies or product documentation [S1].\n* **Improved Grounding and Accuracy:** Responses are grounded in evidence from retrieved passages rather than relying solely on memorized training data [S2]. Evaluations show that this tends to reduce unsupported statements, though it does not eliminate them completely [S2].\n* **Efficient Knowledge Updates:** Updating system knowledge requires only modifying the document index rather than retraining or fine-tuning the language model [S3]. This makes updating information both faster and cheaper [S3].\n* **Traceability and Verification:** RAG systems can provide users with the underlying source passages as links or citations [S4]. This traceability helps users verify answers and assists in meeting compliance requirements in regulated settings [S4].",
+          "input_tokens": 1704,
+          "output_tokens": 264,
+          "thinking_tokens": 0,
+          "latency_ms": 16595.682999992277,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.5-flash-lite",
+      "call_count": 4,
+      "input_tokens": 4608,
+      "output_tokens": 1586,
+      "thinking_tokens": 0,
+      "total_tokens": 6194,
+      "latency_ms": 77469.58009997616,
+      "retries": 0,
+      "estimated_cost_usd": 0.0053473999999999995,
+      "evaluation": {
+        "answer_relevancy": 0.98,
+        "completeness": 1.0,
+        "faithfulness": 0.99,
+        "citation_quality": 0.98,
+        "uncertainty_handling": 0.97,
+        "overall_quality": 0.98,
+        "judge_completeness": 0.98,
+        "key_points": [
+          {
+            "point": "Access to current or domain-specific/private information",
+            "status": "covered"
+          },
+          {
+            "point": "Answers grounded in retrieved evidence, which can reduce unsupported or hallucinated content",
+            "status": "covered"
+          },
+          {
+            "point": "Knowledge can be updated without retraining the model",
+            "status": "covered"
+          },
+          {
+            "point": "Answers can cite or show their sources",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer directly and comprehensively addresses the prompt key points, referencing all four source documents accurately. It explicitly avoids the trap claim by noting that grounding reduces unsupported statements without eliminating them completely. Citations are accurate and correctly placed."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 182,
+        "citation_count": 12,
+        "distinct_sources_cited": 4,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 1.0
+      }
+    }
+  ],
+  "ranking": {
+    "order": [
+      "3-agent",
+      "4-agent",
+      "2-agent",
+      "1-agent"
+    ],
+    "labels": {
+      "A": "3-agent",
+      "B": "1-agent",
+      "C": "2-agent",
+      "D": "4-agent"
+    },
+    "reasoning": "Answer A and Answer D are the most complete and faithful to all provided sources, correctly capturing all key nuances including the caveat that unsupported statements are not completely removed, and mentioning retrieval at query time from external sources. Answer A is slightly preferred over D for its exact fidelity to S1 (mentioning context given to the language model) and S4. Answer C is third as it omits the mechanism of retrieval from an external knowledge source at query time. Answer B is last because it introduces outside terminology not found in the source ('hallucinations') and omits the explicit caveat from S2 that unsupported statements are not completely removed."
+  },
+  "ranking_error": null,
+  "completed_at": "2026-10-26T17:21:16+00:00"
+}

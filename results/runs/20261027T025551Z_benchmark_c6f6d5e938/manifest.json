@@ -1,0 +1,296 @@
+{
+  "run_id": "c6f6d5e938",
+  "directory": "20261027T025551Z_benchmark_c6f6d5e938",
+  "run_type": "benchmark",
+  "label": "",
+  "status": "completed",
+  "created_at": "2026-10-27T02:55:51+00:00",
+  "started_at": "2026-10-27T02:55:58+00:00",
+  "completed_at": "2026-10-27T03:40:47+00:00",
+  "error": null,
+  "generator_model": "gemini-3.1-flash-lite",
+  "judge_model": "gemini-3.5-flash-lite",
+  "generator_temperature": 0.3,
+  "judge_temperature": 0.0,
+  "max_output_tokens": 4096,
+  "trials": 3,
+  "architectures": [
+    "1-agent",
+    "2-agent",
+    "3-agent",
+    "4-agent"
+  ],
+  "case_ids": [
+    "rag-benefits-001",
+    "vector-db-purpose-002",
+    "context-window-003",
+    "rag-reliability-004",
+    "build-vs-buy-005",
+    "finetune-vs-rag-006",
+    "conflicting-metrics-007",
+    "token-cost-math-008",
+    "distractor-study-009",
+    "insufficient-evidence-010",
+    "false-premise-011",
+    "planted-claim-012"
+  ],
+  "benchmark_version": "2.0",
+  "benchmark_fingerprint": "3352f17db8b4c6de",
+  "prompt_fingerprint": "8b075615a0f0fe7b",
+  "git_commit": "7deff28-dirty",
+  "app_version": "0.2.0",
+  "items": [
+    {
+      "case_id": "rag-benefits-001",
+      "trial": 1,
+      "status": "completed",
+      "error": null,
+      "file": "cases/rag-benefits-001__t1.json"
+    },
+    {
+      "case_id": "vector-db-purpose-002",
+      "trial": 1,
+      "status": "completed",
+      "error": null,
+      "file": "cases/vector-db-purpose-002__t1.json"
+    },
+    {
+      "case_id": "context-window-003",
+      "trial": 1,
+      "status": "completed",
+      "error": null,
+      "file": "cases/context-window-003__t1.json"
+    },
+    {
+      "case_id": "rag-reliability-004",
+      "trial": 1,
+      "status": "completed",
+      "error": null,
+      "file": "cases/rag-reliability-004__t1.json"
+    },
+    {
+      "case_id": "build-vs-buy-005",
+      "trial": 1,
+      "status": "completed",
+      "error": null,
+      "file": "cases/build-vs-buy-005__t1.json"
+    },
+    {
+      "case_id": "finetune-vs-rag-006",
+      "trial": 1,
+      "status": "completed",
+      "error": null,
+      "file": "cases/finetune-vs-rag-006__t1.json"
+    },
+    {
+      "case_id": "conflicting-metrics-007",
+      "trial": 1,
+      "status": "completed",
+      "error": null,
+      "file": "cases/conflicting-metrics-007__t1.json"
+    },
+    {
+      "case_id": "token-cost-math-008",
+      "trial": 1,
+      "status": "completed",
+      "error": null,
+      "file": "cases/token-cost-math-008__t1.json"
+    },
+    {
+      "case_id": "distractor-study-009",
+      "trial": 1,
+      "status": "completed",
+      "error": null,
+      "file": "cases/distractor-study-009__t1.json"
+    },
+    {
+      "case_id": "insufficient-evidence-010",
+      "trial": 1,
+      "status": "completed",
+      "error": null,
+      "file": "cases/insufficient-evidence-010__t1.json"
+    },
+    {
+      "case_id": "false-premise-011",
+      "trial": 1,
+      "status": "completed",
+      "error": null,
+      "file": "cases/false-premise-011__t1.json"
+    },
+    {
+      "case_id": "planted-claim-012",
+      "trial": 1,
+      "status": "completed",
+      "error": null,
+      "file": "cases/planted-claim-012__t1.json"
+    },
+    {
+      "case_id": "rag-benefits-001",
+      "trial": 2,
+      "status": "completed",
+      "error": null,
+      "file": "cases/rag-benefits-001__t2.json"
+    },
+    {
+      "case_id": "vector-db-purpose-002",
+      "trial": 2,
+      "status": "completed",
+      "error": null,
+      "file": "cases/vector-db-purpose-002__t2.json"
+    },
+    {
+      "case_id": "context-window-003",
+      "trial": 2,
+      "status": "completed",
+      "error": null,
+      "file": "cases/context-window-003__t2.json"
+    },
+    {
+      "case_id": "rag-reliability-004",
+      "trial": 2,
+      "status": "completed",
+      "error": null,
+      "file": "cases/rag-reliability-004__t2.json"
+    },
+    {
+      "case_id": "build-vs-buy-005",
+      "trial": 2,
+      "status": "completed",
+      "error": null,
+      "file": "cases/build-vs-buy-005__t2.json"
+    },
+    {
+      "case_id": "finetune-vs-rag-006",
+      "trial": 2,
+      "status": "completed",
+      "error": null,
+      "file": "cases/finetune-vs-rag-006__t2.json"
+    },
+    {
+      "case_id": "conflicting-metrics-007",
+      "trial": 2,
+      "status": "completed",
+      "error": null,
+      "file": "cases/conflicting-metrics-007__t2.json"
+    },
+    {
+      "case_id": "token-cost-math-008",
+      "trial": 2,
+      "status": "completed",
+      "error": null,
+      "file": "cases/token-cost-math-008__t2.json"
+    },
+    {
+      "case_id": "distractor-study-009",
+      "trial": 2,
+      "status": "completed",
+      "error": null,
+      "file": "cases/distractor-study-009__t2.json"
+    },
+    {
+      "case_id": "insufficient-evidence-010",
+      "trial": 2,
+      "status": "completed",
+      "error": null,
+      "file": "cases/insufficient-evidence-010__t2.json"
+    },
+    {
+      "case_id": "false-premise-011",
+      "trial": 2,
+      "status": "completed",
+      "error": null,
+      "file": "cases/false-premise-011__t2.json"
+    },
+    {
+      "case_id": "planted-claim-012",
+      "trial": 2,
+      "status": "completed",
+      "error": null,
+      "file": "cases/planted-claim-012__t2.json"
+    },
+    {
+      "case_id": "rag-benefits-001",
+      "trial": 3,
+      "status": "completed",
+      "error": null,
+      "file": "cases/rag-benefits-001__t3.json"
+    },
+    {
+      "case_id": "vector-db-purpose-002",
+      "trial": 3,
+      "status": "completed",
+      "error": null,
+      "file": "cases/vector-db-purpose-002__t3.json"
+    },
+    {
+      "case_id": "context-window-003",
+      "trial": 3,
+      "status": "completed",
+      "error": null,
+      "file": "cases/context-window-003__t3.json"
+    },
+    {
+      "case_id": "rag-reliability-004",
+      "trial": 3,
+      "status": "completed",
+      "error": null,
+      "file": "cases/rag-reliability-004__t3.json"
+    },
+    {
+      "case_id": "build-vs-buy-005",
+      "trial": 3,
+      "status": "completed",
+      "error": null,
+      "file": "cases/build-vs-buy-005__t3.json"
+    },
+    {
+      "case_id": "finetune-vs-rag-006",
+      "trial": 3,
+      "status": "completed",
+      "error": null,
+      "file": "cases/finetune-vs-rag-006__t3.json"
+    },
+    {
+      "case_id": "conflicting-metrics-007",
+      "trial": 3,
+      "status": "completed",
+      "error": null,
+      "file": "cases/conflicting-metrics-007__t3.json"
+    },
+    {
+      "case_id": "token-cost-math-008",
+      "trial": 3,
+      "status": "completed",
+      "error": null,
+      "file": "cases/token-cost-math-008__t3.json"
+    },
+    {
+      "case_id": "distractor-study-009",
+      "trial": 3,
+      "status": "completed",
+      "error": null,
+      "file": "cases/distractor-study-009__t3.json"
+    },
+    {
+      "case_id": "insufficient-evidence-010",
+      "trial": 3,
+      "status": "completed",
+      "error": null,
+      "file": "cases/insufficient-evidence-010__t3.json"
+    },
+    {
+      "case_id": "false-premise-011",
+      "trial": 3,
+      "status": "completed",
+      "error": null,
+      "file": "cases/false-premise-011__t3.json"
+    },
+    {
+      "case_id": "planted-claim-012",
+      "trial": 3,
+      "status": "completed",
+      "error": null,
+      "file": "cases/planted-claim-012__t3.json"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "note": "USD per 1 million tokens on the PAID tier. On the free tier the real cost is $0; these prices give an 'equivalent cost if you paid' so architectures can be compared in money. Thinking tokens are billed as output. Verify against https://ai.google.dev/gemini-api/docs/pricing before publishing. Prices checked 2026-10-26 from third-party aggregators.",
+  "models": {
+    "gemini-3.1-flash-lite": {
+      "input_per_million_usd": 0.25,
+      "output_per_million_usd": 1.50
+    },
+    "gemini-3.5-flash-lite": {
+      "input_per_million_usd": 0.30,
+      "output_per_million_usd": 2.50
+    }
+  }
+}

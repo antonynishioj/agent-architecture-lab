@@ -1,0 +1,397 @@
+{
+  "run_id": "c6f6d5e938",
+  "case_id": "finetune-vs-rag-006",
+  "trial": 1,
+  "difficulty": "medium",
+  "category": "AI System Design",
+  "question": "When should a team fine-tune a language model instead of using retrieval-augmented generation, and when does it make sense to combine them?",
+  "outcomes": [
+    {
+      "architecture": "1-agent",
+      "agent_count": 1,
+      "status": "completed",
+      "error": null,
+      "answer": "Fine-tuning and retrieval-augmented generation (RAG) serve different purposes, and they are often most effective when used together rather than as mutually exclusive options [S5].\n\n**When to use fine-tuning**\nFine-tuning is best suited for modifying a model's behavior rather than its knowledge base [S1]. It should be used when a team needs to:\n*   Adopt a specific house style, tone, or consistent output format [S1].\n*   Specialize the model for a narrow, repetitive task [S1].\n\nFine-tuning is generally not recommended for injecting facts, as models often recall such information unreliably, and the facts become stale quickly [S3]. Furthermore, fine-tuning is slow to adapt to changing requirements because it requires a curated dataset and retraining the model whenever information changes [S2].\n\n**When to use RAG**\nRAG is the preferred approach for knowledge-based tasks, particularly when:\n*   The information changes frequently [S3][S4].\n*   Answers must be traceable to specific source documents [S4].\n*   The system needs to be updated without the time and resource costs of retraining [S4].\n\n**When to combine them**\nBecause these approaches are not exclusive, a common and effective pattern is to combine them [S5]. In this configuration, fine-tuning is used to train the model to adhere to domain-specific conventions, formats, and styles, while RAG is used to provide the model with accurate, up-to-date facts at the time an answer is generated [S5].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research",
+            "fact_check",
+            "critic",
+            "writer"
+          ],
+          "output": "Fine-tuning and retrieval-augmented generation (RAG) serve different purposes, and they are often most effective when used together rather than as mutually exclusive options [S5].\n\n**When to use fine-tuning**\nFine-tuning is best suited for modifying a model's behavior rather than its knowledge base [S1]. It should be used when a team needs to:\n*   Adopt a specific house style, tone, or consistent output format [S1].\n*   Specialize the model for a narrow, repetitive task [S1].\n\nFine-tuning is generally not recommended for injecting facts, as models often recall such information unreliably, and the facts become stale quickly [S3]. Furthermore, fine-tuning is slow to adapt to changing requirements because it requires a curated dataset and retraining the model whenever information changes [S2].\n\n**When to use RAG**\nRAG is the preferred approach for knowledge-based tasks, particularly when:\n*   The information changes frequently [S3][S4].\n*   Answers must be traceable to specific source documents [S4].\n*   The system needs to be updated without the time and resource costs of retraining [S4].\n\n**When to combine them**\nBecause these approaches are not exclusive, a common and effective pattern is to combine them [S5]. In this configuration, fine-tuning is used to train the model to adhere to domain-specific conventions, formats, and styles, while RAG is used to provide the model with accurate, up-to-date facts at the time an answer is generated [S5].",
+          "input_tokens": 901,
+          "output_tokens": 331,
+          "thinking_tokens": 0,
+          "latency_ms": 2212.7288000192493,
+          "saw_sources": true
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 1,
+      "input_tokens": 901,
+      "output_tokens": 331,
+      "thinking_tokens": 0,
+      "total_tokens": 1232,
+      "latency_ms": 2212.7288000192493,
+      "retries": 0,
+      "estimated_cost_usd": 0.00072175,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.99,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Fine-tuning suits behaviour, style, format or narrow tasks",
+            "status": "covered"
+          },
+          {
+            "point": "Fine-tuning needs curated training examples and retraining when things change",
+            "status": "covered"
+          },
+          {
+            "point": "RAG suits frequently changing knowledge and traceable/cited answers",
+            "status": "covered"
+          },
+          {
+            "point": "Fine-tuning is a poor fit for injecting frequently changing facts",
+            "status": "covered"
+          },
+          {
+            "point": "Combining: fine-tune for behaviour, use RAG for current knowledge",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer accurately and completely addresses all aspects of the prompt, using correct information exclusively from the provided sources. All key points are thoroughly covered, citations are accurate and properly attached, and no trap violations or unsupported claims are made. The structure is clear and concise."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 223,
+        "citation_count": 12,
+        "distinct_sources_cited": 5,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 1.0
+      }
+    },
+    {
+      "architecture": "2-agent",
+      "agent_count": 2,
+      "status": "completed",
+      "error": null,
+      "answer": "Fine-tuning and retrieval-augmented generation (RAG) serve different purposes, with fine-tuning best suited for adjusting model behavior and RAG ideal for accessing dynamic information. These approaches are not mutually exclusive and are often combined to leverage the strengths of both [S5].\n\n**When to use fine-tuning**\nFine-tuning is the appropriate approach when the goal is to modify a model’s behavior, such as adopting a specific house style, tone, or consistent output format [S1]. It is also effective for narrow, repetitive tasks [S1]. However, fine-tuning is unreliable for injecting facts, as information can go stale quickly and requires retraining the model to update [S2][S3].\n\n**When to use RAG**\nRAG is the preferred method when answers depend on information that changes frequently, as updating the document index allows the system to incorporate new data without retraining [S4]. RAG is also appropriate when answers must be traceable to specific source documents [S4].\n\n**When to combine approaches**\nCombining both methods is a common pattern used to achieve comprehensive performance [S5]. A team might fine-tune a model to master domain-specific conventions, formats, or styles, while simultaneously using RAG to provide the model with access to current, accurate facts at the time of answering [S5].\n\n*Limitations: The provided evidence does not address the relative computational costs or technical implementation complexities associated with either method.*",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research",
+            "fact_check"
+          ],
+          "output": "### Research Brief\n\n**Sub-questions:**\n1. When is fine-tuning the appropriate approach?\n2. When is retrieval-augmented generation (RAG) the appropriate approach?\n3. When does it make sense to combine both methods?\n\n**Extracted Facts:**\n*   **Fine-tuning:**\n    *   Adjusts model weights on curated examples [S1].\n    *   Effective for changing behavior: consistent output formats, house style/tone, or narrow, repetitive tasks [S1].\n    *   Requires high-quality curated datasets [S2].\n    *   Slow to react to change because the model must be retrained when requirements change [S2].\n    *   Unreliable for injecting frequently changing facts; facts go stale quickly [S3].\n*   **RAG:**\n    *   Suits use cases where answers depend on information that changes often [S4].\n    *   Suits use cases where answers must be traceable to source documents [S4].\n    *   Updating the document index updates the system without requiring retraining [S4].\n*   **Combining approaches:**\n    *   The approaches are not exclusive [S5].\n    *   Common pattern: Fine-tune for domain format/conventions and use retrieval for current facts at answer time [S5].\n\n**Disagreements/Gaps:**\n*   **Disagreements:** None found.\n*   **Gaps:** The sources do not provide information on the relative computational costs or technical implementation complexities of one method versus the other, only that fine-tuning requires retraining [S2] and RAG requires index updates [S4].\n\n---\n\n### Fact-Check Report\n\n**Claims Analysis:**\n*   *Fine-tuning is for behavior/style.* **SUPPORTED** [S1].\n*   *Fine-tuning is for narrow, repetitive tasks.* **SUPPORTED** [S1].\n*   *Fine-tuning is poor for facts.* **SUPPORTED** [S3].\n*   *RAG is for frequently changing information.* **SUPPORTED** [S4].\n*   *RAG is for traceability.* **SUPPORTED** [S4].\n*   *Combining methods allows for format control and current facts.* **SUPPORTED** [S5].\n\n**Conflicts:**\n*   None.\n\n**Premise Problems:**\n*   The question assumes there is a binary choice or a combination; the sources confirm these are valid strategies and are not mutually exclusive [S5].\n\n**Claims to Exclude:**\n*   Do not include any claims regarding the specific cost (monetary or latency) of these methods, as the provided text only discusses the \"cost\" in terms of retraining requirements/effort [S2] and does not provide specific metrics or comparative financial data.\n*   Do not suggest that fine-tuning *cannot* store facts, only that it is \"unreliable\" and \"weak\" for doing so [S3].",
+          "input_tokens": 810,
+          "output_tokens": 626,
+          "thinking_tokens": 0,
+          "latency_ms": 2944.476400007261,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "critic",
+            "writer"
+          ],
+          "output": "Fine-tuning and retrieval-augmented generation (RAG) serve different purposes, with fine-tuning best suited for adjusting model behavior and RAG ideal for accessing dynamic information. These approaches are not mutually exclusive and are often combined to leverage the strengths of both [S5].\n\n**When to use fine-tuning**\nFine-tuning is the appropriate approach when the goal is to modify a model’s behavior, such as adopting a specific house style, tone, or consistent output format [S1]. It is also effective for narrow, repetitive tasks [S1]. However, fine-tuning is unreliable for injecting facts, as information can go stale quickly and requires retraining the model to update [S2][S3].\n\n**When to use RAG**\nRAG is the preferred method when answers depend on information that changes frequently, as updating the document index allows the system to incorporate new data without retraining [S4]. RAG is also appropriate when answers must be traceable to specific source documents [S4].\n\n**When to combine approaches**\nCombining both methods is a common pattern used to achieve comprehensive performance [S5]. A team might fine-tune a model to master domain-specific conventions, formats, or styles, while simultaneously using RAG to provide the model with access to current, accurate facts at the time of answering [S5].\n\n*Limitations: The provided evidence does not address the relative computational costs or technical implementation complexities associated with either method.*",
+          "input_tokens": 1071,
+          "output_tokens": 298,
+          "thinking_tokens": 0,
+          "latency_ms": 4393.011700012721,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 2,
+      "input_tokens": 1881,
+      "output_tokens": 924,
+      "thinking_tokens": 0,
+      "total_tokens": 2805,
+      "latency_ms": 7337.488100019982,
+      "retries": 0,
+      "estimated_cost_usd": 0.00185625,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.98,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Fine-tuning suits behaviour, style, format or narrow tasks",
+            "status": "covered"
+          },
+          {
+            "point": "Fine-tuning needs curated training examples and retraining when things change",
+            "status": "covered"
+          },
+          {
+            "point": "RAG suits frequently changing knowledge and traceable/cited answers",
+            "status": "covered"
+          },
+          {
+            "point": "Fine-tuning is a poor fit for injecting frequently changing facts",
+            "status": "covered"
+          },
+          {
+            "point": "Combining: fine-tune for behaviour, use RAG for current knowledge",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer covers all key points accurately, cites sources appropriately, avoids all trap violations, and presents the information clearly without hallucinations."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 216,
+        "citation_count": 9,
+        "distinct_sources_cited": 5,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 0.8
+      }
+    },
+    {
+      "architecture": "3-agent",
+      "agent_count": 3,
+      "status": "completed",
+      "error": null,
+      "answer": "Fine-tuning is best suited for shaping a model's behavior, such as adopting a specific tone, house style, or consistent output format, and for specializing in narrow, repetitive tasks [S1]. In contrast, retrieval-augmented generation (RAG) is the appropriate choice when answers must rely on frequently changing information or require traceability to specific source documents [S4].\n\n### When to Use Fine-Tuning\nFine-tuning is effective for defining how a model communicates or performs specific, repetitive tasks [S1]. However, it is not recommended for injecting facts, as recall is unreliable and information can quickly become stale [S3]. Furthermore, fine-tuning requires a curated dataset of high-quality examples and is slow to adapt to changing requirements because it necessitates retraining the model [S2].\n\n### When to Use RAG\nRAG is preferred when the accuracy of the output depends on up-to-date information [S4]. It is more operationally efficient than fine-tuning for dynamic content because updating the system only requires modifying the document index rather than retraining the model [S4].\n\n### When to Combine Approaches\nThese methods are not mutually exclusive and are often combined to leverage the strengths of both [S5]. A common strategy is to use fine-tuning to ensure the model adheres to domain-specific conventions and formats, while simultaneously using RAG to provide the model with current, accurate facts at the time of the query [S5].\n\nThe provided evidence does not offer specific performance metrics, cost-benefit analyses, or technical thresholds to determine the exact point at which a team should prioritize one method over the other.",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research"
+          ],
+          "output": "### Research Brief for Agent 2\n\n**Sub-questions:**\n1. When is fine-tuning the appropriate choice?\n2. When is RAG the appropriate choice?\n3. When does it make sense to combine both approaches?\n\n---\n\n### Extracted Facts\n\n**1. When to use Fine-Tuning:**\n*   Fine-tuning is effective for changing model behavior, such as adopting a specific house style or tone [S1].\n*   It is effective for producing consistent output formats [S1].\n*   It is effective for specializing in narrow, repetitive tasks [S1].\n*   It is not recommended for injecting frequently changing facts, as recall is unreliable and facts go stale quickly [S3].\n*   It requires a curated dataset of high-quality examples and is slow to react to changing requirements because it requires retraining [S2].\n\n**2. When to use RAG:**\n*   RAG is suitable when answers depend on information that changes frequently [S4].\n*   RAG is suitable when answers must be traceable to a source document [S4].\n*   Updating a RAG system is faster than fine-tuning because it only requires updating the document index rather than retraining the model [S4].\n\n**3. When to combine them:**\n*   The approaches are not mutually exclusive [S5].\n*   A common pattern is to use fine-tuning to ensure the model follows domain-specific formats and conventions, while using retrieval to provide current facts at the time of answering [S5].\n\n---\n\n### Disagreements and Conflicts\n*   There are no direct contradictions between the provided sources. They present the two methods as complementary rather than competing strategies.\n\n### Outdated Information\n*   None of the sources appear to be outdated based on the provided text.\n\n### Gaps in Evidence\n*   The sources do not provide information on the relative computational or financial costs of RAG versus fine-tuning, other than noting that fine-tuning requires retraining [S2].\n*   The sources do not define the specific technical thresholds or performance metrics that would trigger a switch from one method to the other.",
+          "input_tokens": 685,
+          "output_tokens": 449,
+          "thinking_tokens": 0,
+          "latency_ms": 4312.412300001597,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "fact_check",
+            "critic"
+          ],
+          "output": "### Fact-Checking Report\n\n**Claim Verification:**\n*   **Fine-tuning is effective for changing model behavior (style, tone, output format, narrow tasks):** SUPPORTED [S1].\n*   **Fine-tuning is not recommended for frequently changing facts due to unreliable recall and staleness:** SUPPORTED [S3].\n*   **Fine-tuning requires high-quality curated datasets and is slow to adapt to new requirements due to retraining:** SUPPORTED [S2].\n*   **RAG is suitable for frequently changing information and traceability to source documents:** SUPPORTED [S4].\n*   **RAG is faster to update than fine-tuning because it only requires index updates:** SUPPORTED [S4].\n*   **Combining approaches allows for fine-tuning to handle format/conventions and retrieval to handle current facts:** SUPPORTED [S5].\n\n**Conflicts:**\n*   None identified. The sources are consistent and complementary.\n\n**Premise Check:**\n*   The question contains no false or unsupported premises.\n\n**Claims to Exclude:**\n*   None. All extracted facts are supported by the provided sources.\n\n---\n\n### Critique\n\n**Answerability:**\n*   The evidence is sufficient to answer the question fully based on the provided sources.\n\n**Weaknesses and Limitations:**\n*   **Missing Context:** The sources do not provide quantitative data (e.g., latency, financial cost, or accuracy thresholds) to help a team decide *when* the trade-offs become significant.\n*   **Overgeneralizations:** The sources describe \"common patterns\" and general suitability, but do not account for edge cases or specific technical constraints (e.g., model size, context window limits).\n*   **Limitations to state:** The final answer must explicitly state that the provided evidence does not offer specific performance metrics or cost-benefit analyses to guide the decision-making process beyond qualitative suitability.\n\n**Recommendations for Agent 3:**\n1.  **Structure:** Use three distinct sections corresponding to the sub-questions (When to Fine-tune, When to use RAG, When to Combine).\n2.  **Content:**\n    *   Focus on the *purpose* of the intervention: Fine-tuning for \"behavior\" (style, format, task) vs. RAG for \"content\" (facts, traceability).\n    *   Highlight the *operational* trade-off: Fine-tuning is static and requires retraining; RAG is dynamic and requires index updates.\n    *   Frame the \"Combined\" approach as a best-of-both-worlds strategy: Use fine-tuning for the \"how\" (format/tone) and RAG for the \"what\" (facts).\n3.  **Tone:** Maintain a neutral, advisory tone. Ensure every claim is tagged with the appropriate source ID.\n4.  **Caveat:** Include a concluding sentence noting that the choice depends on the specific needs of the team, as the provided evidence does not offer a technical framework for measuring the exact point at which one approach becomes superior to the other.",
+          "input_tokens": 1279,
+          "output_tokens": 640,
+          "thinking_tokens": 0,
+          "latency_ms": 13536.279599997215,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 2,
+          "roles": [
+            "writer"
+          ],
+          "output": "Fine-tuning is best suited for shaping a model's behavior, such as adopting a specific tone, house style, or consistent output format, and for specializing in narrow, repetitive tasks [S1]. In contrast, retrieval-augmented generation (RAG) is the appropriate choice when answers must rely on frequently changing information or require traceability to specific source documents [S4].\n\n### When to Use Fine-Tuning\nFine-tuning is effective for defining how a model communicates or performs specific, repetitive tasks [S1]. However, it is not recommended for injecting facts, as recall is unreliable and information can quickly become stale [S3]. Furthermore, fine-tuning requires a curated dataset of high-quality examples and is slow to adapt to changing requirements because it necessitates retraining the model [S2].\n\n### When to Use RAG\nRAG is preferred when the accuracy of the output depends on up-to-date information [S4]. It is more operationally efficient than fine-tuning for dynamic content because updating the system only requires modifying the document index rather than retraining the model [S4].\n\n### When to Combine Approaches\nThese methods are not mutually exclusive and are often combined to leverage the strengths of both [S5]. A common strategy is to use fine-tuning to ensure the model adheres to domain-specific conventions and formats, while simultaneously using RAG to provide the model with current, accurate facts at the time of the query [S5].\n\nThe provided evidence does not offer specific performance metrics, cost-benefit analyses, or technical thresholds to determine the exact point at which a team should prioritize one method over the other.",
+          "input_tokens": 1469,
+          "output_tokens": 333,
+          "thinking_tokens": 0,
+          "latency_ms": 8109.431799995946,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 3,
+      "input_tokens": 3433,
+      "output_tokens": 1422,
+      "thinking_tokens": 0,
+      "total_tokens": 4855,
+      "latency_ms": 25958.123699994758,
+      "retries": 0,
+      "estimated_cost_usd": 0.00299125,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.98,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Fine-tuning suits behaviour, style, format or narrow tasks",
+            "status": "covered"
+          },
+          {
+            "point": "Fine-tuning needs curated training examples and retraining when things change",
+            "status": "covered"
+          },
+          {
+            "point": "RAG suits frequently changing knowledge and traceable/cited answers",
+            "status": "covered"
+          },
+          {
+            "point": "Fine-tuning is a poor fit for injecting frequently changing facts",
+            "status": "covered"
+          },
+          {
+            "point": "Combining: fine-tune for behaviour, use RAG for current knowledge",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer accurately and completely covers all required points using the provided sources. It cites all claims correctly, avoids any trap violations, and appropriately addresses all parts of the user question without adding unsupported information."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 250,
+        "citation_count": 9,
+        "distinct_sources_cited": 5,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 0.9
+      }
+    },
+    {
+      "architecture": "4-agent",
+      "agent_count": 4,
+      "status": "completed",
+      "error": null,
+      "answer": "Fine-tuning and retrieval-augmented generation (RAG) serve distinct purposes—behavioral modification versus factual retrieval—and are not mutually exclusive [S5].\n\n**When to use fine-tuning**\nFine-tuning is most effective for changing model behavior, such as adopting a specific house style, tone, or consistent output format, and for specializing in narrow, repetitive tasks [S1]. This approach requires a curated dataset of high-quality training examples [S2]. Fine-tuning is considered a \"weak\" method for adding facts because models may recall them unreliably, and the information becomes stale quickly [S3]. Furthermore, fine-tuning is slow to react to change because it requires retraining to update the model [S2].\n\n**When to use RAG**\nRAG is the preferred approach when answers must be based on information that changes frequently [S3, S4]. It is also suitable when answers require traceability to a specific source document [S4]. RAG allows for system updates by simply updating the document index, which avoids the need for retraining [S4].\n\n**When to combine them**\nThe two approaches can be used together to leverage their respective strengths [S5]. A common pattern is to use fine-tuning to teach the model domain-specific formats and conventions, while using retrieval to supply current, verifiable facts at the time of answering [S5].\n\n**Limitations of the evidence**\nThe provided sources do not define the specific criteria or thresholds for what constitutes a \"narrow\" task. Additionally, the evidence does not address the comparative computational costs, financial requirements, or latency implications of these methods.",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research"
+          ],
+          "output": "### Research Brief for Agent 2\n\n**Sub-questions:**\n1. When is fine-tuning the preferred approach?\n2. When is retrieval-augmented generation (RAG) the preferred approach?\n3. When does it make sense to combine both approaches?\n\n---\n\n### Extracted Facts\n\n**1. When to use fine-tuning:**\n*   Fine-tuning is most effective for changing model behavior, such as producing consistent output formats, adopting a specific house style or tone, or specializing in narrow, repetitive tasks [S1].\n*   It requires a curated dataset of high-quality training examples [S2].\n\n**2. When to use RAG:**\n*   RAG is suitable when answers depend on information that changes frequently [S3, S4].\n*   RAG is preferred when answers must be traceable to a source document [S4].\n*   RAG allows for system updates by simply updating the document index, avoiding the need for retraining [S4].\n*   Fine-tuning is considered a \"weak way\" to add facts because the model recalls them unreliably and they go stale quickly [S3].\n\n**3. When to combine them:**\n*   The approaches are not mutually exclusive [S5].\n*   A common pattern is to use fine-tuning to teach the model domain-specific formats and conventions, while using retrieval to supply current facts at the time of answering [S5].\n\n---\n\n### Disagreements and Conflicts\n*   There are no direct conflicts between the provided sources. They present the two methods as complementary rather than contradictory.\n\n### Outdated Sources\n*   None of the sources contain dates; therefore, no source can be identified as outdated based on the provided text.\n\n### Gaps in Evidence\n*   The sources do not provide information regarding the comparative computational costs or latency differences between the two methods, other than noting that fine-tuning is \"slow to react to change\" due to the retraining requirement [S2].\n*   The sources do not define the specific threshold or criteria for when a task is considered \"narrow\" enough to justify fine-tuning.",
+          "input_tokens": 688,
+          "output_tokens": 446,
+          "thinking_tokens": 0,
+          "latency_ms": 4350.709999998799,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "fact_check"
+          ],
+          "output": "### Fact-Check Report\n\n**Claim Verification:**\n\n1.  **Fine-tuning is most effective for changing model behavior (format, style, tone, or narrow/repetitive tasks).**\n    *   Verdict: **SUPPORTED** [S1]\n2.  **Fine-tuning requires a curated dataset of high-quality examples.**\n    *   Verdict: **SUPPORTED** [S2]\n3.  **Fine-tuning is slow to react to change because it requires retraining when requirements change.**\n    *   Verdict: **SUPPORTED** [S2]\n4.  **RAG is suitable when answers depend on information that changes frequently.**\n    *   Verdict: **SUPPORTED** [S3, S4]\n5.  **RAG is preferred when answers must be traceable to a source document.**\n    *   Verdict: **SUPPORTED** [S4]\n6.  **RAG allows system updates by updating the document index without retraining.**\n    *   Verdict: **SUPPORTED** [S4]\n7.  **Fine-tuning is a \"weak way\" to add facts because recall is unreliable and facts go stale quickly.**\n    *   Verdict: **SUPPORTED** [S3]\n8.  **Fine-tuning and RAG are not mutually exclusive.**\n    *   Verdict: **SUPPORTED** [S5]\n9.  **A common pattern is to use fine-tuning for domain-specific formats/conventions and RAG for current facts.**\n    *   Verdict: **SUPPORTED** [S5]\n\n**Conflicts:**\n*   None identified. The sources are consistent and complementary.\n\n**Premise Problems:**\n*   The question contains no false or unsupported premises.\n\n**Claims to Exclude:**\n*   None. All claims in the research brief are supported by the provided sources.\n\n**Notes for Agent 3:**\n*   The evidence is sufficient to answer all parts of the user's question.\n*   Ensure the distinction between \"behavioral changes\" (fine-tuning) and \"factual updates\" (RAG) remains the central focus of the final answer, as supported by [S1], [S3], and [S4].\n*   Maintain the distinction that fine-tuning is \"slow to react\" [S2] compared to the ease of updating a RAG index [S4].",
+          "input_tokens": 1178,
+          "output_tokens": 507,
+          "thinking_tokens": 0,
+          "latency_ms": 4989.412700000685,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 2,
+          "roles": [
+            "critic"
+          ],
+          "output": "### Critique\n\n**Answerability Verdict:**\nThe provided evidence is sufficient to answer the question fully. The sources clearly delineate the functional roles of fine-tuning (behavioral/stylistic) versus RAG (factual/dynamic) and support the rationale for combining them.\n\n**Weaknesses and Missing Context:**\n*   **Computational/Resource Context:** As noted by Agent 1, there is no information regarding the comparative computational costs, latency, or infrastructure requirements of these methods.\n*   **Definition of \"Narrow\":** The evidence suggests fine-tuning is for \"narrow, repetitive tasks\" [S1], but provides no criteria or threshold for what constitutes a \"narrow\" task.\n*   **Technical Implementation:** The evidence does not explain *how* one would technically combine these methods (e.g., architectural integration), only that they are not mutually exclusive [S5].\n\n**Required Caveats:**\n*   The final answer must explicitly state that the provided evidence does not cover the comparative costs (computational or financial) or latency implications of these approaches.\n*   The answer should clarify that the definition of \"narrow\" tasks remains subjective based on the provided sources.\n\n**Recommendations for Structure and Content:**\n1.  **Introduction:** Briefly state that fine-tuning and RAG serve distinct purposes—behavioral modification versus factual retrieval—and are not mutually exclusive.\n2.  **Section 1: When to use Fine-Tuning:** Focus on behavioral changes (tone, style, output format) and narrow, repetitive tasks [S1]. Emphasize the requirement for high-quality, curated datasets [S2] and the limitation that it is a \"weak\" method for factual updates due to staleness and unreliable recall [S3].\n3.  **Section 2: When to use RAG:** Focus on scenarios requiring frequently changing information [S3, S4] and traceability to source documents [S4]. Highlight the operational efficiency of updating an index versus the need for retraining [S4].\n4.  **Section 3: Combining Approaches:** Describe the complementary pattern: use fine-tuning for domain-specific conventions/formats and RAG for supplying current, verifiable facts [S5].\n5.  **Limitations:** Include a brief section noting that the evidence does not address the comparative costs or latency of these methods, nor does it provide a specific threshold for defining \"narrow\" tasks.\n\n**Note for Agent 4:** Ensure every claim is followed by its corresponding source ID (e.g., [S1]). Do not introduce external knowledge regarding model architecture or cost-benefit analysis.",
+          "input_tokens": 1334,
+          "output_tokens": 539,
+          "thinking_tokens": 0,
+          "latency_ms": 5554.484399995999,
+          "saw_sources": false
+        },
+        {
+          "agent_index": 3,
+          "roles": [
+            "writer"
+          ],
+          "output": "Fine-tuning and retrieval-augmented generation (RAG) serve distinct purposes—behavioral modification versus factual retrieval—and are not mutually exclusive [S5].\n\n**When to use fine-tuning**\nFine-tuning is most effective for changing model behavior, such as adopting a specific house style, tone, or consistent output format, and for specializing in narrow, repetitive tasks [S1]. This approach requires a curated dataset of high-quality training examples [S2]. Fine-tuning is considered a \"weak\" method for adding facts because models may recall them unreliably, and the information becomes stale quickly [S3]. Furthermore, fine-tuning is slow to react to change because it requires retraining to update the model [S2].\n\n**When to use RAG**\nRAG is the preferred approach when answers must be based on information that changes frequently [S3, S4]. It is also suitable when answers require traceability to a specific source document [S4]. RAG allows for system updates by simply updating the document index, which avoids the need for retraining [S4].\n\n**When to combine them**\nThe two approaches can be used together to leverage their respective strengths [S5]. A common pattern is to use fine-tuning to teach the model domain-specific formats and conventions, while using retrieval to supply current, verifiable facts at the time of answering [S5].\n\n**Limitations of the evidence**\nThe provided sources do not define the specific criteria or thresholds for what constitutes a \"narrow\" task. Additionally, the evidence does not address the comparative computational costs, financial requirements, or latency implications of these methods.",
+          "input_tokens": 1888,
+          "output_tokens": 335,
+          "thinking_tokens": 0,
+          "latency_ms": 3197.4552999890875,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 4,
+      "input_tokens": 5088,
+      "output_tokens": 1827,
+      "thinking_tokens": 0,
+      "total_tokens": 6915,
+      "latency_ms": 18092.06239998457,
+      "retries": 2,
+      "estimated_cost_usd": 0.0040125,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 1.0,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Fine-tuning suits behaviour, style, format or narrow tasks",
+            "status": "covered"
+          },
+          {
+            "point": "Fine-tuning needs curated training examples and retraining when things change",
+            "status": "covered"
+          },
+          {
+            "point": "RAG suits frequently changing knowledge and traceable/cited answers",
+            "status": "covered"
+          },
+          {
+            "point": "Fine-tuning is a poor fit for injecting frequently changing facts",
+            "status": "covered"
+          },
+          {
+            "point": "Combining: fine-tune for behaviour, use RAG for current knowledge",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer covers all required key points accurately, correctly utilizes all provided sources with precise citations, includes no unsupported claims or trap violations, and even thoughtfully discusses limitations of the evidence."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 237,
+        "citation_count": 11,
+        "distinct_sources_cited": 5,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 0.8333333333333334
+      }
+    }
+  ],
+  "ranking": {
+    "order": [
+      "4-agent",
+      "3-agent",
+      "1-agent",
+      "2-agent"
+    ],
+    "labels": {
+      "A": "3-agent",
+      "B": "1-agent",
+      "C": "4-agent",
+      "D": "2-agent"
+    },
+    "reasoning": "All answers accurately utilize the provided sources to explain when to fine-tune, when to use RAG, and when to combine them. Answer C is ranked first because it includes all relevant details and appropriately addresses the limitations of the evidence by pointing out unmentioned aspects (like computational costs and thresholds) without hallucinating. Answer A is second, also mentioning the limitations well. Answer B and D are solid but omit the specific analytical note on evidence limitations found in C and A, with B providing slightly better structure than D."
+  },
+  "ranking_error": null,
+  "completed_at": "2026-10-27T03:03:03+00:00"
+}

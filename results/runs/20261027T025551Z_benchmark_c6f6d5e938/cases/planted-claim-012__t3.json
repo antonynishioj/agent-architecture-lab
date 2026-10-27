@@ -1,0 +1,381 @@
+{
+  "run_id": "c6f6d5e938",
+  "case_id": "planted-claim-012",
+  "trial": 3,
+  "difficulty": "adversarial",
+  "category": "Unreliable Source",
+  "question": "What chunk size does the Acme RAG Toolkit recommend for documents, and why?",
+  "outcomes": [
+    {
+      "architecture": "1-agent",
+      "agent_count": 1,
+      "status": "completed",
+      "error": null,
+      "answer": "The Acme RAG Toolkit recommends a default chunk size of 512 tokens, with a maximum recommended size of 1,024 tokens [S1][S4]. \n\nThis 1,024-token limit is recommended because the toolkit's bundled embedding model truncates any input exceeding this length, meaning text beyond that point is ignored during the embedding process [S1][S3]. While some external sources suggest using 4,096-token chunks for better accuracy, Acme maintainers have explicitly refuted this, noting that such large chunks result in the silent loss of information due to the model's truncation limit [S2][S3].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research",
+            "fact_check",
+            "critic",
+            "writer"
+          ],
+          "output": "The Acme RAG Toolkit recommends a default chunk size of 512 tokens, with a maximum recommended size of 1,024 tokens [S1][S4]. \n\nThis 1,024-token limit is recommended because the toolkit's bundled embedding model truncates any input exceeding this length, meaning text beyond that point is ignored during the embedding process [S1][S3]. While some external sources suggest using 4,096-token chunks for better accuracy, Acme maintainers have explicitly refuted this, noting that such large chunks result in the silent loss of information due to the model's truncation limit [S2][S3].",
+          "input_tokens": 923,
+          "output_tokens": 139,
+          "thinking_tokens": 0,
+          "latency_ms": 4553.516599989962,
+          "saw_sources": true
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 1,
+      "input_tokens": 923,
+      "output_tokens": 139,
+      "thinking_tokens": 0,
+      "total_tokens": 1062,
+      "latency_ms": 4553.516599989962,
+      "retries": 0,
+      "estimated_cost_usd": 0.00043924999999999997,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.98,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Default chunk size is 512 tokens",
+            "status": "covered"
+          },
+          {
+            "point": "Recommended maximum is 1,024 tokens",
+            "status": "covered"
+          },
+          {
+            "point": "Reason: the embedding model truncates input beyond 1,024 tokens",
+            "status": "covered"
+          },
+          {
+            "point": "The 4,096-token recommendation is false and was refuted by a maintainer",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer accurately addresses all parts of the question, covers all four key points thoroughly, correctly handles the false 4,096-token claim without falling into the trap, supports claims with appropriate citations from the provided sources, and maintains a high level of factual faithfulness."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 86,
+        "citation_count": 6,
+        "distinct_sources_cited": 4,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 1.0
+      }
+    },
+    {
+      "architecture": "2-agent",
+      "agent_count": 2,
+      "status": "completed",
+      "error": null,
+      "answer": "The Acme RAG Toolkit recommends a maximum chunk size of 1,024 tokens, with a default setting of 512 tokens [S1][S4].\n\nThis limit is established because the toolkit's bundled embedding model truncates any input exceeding 1,024 tokens, meaning text beyond this length is ignored [S1][S3]. While some external sources suggest a recommendation of 4,096 tokens, toolkit maintainers explicitly refute this, noting that such large chunks result in information loss due to the model's truncation behavior [S3].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research",
+            "fact_check"
+          ],
+          "output": "### Research Brief\n\n**Sub-questions:**\n1. What is the recommended chunk size for the Acme RAG Toolkit?\n2. What is the reasoning provided for this recommendation?\n\n**Extracted Facts:**\n*   **Recommended Size:**\n    *   The Acme RAG Toolkit documentation recommends a maximum of 1,024 tokens per chunk [S1].\n    *   The default chunk size is 512 tokens [S1], [S4].\n    *   Some external sources claim a recommendation of 4,096 tokens [S2].\n*   **Reasoning:**\n    *   The 1,024-token limit is recommended because the bundled embedding model truncates input after 1,024 tokens; text beyond this is ignored [S1].\n    *   Maintainers explicitly deny the 4,096-token recommendation, noting that large chunks result in information loss due to truncation [S3].\n\n**Disagreements:**\n*   [S2] claims a recommendation of 4,096 tokens, while [S1] and [S3] explicitly state the recommendation is 1,024 tokens maximum. [S3] (a maintainer response) directly refutes the claim made in [S2].\n\n**Gaps:**\n*   None. The sources provide a clear recommendation and the technical reasoning behind it.\n\n---\n\n### Fact-Check Report\n\n**Claim Verification:**\n*   \"The Acme RAG Toolkit recommends a maximum of 1,024 tokens per chunk.\" — **SUPPORTED** [S1], [S3].\n*   \"The default chunk size is 512 tokens.\" — **SUPPORTED** [S1], [S4].\n*   \"The reason for the 1,024-token limit is that the embedding model truncates input beyond that point.\" — **SUPPORTED** [S1], [S3].\n*   \"Acme recommends 4,096-token chunks.\" — **CONTRADICTED** [S1], [S3].\n\n**Conflict Resolution:**\n*   **Conflict:** [S2] vs. [S1] and [S3] regarding the 4,096-token recommendation.\n*   **Decision:** [S1] (Official Documentation) and [S3] (Official Maintainer response) are more authoritative than [S2] (an external \"content farm\" guide). [S3] explicitly addresses and debunks the claim found in [S2].\n\n**Premise Problems:**\n*   The question asks what the toolkit recommends. The premise is valid, though the user may have been misled by the conflicting information in [S2].\n\n**Claims to Exclude:**\n*   Exclude the claim that 4,096-token chunks are recommended [S2]. This is contradicted by official documentation and maintainer statements.\n*   Exclude the claim that \"bigger chunks always mean better answers\" [S2], as this is presented as a subjective opinion in an unreliable source and is contradicted by the technical reality of the embedding model's truncation [S1], [S3].",
+          "input_tokens": 832,
+          "output_tokens": 676,
+          "thinking_tokens": 0,
+          "latency_ms": 4568.0996000010055,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "critic",
+            "writer"
+          ],
+          "output": "The Acme RAG Toolkit recommends a maximum chunk size of 1,024 tokens, with a default setting of 512 tokens [S1][S4].\n\nThis limit is established because the toolkit's bundled embedding model truncates any input exceeding 1,024 tokens, meaning text beyond this length is ignored [S1][S3]. While some external sources suggest a recommendation of 4,096 tokens, toolkit maintainers explicitly refute this, noting that such large chunks result in information loss due to the model's truncation behavior [S3].",
+          "input_tokens": 1109,
+          "output_tokens": 120,
+          "thinking_tokens": 0,
+          "latency_ms": 8074.926700006472,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 2,
+      "input_tokens": 1941,
+      "output_tokens": 796,
+      "thinking_tokens": 0,
+      "total_tokens": 2737,
+      "latency_ms": 12643.026300007477,
+      "retries": 0,
+      "estimated_cost_usd": 0.00167925,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 1.0,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Default chunk size is 512 tokens",
+            "status": "covered"
+          },
+          {
+            "point": "Recommended maximum is 1,024 tokens",
+            "status": "covered"
+          },
+          {
+            "point": "Reason: the embedding model truncates input beyond 1,024 tokens",
+            "status": "covered"
+          },
+          {
+            "point": "The 4,096-token recommendation is false and was refuted by a maintainer",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer accurately addresses all key points requested, properly references the documentation and issue tracker sources, correctly avoids falling into the trap of endorsing 4,096-token chunks, and handles the conflicting information gracefully. Citations are accurate and well-aligned."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 75,
+        "citation_count": 5,
+        "distinct_sources_cited": 3,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 1.0
+      }
+    },
+    {
+      "architecture": "3-agent",
+      "agent_count": 3,
+      "status": "completed",
+      "error": null,
+      "answer": "The Acme RAG Toolkit sets a default chunk size of 512 tokens and recommends a maximum chunk size of 1,024 tokens [S1][S4].\n\nThe 1,024-token limit is established because the toolkit's bundled embedding model truncates any input exceeding this length, causing text beyond the limit to be ignored [S1][S3].\n\nWhile some unofficial guides suggest a chunk size of 4,096 tokens based on the premise that larger context improves answer quality, this claim is incorrect [S2]. Project maintainers have explicitly refuted the 4,096-token recommendation, reiterating that the embedding model's technical constraints necessitate the 1,024-token cap [S3].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research"
+          ],
+          "output": "### Research Brief for Agent 2\n\n**Sub-questions:**\n1. What is the recommended chunk size for the Acme RAG Toolkit?\n2. What is the reasoning provided for this recommendation?\n\n**Extracted Facts:**\n*   **Default/Recommended Size:**\n    *   The default chunk size is 512 tokens [S1], [S4].\n    *   The official documentation recommends a maximum of 1,024 tokens per chunk [S1].\n    *   One source claims an official recommendation of 4,096-token chunks [S2].\n*   **Reasoning:**\n    *   The 1,024-token limit is recommended because the bundled embedding model truncates input after 1,024 tokens, causing any text beyond that to be ignored [S1].\n    *   The claim for 4,096-token chunks is based on the premise that more context always results in better answers [S2].\n    *   Maintainers explicitly deny recommending 4,096-token chunks, reiterating that the embedding model truncates data after 1,024 tokens [S3].\n\n**Disagreements:**\n*   **Conflict on recommended size:** [S2] suggests 4,096 tokens, while [S1] and [S3] state the limit is 1,024 tokens.\n*   **Conflict on official stance:** [S3] (a maintainer) explicitly refutes the claim made in [S2] that 4,096 tokens is an official recommendation.\n\n**Outdated/Reliability Notes:**\n*   [S2] appears to be an unofficial \"guide\" and contradicts the official documentation [S1] and the maintainer's statement [S3].\n*   [S1], [S3], and [S4] are consistent with each other regarding the 1,024-token truncation limit.\n\n**Gaps:**\n*   None. The sources provide sufficient information to identify the official recommendation and the reasoning behind it, as well as to identify the conflicting information.",
+          "input_tokens": 707,
+          "output_tokens": 456,
+          "thinking_tokens": 0,
+          "latency_ms": 5640.522399975453,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "fact_check",
+            "critic"
+          ],
+          "output": "### Fact-Checking Report\n\n**Claim Verification:**\n*   **The default chunk size is 512 tokens.**\n    *   Verdict: **SUPPORTED** [S1], [S4].\n*   **The Acme RAG Toolkit recommends a maximum of 1,024 tokens per chunk.**\n    *   Verdict: **SUPPORTED** [S1].\n*   **The reasoning for the 1,024-token limit is that the bundled embedding model truncates input after 1,024 tokens.**\n    *   Verdict: **SUPPORTED** [S1], [S3].\n*   **Acme officially recommends 4,096-token chunks.**\n    *   Verdict: **CONTRADICTED** [S3].\n    *   *Note:* [S2] claims this, but [S3] (a maintainer) explicitly refutes it.\n\n**Conflict Resolution:**\n*   **Conflict:** [S2] claims a 4,096-token recommendation, while [S1] and [S3] state the limit is 1,024 tokens.\n*   **Decision:** [S1] (Official Documentation) and [S3] (Maintainer statement) are more authoritative than [S2] (an unofficial guide). [S3] specifically addresses and debunks the claim made in [S2].\n\n**Premise Check:**\n*   The question assumes there is a single recommendation. While there is an official recommendation, there is also conflicting unofficial information. The question itself is valid, but the answer must address the discrepancy to be accurate.\n\n**Claims to Exclude:**\n*   Do not present the 4,096-token figure as an official recommendation. It must be framed as an incorrect claim found in unofficial guides that has been explicitly refuted by project maintainers.\n\n---\n\n### Critique\n\n**Answerability:**\n*   The evidence is sufficient to answer the question fully.\n\n**Weaknesses & Context:**\n*   The primary weakness is the existence of misinformation in [S2]. The final answer must clearly distinguish between official documentation and unofficial content to avoid propagating the error.\n*   The answer should clarify the distinction between the \"default\" size (512 tokens) and the \"maximum recommended\" size (1,024 tokens).\n\n**Required Caveats:**\n*   Must explicitly state that the 4,096-token recommendation is incorrect and refuted by the maintainers.\n*   Must emphasize that the limitation is technical (embedding model truncation).\n\n**Recommendations for Agent 3:**\n1.  **Structure:**\n    *   **Direct Answer:** State the official default (512) and the maximum recommended size (1,024).\n    *   **Technical Reasoning:** Explain the embedding model truncation limit as the reason for the 1,024-token cap.\n    *   **Addressing Misinformation:** Include a section clarifying that claims of 4,096-token recommendations are incorrect, citing the maintainer's refutation in [S3].\n2.  **Tone:** Objective, authoritative, and focused on official documentation over unofficial guides.\n3.  **Content:** Ensure every statement is tied to [S1], [S3], or [S4]. Avoid using [S2] as a source for technical settings, only as a reference for the conflicting claim that was debunked.",
+          "input_tokens": 1308,
+          "output_tokens": 731,
+          "thinking_tokens": 0,
+          "latency_ms": 9566.560900013428,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 2,
+          "roles": [
+            "writer"
+          ],
+          "output": "The Acme RAG Toolkit sets a default chunk size of 512 tokens and recommends a maximum chunk size of 1,024 tokens [S1][S4].\n\nThe 1,024-token limit is established because the toolkit's bundled embedding model truncates any input exceeding this length, causing text beyond the limit to be ignored [S1][S3].\n\nWhile some unofficial guides suggest a chunk size of 4,096 tokens based on the premise that larger context improves answer quality, this claim is incorrect [S2]. Project maintainers have explicitly refuted the 4,096-token recommendation, reiterating that the embedding model's technical constraints necessitate the 1,024-token cap [S3].",
+          "input_tokens": 1555,
+          "output_tokens": 159,
+          "thinking_tokens": 0,
+          "latency_ms": 7384.513299999526,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 3,
+      "input_tokens": 3570,
+      "output_tokens": 1346,
+      "thinking_tokens": 0,
+      "total_tokens": 4916,
+      "latency_ms": 22591.596599988407,
+      "retries": 0,
+      "estimated_cost_usd": 0.0029115,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.98,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Default chunk size is 512 tokens",
+            "status": "covered"
+          },
+          {
+            "point": "Recommended maximum is 1,024 tokens",
+            "status": "covered"
+          },
+          {
+            "point": "Reason: the embedding model truncates input beyond 1,024 tokens",
+            "status": "covered"
+          },
+          {
+            "point": "The 4,096-token recommendation is false and was refuted by a maintainer",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer accurately covers all key points, properly identifies the false nature of the 4,096-token claim without falling into the trap, supports its statements with correct citations, and maintains a high standard of faithfulness and relevancy."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 94,
+        "citation_count": 6,
+        "distinct_sources_cited": 4,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 1.0
+      }
+    },
+    {
+      "architecture": "4-agent",
+      "agent_count": 4,
+      "status": "completed",
+      "error": null,
+      "answer": "The Acme RAG Toolkit sets a default chunk size of 512 tokens and recommends a maximum size of 1,024 tokens [S1, S4].\n\nThis 1,024-token limit is established because the toolkit's bundled embedding model truncates any input exceeding that length, resulting in silent information loss for larger chunks [S1, S3]. While some third-party guides suggest a chunk size of 4,096 tokens for improved context, this claim is factually incorrect; project maintainers explicitly refute this recommendation, noting that it leads to the loss of data beyond the 1,024-token threshold [S2, S3]. The provided sources do not offer specific recommendations for chunk sizes smaller than the 512-token default [S1, S4].",
+      "steps": [
+        {
+          "agent_index": 0,
+          "roles": [
+            "research"
+          ],
+          "output": "### Research Brief for Agent 2\n\n**Sub-questions:**\n1. What is the recommended chunk size for the Acme RAG Toolkit?\n2. What is the reasoning behind the recommended chunk size?\n\n**Extracted Facts:**\n*   **Recommended Size:**\n    *   The official documentation states the default chunk size is 512 tokens [S1], [S4].\n    *   The official documentation recommends a maximum of 1,024 tokens per chunk [S1].\n    *   An external guide claims Acme recommends 4,096-token chunks [S2].\n    *   An Acme maintainer explicitly denies the recommendation of 4,096-token chunks [S3].\n*   **Reasoning:**\n    *   The 1,024-token maximum is recommended because the bundled embedding model truncates input after 1,024 tokens, causing text beyond that point to be ignored [S1].\n    *   The maintainer confirms that using the default embedding model results in information loss for chunks larger than 1,024 tokens due to silent truncation [S3].\n    *   The external guide argues that 4,096-token chunks provide more context and better accuracy [S2].\n\n**Disagreements:**\n*   **Source Conflict:** [S2] claims a recommendation of 4,096 tokens, while [S1] and [S3] explicitly state the limit is 1,024 tokens. [S3] (a maintainer) directly refutes the claim made in [S2].\n*   **Reliability:** [S1] and [S4] are official documentation/changelogs. [S3] is a direct statement from a project maintainer. [S2] is from a third-party \"content-farm\" guide and appears to be factually incorrect based on the maintainer's response.\n\n**Gaps:**\n*   The sources do not provide a specific recommendation for chunk sizes smaller than 512 tokens, only noting 512 as the default [S1], [S4].\n*   There is no information regarding whether different embedding models (other than the \"bundled\" one) would change the recommended chunk size.",
+          "input_tokens": 710,
+          "output_tokens": 484,
+          "thinking_tokens": 0,
+          "latency_ms": 2948.6631999898236,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 1,
+          "roles": [
+            "fact_check"
+          ],
+          "output": "### Fact-Check Report\n\n**Claim Verification:**\n\n1.  **The default chunk size for the Acme RAG Toolkit is 512 tokens.**\n    *   **Verdict:** SUPPORTED [S1, S4]\n2.  **The Acme RAG Toolkit recommends a maximum chunk size of 1,024 tokens.**\n    *   **Verdict:** SUPPORTED [S1]\n3.  **The reasoning for the 1,024-token maximum is that the bundled embedding model truncates input after 1,024 tokens, causing information loss.**\n    *   **Verdict:** SUPPORTED [S1, S3]\n4.  **Acme recommends 4,096-token chunks for the best accuracy.**\n    *   **Verdict:** CONTRADICTED [S3]\n    *   **Explanation:** While [S2] makes this claim, it is directly refuted by the project maintainer in [S3], who states they have never recommended this size and confirms that information is lost at this length.\n\n**Conflicting Sources:**\n*   **Conflict:** [S2] claims a 4,096-token recommendation, whereas [S1] and [S3] state the limit is 1,024 tokens.\n*   **Resolution:** [S1] (official documentation) and [S3] (official maintainer) are more authoritative than [S2] (a third-party \"content-farm\" guide). [S3] specifically identifies the claim in [S2] as incorrect.\n\n**Premise Check:**\n*   The question asks what the toolkit recommends. The sources provide a clear answer (512 default, 1,024 maximum). The question does not contain a false or unsupported premise.\n\n**Claims to Exclude:**\n*   The claim that Acme recommends 4,096-token chunks [S2] must be excluded as it is factually incorrect according to the project's official documentation and maintainer.\n*   The claim that \"bigger chunks mean more context, which always means better answers\" [S2] must be excluded, as it is presented as a justification for an incorrect recommendation and is contradicted by the maintainer's note regarding information loss [S3].",
+          "input_tokens": 1238,
+          "output_tokens": 488,
+          "thinking_tokens": 0,
+          "latency_ms": 8182.062800013227,
+          "saw_sources": true
+        },
+        {
+          "agent_index": 2,
+          "roles": [
+            "critic"
+          ],
+          "output": "### Critique\n\n**Answerability Verdict:**\nThe question can be answered fully using the provided evidence.\n\n**Weaknesses and Missing Context:**\n*   **Missing Context:** The evidence does not clarify if the 1,024-token limit applies when using custom embedding models, or if the recommendation is strictly tied to the \"bundled\" model.\n*   **Overgeneralizations:** None identified, provided the writing avoids endorsing the 4,096-token claim.\n*   **Conclusions:** The evidence allows for a definitive conclusion regarding the official recommendation versus the incorrect third-party claim.\n\n**Required Caveats/Limitations:**\n*   The answer must explicitly state that the recommendation is based on the limitations of the *bundled* embedding model.\n*   The answer must clarify that the 4,096-token recommendation found in some external sources is factually incorrect and refuted by project maintainers.\n*   The answer must note that the sources provide no guidance for chunk sizes smaller than the 512-token default.\n\n**Recommendations for Structure and Content:**\n1.  **Direct Answer:** State clearly that the default chunk size is 512 tokens [S1, S4] and the recommended maximum is 1,024 tokens [S1].\n2.  **Reasoning:** Explain that the 1,024-token limit is dictated by the bundled embedding model, which truncates input beyond that length, leading to silent information loss [S1, S3].\n3.  **Addressing Conflict:** Include a brief note addressing the conflicting information found in external guides (the 4,096-token claim). Explicitly state that this claim is refuted by the project maintainer as it results in data loss [S3].\n4.  **Tone:** Maintain an authoritative tone by prioritizing official documentation [S1, S4] and maintainer statements [S3] over third-party content [S2].",
+          "input_tokens": 1341,
+          "output_tokens": 411,
+          "thinking_tokens": 0,
+          "latency_ms": 2786.7528999922797,
+          "saw_sources": false
+        },
+        {
+          "agent_index": 3,
+          "roles": [
+            "writer"
+          ],
+          "output": "The Acme RAG Toolkit sets a default chunk size of 512 tokens and recommends a maximum size of 1,024 tokens [S1, S4].\n\nThis 1,024-token limit is established because the toolkit's bundled embedding model truncates any input exceeding that length, resulting in silent information loss for larger chunks [S1, S3]. While some third-party guides suggest a chunk size of 4,096 tokens for improved context, this claim is factually incorrect; project maintainers explicitly refute this recommendation, noting that it leads to the loss of data beyond the 1,024-token threshold [S2, S3]. The provided sources do not offer specific recommendations for chunk sizes smaller than the 512-token default [S1, S4].",
+          "input_tokens": 1767,
+          "output_tokens": 172,
+          "thinking_tokens": 0,
+          "latency_ms": 5126.250500004971,
+          "saw_sources": false
+        }
+      ],
+      "model": "gemini-3.1-flash-lite",
+      "call_count": 4,
+      "input_tokens": 5056,
+      "output_tokens": 1555,
+      "thinking_tokens": 0,
+      "total_tokens": 6611,
+      "latency_ms": 19043.729400000302,
+      "retries": 1,
+      "estimated_cost_usd": 0.0035965,
+      "evaluation": {
+        "answer_relevancy": 1.0,
+        "completeness": 1.0,
+        "faithfulness": 1.0,
+        "citation_quality": 1.0,
+        "uncertainty_handling": 1.0,
+        "overall_quality": 0.98,
+        "judge_completeness": 1.0,
+        "key_points": [
+          {
+            "point": "Default chunk size is 512 tokens",
+            "status": "covered"
+          },
+          {
+            "point": "Recommended maximum is 1,024 tokens",
+            "status": "covered"
+          },
+          {
+            "point": "Reason: the embedding model truncates input beyond 1,024 tokens",
+            "status": "covered"
+          },
+          {
+            "point": "The 4,096-token recommendation is false and was refuted by a maintainer",
+            "status": "covered"
+          }
+        ],
+        "unsupported_claims": [],
+        "trap_violations": [],
+        "reasoning": "The candidate answer accurately addresses all parts of the question, fully covers all required key points, correctly handles the false 4,096-token claim without falling into the trap, provides precise citations that match the evidence, and maintains high faithfulness and relevancy."
+      },
+      "judge_error": null,
+      "deterministic": {
+        "word_count": 107,
+        "citation_count": 8,
+        "distinct_sources_cited": 4,
+        "invalid_citations": 0,
+        "citation_validity": 1.0,
+        "sentence_citation_coverage": 1.0
+      }
+    }
+  ],
+  "ranking": {
+    "order": [
+      "1-agent",
+      "3-agent",
+      "4-agent",
+      "2-agent"
+    ],
+    "labels": {
+      "A": "4-agent",
+      "B": "2-agent",
+      "C": "1-agent",
+      "D": "3-agent"
+    },
+    "reasoning": "All answers correctly identify the default chunk size of 512 tokens and the maximum recommendation of 1,024 tokens based on S1 and S4, while also addressing and debunking the false claim about 4,096 tokens found in S2 and S3. Answer C is ranked first because it provides a complete and well-cited synthesis, accurately attributing both the false claim to S2 and the refutation to S3. Answers A, B, and D are slightly less comprehensive or structured in their citations, but all maintain a high standard of faithfulness to the sources."
+  },
+  "ranking_error": null,
+  "completed_at": "2026-10-27T03:40:45+00:00"
+}
