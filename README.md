@@ -8,6 +8,8 @@ advance picks the winner.
 It runs entirely on the **free Gemini API tier**, and every run is saved to
 `results/runs/` so anyone can verify it.
 
+📝 **Read the write-up on Medium:** [How Many AI Agents Do You Actually Need?](https://medium.com/@antonynishioj/how-many-ai-agents-do-you-actually-need-ee45f15a41ca)
+
 ![architectures](docs/blog/images/fig1_architectures.png)
 
 ## Quick start
@@ -71,6 +73,7 @@ uv run pytest                                  # tests (no API calls)
 
 ## Documentation
 
+- [Medium article](https://medium.com/@antonynishioj/how-many-ai-agents-do-you-actually-need-ee45f15a41ca): the published write-up of the findings
 - [docs/experiment-design.md](docs/experiment-design.md): hypotheses, controls, metrics, the winner rule, threats to validity
 - [docs/architectures.md](docs/architectures.md): the four pipelines and the context rule
 - [docs/benchmark.md](docs/benchmark.md): the 12 cases and how the traps work
